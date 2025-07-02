@@ -102,8 +102,8 @@ my-portfolio/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/milanmadusankamms/portfolio.git
-   cd portfolio
+   git clone https://github.com/milanmadusankamms/My-Portfolio-1-branch.git
+   cd My-Portfolio-1-branch
    ```
 
 2. **Install dependencies**
@@ -229,9 +229,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👨‍💻 Author
 
 **Milan Madusanka**
-- Portfolio: [your-portfolio-url.com](https://your-portfolio-url.com)
-- LinkedIn: [linkedin.com/in/milanmadusanka](https://linkedin.com/in/milanmadusanka)
+- Portfolio: [milanmadusanka.dev](https://milanmadusanka.dev)
+- LinkedIn: [linkedin.com/in/milanmadusanka](https://www.linkedin.com/in/milanmadusanka/linkin)
 - GitHub: [github.com/milanmadusankamms](https://github.com/milanmadusankamms)
+- Medium: [medium.com/@milanmadusankamms](https://medium.com/@milanmadusankamms)
 - Email: milanmadusankamms@gmail.com
 
 ## 🙏 Acknowledgments
@@ -246,5 +247,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ **Star this repository if you found it helpful!**
 
-![GitHub stars](https://img.shields.io/github/stars/milanmadusankamms/portfolio?style=social)
-![GitHub forks](https://img.shields.io/github/forks/milanmadusankamms/portfolio?style=social)
+![GitHub stars](https://img.shields.io/github/stars/milanmadusankamms/My-Portfolio-1-branch?style=social)
+![GitHub forks](https://img.shields.io/github/forks/milanmadusankamms/My-Portfolio-1-branch?style=social)

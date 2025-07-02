@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, Send, Github, Linkedin, Code2, Terminal, Globe, FileText } from "lucide-react";
+import { Mail, MessageCircle, Send, Github, Linkedin, Code2, Terminal, Globe, FileText, PenTool } from "lucide-react";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -67,7 +67,7 @@ const Contact = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
-                href="https://github.com/milan-ms"
+                href="https://github.com/milanmadusankamms"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-lg border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-md"
@@ -84,7 +84,7 @@ const Contact = () => {
               </a>
 
               <a
-                href="https://linkedin.com/in/milan-ms"
+                href="https://www.linkedin.com/in/milanmadusanka/linkin"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-lg border border-border bg-card hover:border-blue-500/50 transition-all duration-300 hover:shadow-md"
@@ -96,6 +96,23 @@ const Contact = () => {
                   <div>
                     <h4 className="font-medium text-card-foreground">LinkedIn</h4>
                     <p className="text-xs text-muted-foreground">Professional network</p>
+                  </div>
+                </div>
+              </a>
+
+              <a
+                href="https://medium.com/@milanmadusankamms"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group p-4 rounded-lg border border-border bg-card hover:border-green-500/50 transition-all duration-300 hover:shadow-md"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-full bg-green-100 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                    <PenTool className="w-5 h-5 text-green-600 group-hover:text-white" />
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-card-foreground">Medium</h4>
+                    <p className="text-xs text-muted-foreground">Articles & insights</p>
                   </div>
                 </div>
               </a>
@@ -150,10 +167,10 @@ const Contact = () => {
                   <div className="flex-1">
                     <h4 className="font-medium text-card-foreground mb-1">Email</h4>
                     <a 
-                      href="mailto:milan.ms.developer@gmail.com"
+                      href="mailto:milanmadusankamms@gmail.com"
                       className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
                     >
-                      milan.ms.developer@gmail.com
+                      milanmadusankamms@gmail.com
                     </a>
                     <p className="text-xs text-muted-foreground mt-1">
                       Best for project inquiries and professional discussions

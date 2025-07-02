@@ -32,7 +32,8 @@ import {
   Cpu,
   Github,
   Linkedin,
-  ExternalLink
+  ExternalLink,
+  PenTool
 } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
 
@@ -279,7 +280,7 @@ const Header = () => {
                   <Github className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                 </motion.a>
                 <motion.a
-                  href="https://linkedin.com/in/milanmadusanka"
+                  href="https://www.linkedin.com/in/milanmadusanka/linkin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-background/80 transition-all duration-300 group border border-transparent hover:border-border/60 hover:shadow-lg"
@@ -414,7 +415,7 @@ const Header = () => {
                           </motion.a>
                         </div>
                         <motion.a
-                          href="https://linkedin.com/in/milanmadusanka"
+                          href="https://www.linkedin.com/in/milanmadusanka/linkin"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center space-x-3 px-4 py-3 rounded-2xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 mt-3"
@@ -423,6 +424,18 @@ const Header = () => {
                         >
                           <Linkedin className="w-5 h-5" />
                           <span className="text-sm font-medium">LinkedIn</span>
+                          <ExternalLink className="w-3 h-3 ml-auto" />
+                        </motion.a>
+                        <motion.a
+                          href="https://medium.com/@milanmadusankamms"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center space-x-3 px-4 py-3 rounded-2xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 mt-3"
+                          whileHover={{ scale: 1.02, y: -2 }}
+                          whileTap={{ scale: 0.98 }}
+                        >
+                          <PenTool className="w-5 h-5" />
+                          <span className="text-sm font-medium">Medium</span>
                           <ExternalLink className="w-3 h-3 ml-auto" />
                         </motion.a>
                       </motion.div>
