@@ -102,7 +102,7 @@ my-portfolio/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/milanmadusankamms/My-Portfolio-1-branch.git
+   git clone https://github.com/Milanz247/My-Portfolio-1-branch.git
    cd My-Portfolio-1-branch
    ```
 
@@ -230,8 +230,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Milan Madusanka**
 - Portfolio: [milanmadusanka.dev](https://milanmadusanka.dev)
-- LinkedIn: [linkedin.com/in/milanmadusanka](https://www.linkedin.com/in/milanmadusanka/linkin)
-- GitHub: [github.com/milanmadusankamms](https://github.com/milanmadusankamms)
+- LinkedIn: [linkedin.com/in/milanmadusanka](https://www.linkedin.com/in/milanmadusanka/)
+- GitHub: [github.com/Milanz247](https://github.com/Milanz247)
 - Medium: [medium.com/@milanmadusankamms](https://medium.com/@milanmadusankamms)
 - Email: milanmadusankamms@gmail.com
 
@@ -247,5 +247,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ⭐ **Star this repository if you found it helpful!**
 
-![GitHub stars](https://img.shields.io/github/stars/milanmadusankamms/My-Portfolio-1-branch?style=social)
-![GitHub forks](https://img.shields.io/github/forks/milanmadusankamms/My-Portfolio-1-branch?style=social)
+![GitHub stars](https://img.shields.io/github/stars/Milanz247/My-Portfolio-1-branch?style=social)
+![GitHub forks](https://img.shields.io/github/forks/Milanz247/My-Portfolio-1-branch?style=social)

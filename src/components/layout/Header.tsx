@@ -270,7 +270,7 @@ const Header = () => {
               {/* Enhanced Social Links */}
               <div className="hidden xl:flex items-center space-x-2 bg-muted/30 backdrop-blur-xl rounded-2xl p-2 border border-border/40">
                 <motion.a
-                  href="https://github.com/milanmadusankamms"
+                  href="https://github.com/Milanz247"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-background/80 transition-all duration-300 group border border-transparent hover:border-border/60 hover:shadow-lg"
@@ -280,7 +280,7 @@ const Header = () => {
                   <Github className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                 </motion.a>
                 <motion.a
-                  href="https://www.linkedin.com/in/milanmadusanka/linkin"
+                  href="https://www.linkedin.com/in/milanmadusanka/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2.5 rounded-xl text-muted-foreground hover:text-foreground hover:bg-background/80 transition-all duration-300 group border border-transparent hover:border-border/60 hover:shadow-lg"
@@ -402,7 +402,7 @@ const Header = () => {
                         <h4 className="text-sm font-medium text-muted-foreground mb-4">Connect with me</h4>
                         <div className="flex items-center justify-center space-x-3">
                           <motion.a
-                            href="https://github.com/milanmadusankamms"
+                            href="https://github.com/Milanz247"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center space-x-3 px-4 py-3 rounded-2xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 flex-1"
@@ -415,7 +415,7 @@ const Header = () => {
                           </motion.a>
                         </div>
                         <motion.a
-                          href="https://www.linkedin.com/in/milanmadusanka/linkin"
+                          href="https://www.linkedin.com/in/milanmadusanka/"
                           target="_blank"
                           rel="noopener noreferrer"
                           className="flex items-center space-x-3 px-4 py-3 rounded-2xl border border-border/50 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 mt-3"

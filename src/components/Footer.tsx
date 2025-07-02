@@ -12,8 +12,8 @@ const navigationLinks = [
 ];
 
 const professionalLinks = [
-  { name: "GitHub", href: "https://github.com/milanmadusankamms", external: true },
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/milanmadusanka/linkin", external: true },
+  { name: "GitHub", href: "https://github.com/Milanz247", external: true },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/milanmadusanka/", external: true },
   { name: "Medium", href: "https://medium.com/@milanmadusankamms", external: true },
   { name: "Resume", href: "/resume.pdf", external: true },
   { name: "Blog", href: "/#blog" },

@@ -67,7 +67,7 @@ const Contact = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
-                href="https://github.com/milanmadusankamms"
+                href="https://github.com/Milanz247"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-lg border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-md"
@@ -84,7 +84,7 @@ const Contact = () => {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/milanmadusanka/linkin"
+                href="https://www.linkedin.com/in/milanmadusanka/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-lg border border-border bg-card hover:border-blue-500/50 transition-all duration-300 hover:shadow-md"
