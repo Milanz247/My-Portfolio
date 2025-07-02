@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Code2, Folder, Star, GitBranch, Database, Zap, Layers } from "lucide-react";
+import { Github, ExternalLink, Code2, Folder, Calendar, Star, GitBranch, Database, Zap, Layers } from "lucide-react";
 import Link from "next/link";
 
 // Types for project data

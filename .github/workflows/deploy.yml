@@ -1,0 +1,53 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
+
+      # Deploy the built application via SFTP
+      - name: Deploy to Server via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          # SFTP Connection Details
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: sftp
+          port: 22
+
+          # Local path - Next.js build output (using your custom distDir)
+          local-dir: ./build/
+          
+          # Remote path - your server directory
+          server-dir: /home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/
+          
+          # Deployment options
+          dry-run: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.next/cache/**
+            **/.env*
+            **/README.md
