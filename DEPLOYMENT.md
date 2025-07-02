@@ -28,7 +28,16 @@ FTP_PASSWORD: your-secure-password
 The deployment happens automatically when you push to the `main` branch:
 
 1. **Build**: The workflow builds your Next.js application with static export
-2. **Deploy**: Files are uploaded to `/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/`
+2. **Debug**: Lists the contents of the build directory for troubleshooting
+3. **Deploy**: All files from the `build/` directory are uploaded to `/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/`
+
+## Technical Details
+
+- **Upload Method**: SCP (Secure Copy Protocol) over SSH
+- **Port**: 22 (standard SSH/SCP port)
+- **Source**: All contents of `build/` directory
+- **Target**: `/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/`
+- **Concurrency**: 20 simultaneous transfers for faster upload
 
 ## Manual Deployment
 
