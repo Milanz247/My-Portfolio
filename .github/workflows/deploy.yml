@@ -24,11 +24,13 @@ jobs:
       - name: Build Next.js app
         run: bun run build
       
-      - name: Upload to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      - name: Upload to SFTP server
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: build/
-          server-dir: /home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/
+          port: 22
+          local_path: './build/*'
+          remote_path: '/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/'
+          args: '-o ConnectTimeout=5'
