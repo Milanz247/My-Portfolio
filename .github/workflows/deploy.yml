@@ -50,5 +50,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 22
           local_path: './build/*'
-          remote_path: '/'
+          remote_path: '/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/'
           args: '-o ConnectTimeout=5'
