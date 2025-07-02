@@ -23,15 +23,32 @@ jobs:
 
       - name: Build Next.js app
         run: bun run build
-      
-      - name: Upload to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+
+      # Debug: Check build output
+      - name: List build directory
+        run: |
+          echo "Build directory contents:"
+          ls -la build/
+          echo "Build directory size:"
+          du -sh build/
+
+      # Debug: Test server connectivity
+      - name: Test server connectivity
+        run: |
+          echo "Testing connectivity to server..."
+          ping -c 3 ${{ secrets.FTP_SERVER }} || echo "Ping failed"
+          echo "Testing SSH/SFTP port (22)..."
+          nc -zv ${{ secrets.FTP_SERVER }} 22 || echo "Port 22 not accessible"
+          echo "Testing FTP port (21)..."
+          nc -zv ${{ secrets.FTP_SERVER }} 21 || echo "Port 21 not accessible"
+
+      - name: Upload to server via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
+          server: ${{ secrets.FTP_SERVER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./build/
-          server-dir: /
-          log-level: verbose
+          port: 22
+          local_path: './build/*'
+          remote_path: '/'
+          args: '-o ConnectTimeout=5'
