@@ -25,20 +25,23 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
+      # Debug: List build contents
+      - name: List build directory contents
+        run: |
+          echo "Contents of build directory:"
+          ls -la build/
+          echo "Total size:"
+          du -sh build/
+
       # Deploy the built application via SFTP
       - name: Deploy to Server via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+        uses: appleboy/scp-action@v0.1.7
         with:
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
-          server: ${{ secrets.FTP_SERVER }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 22
-          
-          # Local path - Next.js build output (using your custom distDir)
-          local_path: './build/*'
-          
-          # Remote path - your server directory
-          remote_path: '/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/'
-          
-          # SFTP arguments
-          args: '-o ConnectTimeout=5'
+          source: "build/*"
+          target: "/home/techcue360-milan-dev/htdocs/milan-dev.techcue360.com/"
+          strip_components: 1
+          overwrite: true
