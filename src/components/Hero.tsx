@@ -185,7 +185,7 @@ const Hero = () => {
             animate={shouldAnimate ? "visible" : "hidden"}
             style={{ perspective: "1000px" }}
           >
-            {splitText("Milan Madusanka Senarathna")}
+            {splitText("Milan Madusanka")}
             {/* Elegant underline effect */}
             <motion.div
               className="absolute -bottom-2 left-1/2 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent"

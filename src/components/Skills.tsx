@@ -48,6 +48,16 @@ const Skills = () => {
       ]
     },
     {
+      title: "System Administration",
+      icon: Shield,
+      color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+      technologies: [
+        "Red Hat Enterprise Linux", "Linux System Administration", "WildFly",
+        "Shell Scripting", "Log Monitoring", "System Troubleshooting",
+        "Java Application Deployment", "Command Line Tools"
+      ]
+    },
+    {
       title: "DevOps & Automation",
       icon: Settings,
       color: "bg-red-500/10 text-red-600 dark:text-red-400",

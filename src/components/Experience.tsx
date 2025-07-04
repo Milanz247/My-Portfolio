@@ -13,6 +13,32 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
+      position: "System Engineer Intern",
+      company: "Epic Lanka (Pvt) Ltd",
+      location: "Epic Techno Village, Sri Jayawardenepura Kotte, Sri Lanka",
+      duration: "Apr 28, 2025 – Present",
+      type: "Internship",
+      status: "Current",
+      description: "Learning to work in a Linux-based environment and supporting enterprise Java application deployments while gaining hands-on experience in system administration.",
+      achievements: [
+        "Learning to work in a Linux-based environment using Red Hat Enterprise Linux (RHEL)",
+        "Supporting the deployment and configuration of Java applications on the WildFly application server",
+        "Helping with log monitoring and basic troubleshooting using command-line tools",
+        "Gaining hands-on experience in system administration and working closely with senior engineers"
+      ],
+      technologies: [
+        "Red Hat Enterprise Linux", "Java", "WildFly", "Linux System Administration", 
+        "Log Monitoring", "Shell Scripting", "System Troubleshooting"
+      ],
+      highlights: [
+        "Linux Administration",
+        "Java Applications",
+        "System Monitoring",
+        "Problem Solving"
+      ]
+    },
+    {
+      id: 2,
       position: "Junior Software Engineer",
       company: "Taprobane Information Technologies (Pvt) Ltd",
       location: "Colombo, Sri Lanka",
@@ -40,7 +66,7 @@ const Experience = () => {
       ]
     },
     {
-      id: 2,
+      id: 3,
       position: "Software Engineer Intern",
       company: "Taprobane Information Technologies (Pvt) Ltd",
       location: "Colombo, Sri Lanka",

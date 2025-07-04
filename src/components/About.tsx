@@ -75,7 +75,7 @@ const About = () => {
                         ⚡
                       </motion.div>
                       <p className="text-lg font-semibold mb-2">Milan Madusanka</p>
-                      <p className="text-sm text-muted-foreground">Software Engineer</p>
+                      <p className="text-sm text-muted-foreground">System Engineer & Software Developer</p>
                       <div className="mt-4 flex justify-center gap-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
@@ -114,19 +114,22 @@ const About = () => {
                 </h3>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    <strong className="text-card-foreground">Junior Software Engineer</strong> with 2+ years of experience 
-                    building scalable web applications and enterprise solutions. Specialized in full-stack development 
-                    using modern technologies including <strong className="text-primary">Laravel, React.js, and GoLang</strong>.
+                    <strong className="text-card-foreground">System Engineer Intern</strong> at Epic Lanka (Pvt) Ltd, 
+                    with experience as a <strong className="text-card-foreground">Junior Software Engineer</strong> 
+                    specializing in full-stack development and system administration. Currently learning enterprise 
+                    Linux environments using <strong className="text-primary">Red Hat Enterprise Linux (RHEL)</strong> 
+                    and supporting <strong className="text-primary">Java applications on WildFly</strong>.
                   </p>
                   <p>
-                    Passionate about clean code, system architecture, and delivering high-quality software solutions. 
-                    Experience in leading development teams, API integration, and implementing DevOps practices 
-                    with <strong className="text-primary">99.9% uptime</strong> achievements.
+                    Passionate about both software development and system administration, with hands-on experience 
+                    in <strong className="text-primary">Laravel, React.js, GoLang</strong>, and Linux-based systems. 
+                    Skilled in log monitoring, system troubleshooting, and collaborating with senior engineers 
+                    to maintain robust IT infrastructure.
                   </p>
                   <p>
-                    Currently focused on cloud technologies, microservices architecture, and contributing to 
-                    open-source projects. Always eager to learn emerging technologies and share knowledge 
-                    with the developer community.
+                    Currently focused on expanding expertise in system administration, cloud technologies, 
+                    and enterprise application deployment. Always eager to learn emerging technologies 
+                    and apply both development and operations knowledge to create comprehensive solutions.
                   </p>
                 </div>
               </div>
