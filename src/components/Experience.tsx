@@ -42,9 +42,9 @@ const Experience = () => {
       position: "Junior Software Engineer",
       company: "Taprobane Information Technologies (Pvt) Ltd",
       location: "Colombo, Sri Lanka",
-      duration: "Apr 2024 - Present",
+      duration: "Apr 2024 - Feb 2025",
       type: "Full-time",
-      status: "Current",
+      status: "Completed",
       description: "Leading full-stack development projects and building scalable enterprise solutions using modern technologies.",
       achievements: [
         "Directed project planning and execution, ensuring 100% project delivery on time",
