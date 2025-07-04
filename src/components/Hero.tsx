@@ -99,7 +99,7 @@ const Hero = () => {
         {/* Main Heading with Simplified, Premium Animation */}
         <div className="space-y-6">
           <motion.h1 
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight relative"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight relative"
             initial={{ opacity: 0, y: 30 }}
             animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ 
@@ -108,13 +108,13 @@ const Hero = () => {
               ease: [0.23, 1, 0.32, 1]
             }}
           >
-            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-sm">
               Milan Madusanka
             </span>
             
             {/* Single, Focused Underline Animation */}
             <motion.div
-              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-full"
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-full shadow-lg"
               initial={{ width: 0 }}
               animate={shouldAnimate ? { width: "100%" } : { width: 0 }}
               transition={{ 
@@ -125,20 +125,30 @@ const Hero = () => {
             />
           </motion.h1>
           
-          {/* Description with Word Animation */}
-          <div className="relative">
-            <motion.p 
-              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
+          {/* Enhanced Description with Key Skills */}
+          <div className="relative space-y-4">
+            <motion.h2 
+              className="text-2xl sm:text-3xl font-semibold text-foreground/90"
               initial={{ opacity: 0, y: 20 }}
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              Full-Stack Developer with Linux expertise building reliable systems that scale.
+              Full-Stack Developer & System Engineer
+            </motion.h2>
+            
+            <motion.p 
+              className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+            >
+              Building scalable web applications and robust infrastructure with modern technologies. 
+              Passionate about clean code, system reliability, and continuous learning.
             </motion.p>
             
             {/* Personal Brand Tagline */}
             <motion.p 
-              className="text-sm sm:text-base text-primary/80 font-medium mt-3 tracking-wide"
+              className="text-base text-primary/80 font-medium tracking-wide"
               initial={{ opacity: 0, y: 10 }}
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ delay: 1.2, duration: 0.6 }}
@@ -157,7 +167,7 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Premium Action Buttons */}
+        {/* Premium Action Buttons with Trust Signals */}
         <motion.div 
           className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
@@ -166,13 +176,13 @@ const Hero = () => {
             y: shouldAnimate ? 0 : 30 
           }}
           transition={{ 
-            delay: 1.6,
+            delay: 1.4,
             duration: 0.8,
             ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
           <MagneticElement intensity={0.3}>
-            <Button asChild size="lg" className="w-full sm:w-auto relative z-10 cta-gradient text-white border-0 overflow-hidden group/btn">
+            <Button asChild size="lg" className="w-full sm:w-auto relative z-10 cta-gradient text-white border-0 overflow-hidden group/btn h-12 px-8">
               <Link href="#projects">
                 <motion.span 
                   className="mr-2"
@@ -181,7 +191,8 @@ const Hero = () => {
                 >
                   🚀
                 </motion.span>
-                View My Projects
+                <span className="font-semibold">View Projects</span>
+                <span className="ml-2 text-xs bg-white/20 px-2 py-1 rounded-full">6+ Live</span>
                 {/* Premium button shine effect */}
                 <motion.div
                   className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
@@ -194,26 +205,63 @@ const Hero = () => {
           </MagneticElement>
           
           <MagneticElement intensity={0.3}>
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto relative z-10 glassmorphism hover:bg-white/20 border-primary/30 group/btn overflow-hidden">
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto relative z-10 glassmorphism hover:bg-white/20 border-primary/30 group/btn overflow-hidden h-12 px-8">
               <a href="/cv.html" target="_blank" rel="noopener noreferrer">
                 <motion.span 
                   className="mr-2"
                   whileHover={{ scale: 1.2 }}
-                  transition={{ type: "spring", stiffness: 400 }}
+                  transition={{ duration: 0.2 }}
                 >
                   📄
                 </motion.span>
-                Download CV
-                {/* Subtle hover effect */}
+                <span className="font-semibold">Download CV</span>
+                <span className="ml-2 text-xs text-green-400">PDF Ready</span>
+                {/* Hover gradient effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -skew-x-12"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "200%" }}
-                  transition={{ duration: 1, ease: "easeInOut" }}
+                  className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/20 to-primary/5 opacity-0"
+                  whileHover={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 />
               </a>
             </Button>
           </MagneticElement>
+          
+          {/* Quick Contact Button */}
+          <MagneticElement intensity={0.2}>
+            <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto relative z-10 hover:bg-primary/10 group/btn h-12 px-6">
+              <Link href="#contact">
+                <motion.span 
+                  className="mr-2"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  💬
+                </motion.span>
+                <span className="font-medium">Let&apos;s Talk</span>
+              </Link>
+            </Button>
+          </MagneticElement>
+        </motion.div>
+        
+        {/* Trust Indicators */}
+        <motion.div
+          className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground mt-8"
+          initial={{ opacity: 0 }}
+          animate={shouldAnimate ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ delay: 1.8, duration: 0.8 }}
+        >
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span>Available for remote work</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span>⚡</span>
+            <span>Fast response time</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span>🌍</span>
+            <span>Based in Sri Lanka</span>
+          </div>
         </motion.div>
       </div>
     </section>

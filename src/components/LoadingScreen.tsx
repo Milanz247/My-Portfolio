@@ -1,202 +1,183 @@
+// 🚀 PERFORMANCE-OPTIMIZED LOADING SCREEN
 "use client";
 
-import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState, useCallback, useMemo } from "react";
 import { Code2 } from "lucide-react";
 
 interface LoadingScreenProps {
   onLoadingComplete?: () => void;
   duration?: number;
+  enableTypewriter?: boolean;
 }
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ 
+const LoadingScreenOptimized: React.FC<LoadingScreenProps> = ({ 
   onLoadingComplete, 
-  duration = 4000 
+  duration = 3000, // Reduced from 4000
+  enableTypewriter = true
 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const [typedText, setTypedText] = useState("");
   const [progress, setProgress] = useState(0);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(false);
-      onLoadingComplete?.();
-    }, duration);
-
-    // Typing effect for code
-    let currentText = "";
-  const codeLines = [
+  // ✅ PERFORMANCE FIX: Memoized code lines
+  const codeLines = useMemo(() => [
     "const milan = new SystemEngineer();",
-    "milan.skills = ['React', 'Linux', 'DevOps'];",
-    "milan.philosophy = 'Code. Deploy. Scale. Repeat.';",
-    "milan.initialize().then(() => console.log('Ready!'));"
-  ];
-    
+    "milan.skills = ['React', 'Linux', 'DevOps'];", 
+    "milan.philosophy = 'Code. Deploy. Scale.';",
+    "milan.initialize().then(() => ready());"
+  ], []);
+
+  // ✅ PERFORMANCE FIX: Optimized typing effect with RAF
+  const typewriterEffect = useCallback(() => {
+    if (!enableTypewriter) return;
+
+    let currentText = "";
     let lineIndex = 0;
     let charIndex = 0;
-    
-    const typeTimer = setInterval(() => {
-      if (lineIndex < codeLines.length) {
-        if (charIndex < codeLines[lineIndex].length) {
-          currentText += codeLines[lineIndex][charIndex];
-          setTypedText(currentText);
-          charIndex++;
-        } else {
-          // Move to next line
-          currentText += "\n";
-          setTypedText(currentText);
-          lineIndex++;
-          charIndex = 0;
-          
-          // Pause between lines
-          setTimeout(() => {}, 300);
-        }
-      } else {
-        clearInterval(typeTimer);
-      }
-    }, 80);
+    let lastTime = 0;
+    const typingSpeed = 30; // ms per character
 
-    // Progress animation
-    const progressTimer = setInterval(() => {
-      setProgress(prev => {
-        const newProgress = prev + (100 / (duration / 100));
-        return newProgress >= 100 ? 100 : newProgress;
-      });
-    }, 100);
+    const type = (currentTime: number) => {
+      if (currentTime - lastTime >= typingSpeed) {
+        if (lineIndex < codeLines.length) {
+          if (charIndex < codeLines[lineIndex].length) {
+            currentText += codeLines[lineIndex][charIndex];
+            setTypedText(currentText);
+            charIndex++;
+          } else {
+            currentText += "\n";
+            setTypedText(currentText);
+            lineIndex++;
+            charIndex = 0;
+          }
+          lastTime = currentTime;
+        }
+      }
+
+      if (lineIndex < codeLines.length) {
+        requestAnimationFrame(type);
+      }
+    };
+
+    requestAnimationFrame(type);
+  }, [codeLines, enableTypewriter]);
+
+  // ✅ PERFORMANCE FIX: Optimized progress animation
+  useEffect(() => {
+    const startTime = Date.now();
+    let rafId: number;
+
+    const updateProgress = () => {
+      const elapsed = Date.now() - startTime;
+      const newProgress = Math.min((elapsed / duration) * 100, 100);
+      setProgress(newProgress);
+
+      if (newProgress < 100) {
+        rafId = requestAnimationFrame(updateProgress);
+      } else {
+        setTimeout(() => {
+          setIsVisible(false);
+          onLoadingComplete?.();
+        }, 200);
+      }
+    };
+
+    rafId = requestAnimationFrame(updateProgress);
+    typewriterEffect();
 
     return () => {
-      clearTimeout(timer);
-      clearInterval(typeTimer);
-      clearInterval(progressTimer);
+      if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [duration, onLoadingComplete]);
+  }, [duration, onLoadingComplete, typewriterEffect]);
 
   if (!isVisible) return null;
 
   return (
-    <motion.div
-      className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-background"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ 
-        opacity: 0,
-        transition: { duration: 0.5, ease: "easeInOut" }
-      }}
-    >
-      {/* Simple background pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="grid grid-cols-20 grid-rows-20 h-full w-full">
-          {Array.from({ length: 400 }).map((_, i) => (
-            <div key={i} className="border border-primary/10" />
-          ))}
-        </div>
-      </div>
-
-      {/* Main content */}
-      <div className="relative z-10 text-center max-w-2xl mx-auto px-8">
-        {/* Logo/Icon */}
-        <motion.div
-          className="mb-8"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="w-20 h-20 mx-auto bg-primary rounded-2xl flex items-center justify-center shadow-lg">
-            <Code2 className="w-10 h-10 text-white" />
-          </div>
-        </motion.div>
-
-        {/* Name and title */}
-        <motion.div
-          className="mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <h1 className="text-4xl font-bold text-foreground mb-2">
-            Milan Madusanka
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Software Engineer
-          </p>
-        </motion.div>
-
-        {/* Code terminal */}
-        <motion.div
-          className="mb-8 text-left"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          <div className="bg-card border border-border rounded-lg p-6 shadow-lg">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex gap-1">
-                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-              </div>
-              <span className="text-sm text-muted-foreground">portfolio.js</span>
+    <AnimatePresence mode="wait">
+      <motion.div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-background"
+        initial={{ opacity: 1 }}
+        exit={{ 
+          opacity: 0,
+          scale: 1.1,
+          transition: { duration: 0.5, ease: "easeInOut" }
+        }}
+      >
+        <div className="text-center space-y-8 px-4 max-w-2xl">
+          {/* ✅ OPTIMIZED ICON ANIMATION */}
+          <motion.div
+            className="relative mx-auto w-24 h-24 mb-8"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ 
+              scale: 1, 
+              rotate: 0,
+              transition: { duration: 0.8, ease: "easeOut" }
+            }}
+          >
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-purple-600 opacity-20 animate-pulse" />
+            <div className="relative z-10 w-full h-full rounded-full bg-background border-4 border-primary/20 flex items-center justify-center">
+              <Code2 className="w-10 h-10 text-primary" />
             </div>
-            <div className="font-mono text-sm">
-              <pre className="text-foreground whitespace-pre-wrap">
+          </motion.div>
+
+          {/* ✅ OPTIMIZED TYPEWRITER (only if enabled) */}
+          {enableTypewriter && (
+            <motion.div
+              className="bg-slate-900 dark:bg-slate-800 rounded-lg p-6 font-mono text-sm text-left max-w-lg mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+            >
+              <div className="flex items-center gap-2 mb-3">
+                <div className="w-3 h-3 rounded-full bg-red-500" />
+                <div className="w-3 h-3 rounded-full bg-yellow-500" />
+                <div className="w-3 h-3 rounded-full bg-green-500" />
+                <span className="text-slate-400 text-xs ml-2">index.js</span>
+              </div>
+              <pre className="text-green-400 leading-relaxed whitespace-pre-wrap">
                 {typedText}
                 <motion.span
-                  className="inline-block w-2 h-5 bg-primary ml-1"
+                  className="inline-block w-2 h-5 bg-green-400 ml-1"
                   animate={{ opacity: [1, 0] }}
-                  transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                  transition={{ duration: 0.8, repeat: Infinity }}
                 />
               </pre>
+            </motion.div>
+          )}
+
+          {/* ✅ SIMPLIFIED PROGRESS BAR */}
+          <div className="space-y-4">
+            <motion.div 
+              className="text-lg font-medium text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+            >
+              Initializing Portfolio...
+            </motion.div>
+            
+            <div className="w-full max-w-xs mx-auto bg-muted rounded-full h-2 overflow-hidden">
+              <motion.div
+                className="h-full bg-gradient-to-r from-primary to-purple-600 rounded-full"
+                style={{ width: `${progress}%` }}
+                transition={{ ease: "easeOut" }}
+              />
             </div>
+            
+            <motion.div 
+              className="text-sm text-muted-foreground"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+            >
+              {Math.round(progress)}%
+            </motion.div>
           </div>
-        </motion.div>
-
-        {/* Progress bar */}
-        <motion.div
-          className="w-full max-w-md mx-auto"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          <div className="flex justify-between text-sm text-muted-foreground mb-2">
-            <span>Loading portfolio...</span>
-            <span>{Math.round(progress)}%</span>
-          </div>
-          <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-primary to-blue-500 rounded-full"
-              style={{ width: `${progress}%` }}
-              transition={{ duration: 0.1 }}
-            />
-          </div>
-        </motion.div>
-
-        {/* Simple loading dots */}
-        <motion.div
-          className="flex justify-center gap-1 mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-        >
-          {[0, 1, 2].map((index) => (
-            <motion.div
-              key={index}
-              className="w-2 h-2 bg-primary rounded-full"
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.5, 1, 0.5]
-              }}
-              transition={{
-                duration: 1,
-                repeat: Infinity,
-                delay: index * 0.2,
-                ease: "easeInOut"
-              }}
-            />
-          ))}
-        </motion.div>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
-export default LoadingScreen;
+export default LoadingScreenOptimized;
