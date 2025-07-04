@@ -13,28 +13,30 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      position: "System Engineer Intern",
+      position: "System Support Engineer Intern",
       company: "Epic Lanka (Pvt) Ltd",
       location: "Epic Techno Village, Sri Jayawardenepura Kotte, Sri Lanka",
       duration: "Apr 28, 2025 – Present",
       type: "Internship",
       status: "Current",
-      description: "Learning to work in a Linux-based environment and supporting enterprise Java application deployments while gaining hands-on experience in system administration.",
+      description: "Specializing in Linux system administration, DevOps practices, and enterprise application support. Transitioning from software development to focus on infrastructure management and operational excellence.",
       achievements: [
-        "Learning to work in a Linux-based environment using Red Hat Enterprise Linux (RHEL)",
-        "Supporting the deployment and configuration of Java applications on the WildFly application server",
-        "Helping with log monitoring and basic troubleshooting using command-line tools",
-        "Gaining hands-on experience in system administration and working closely with senior engineers"
+        "Mastering Red Hat Enterprise Linux (RHEL) administration and system operations",
+        "Supporting deployment and configuration of Java applications on WildFly application server",
+        "Implementing log monitoring solutions and system troubleshooting methodologies",
+        "Learning DevOps practices including CI/CD pipelines and infrastructure automation",
+        "Collaborating with senior engineers on enterprise system support and maintenance"
       ],
       technologies: [
-        "Red Hat Enterprise Linux", "Java", "WildFly", "Linux System Administration", 
-        "Log Monitoring", "Shell Scripting", "System Troubleshooting"
+        "Red Hat Enterprise Linux", "WildFly", "Java Application Deployment", 
+        "Linux System Administration", "Log Monitoring", "Shell Scripting", 
+        "System Troubleshooting", "DevOps Practices", "CI/CD"
       ],
       highlights: [
         "Linux Administration",
-        "Java Applications",
-        "System Monitoring",
-        "Problem Solving"
+        "DevOps Practices",
+        "System Support",
+        "Infrastructure Management"
       ]
     },
     {
@@ -45,7 +47,7 @@ const Experience = () => {
       duration: "Apr 2024 - Feb 2025",
       type: "Full-time",
       status: "Completed",
-      description: "Leading full-stack development projects and building scalable enterprise solutions using modern technologies.",
+      description: "Full-stack development role that provided foundation for transitioning to DevOps and system engineering. Built scalable enterprise solutions while gaining valuable experience in infrastructure management and deployment practices.",
       achievements: [
         "Directed project planning and execution, ensuring 100% project delivery on time",
         "Designed and integrated RESTful APIs connecting POS systems with Dialog RCS and Telegram Bot APIs",
@@ -139,8 +141,8 @@ const Experience = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Building scalable software solutions and leading development initiatives across 
-            full-stack technologies and cloud infrastructure.
+            Transitioning from software development to system support engineering and DevOps, 
+            focusing on infrastructure management and operational excellence.
           </p>
         </div>
 

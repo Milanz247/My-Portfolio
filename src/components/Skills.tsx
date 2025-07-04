@@ -12,12 +12,31 @@ const Skills = () => {
   // Professional skill categories organized by domain
   const skillCategories = [
     {
-      title: "Frontend & UI",
-      icon: Code2,
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+      title: "System Administration & DevOps",
+      icon: Shield,
+      color: "bg-red-500/10 text-red-600 dark:text-red-400",
       technologies: [
-        "React", "Next.js", "Vue.js", "TypeScript", "JavaScript",
-        "Inertia.js", "Tailwind CSS", "GSAP", "HTML5", "CSS3"
+        "Red Hat Enterprise Linux", "Linux System Administration", "WildFly",
+        "Shell Scripting", "Log Monitoring", "System Troubleshooting",
+        "Java Application Deployment", "CI/CD Pipelines", "Infrastructure Automation"
+      ]
+    },
+    {
+      title: "Cloud & Infrastructure",
+      icon: Cloud,
+      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
+      technologies: [
+        "AWS", "Google Cloud (GCP)", "Docker", "Kubernetes",
+        "Nginx", "Apache", "Reverse Proxy", "Microservices"
+      ]
+    },
+    {
+      title: "DevOps & Automation",
+      icon: Settings,
+      color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+      technologies: [
+        "Jenkins", "CI/CD Pipelines", "Ansible", "Bash Scripting",
+        "GitHub Actions", "Docker Compose", "Terraform", "Infrastructure as Code"
       ]
     },
     {
@@ -39,40 +58,21 @@ const Skills = () => {
       ]
     },
     {
-      title: "Cloud & Infrastructure",
-      icon: Cloud,
-      color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
-      technologies: [
-        "AWS", "Google Cloud (GCP)", "Docker", "Kubernetes",
-        "Nginx", "Apache", "Reverse Proxy", "Microservices"
-      ]
-    },
-    {
-      title: "System Administration",
-      icon: Shield,
-      color: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
-      technologies: [
-        "Red Hat Enterprise Linux", "Linux System Administration", "WildFly",
-        "Shell Scripting", "Log Monitoring", "System Troubleshooting",
-        "Java Application Deployment", "Command Line Tools"
-      ]
-    },
-    {
-      title: "DevOps & Automation",
-      icon: Settings,
-      color: "bg-red-500/10 text-red-600 dark:text-red-400",
-      technologies: [
-        "Jenkins", "CI/CD Pipelines", "Ansible", "Bash Scripting",
-        "GitHub Actions", "Docker Compose", "Terraform"
-      ]
-    },
-    {
       title: "Development Tools",
       icon: GitBranch,
       color: "bg-indigo-500/10 text-indigo-600 dark:text-indigo-400",
       technologies: [
         "Git", "GitHub", "VS Code", "ESLint", "PostCSS",
         "Webpack", "Vite", "Jest", "PHPUnit"
+      ]
+    },
+    {
+      title: "Frontend Development (Background)",
+      icon: Code2,
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+      technologies: [
+        "React", "Next.js", "Vue.js", "TypeScript", "JavaScript",
+        "Inertia.js", "Tailwind CSS", "GSAP", "HTML5", "CSS3"
       ]
     }
   ];
@@ -105,7 +105,7 @@ const Skills = () => {
           <div className="inline-flex items-center gap-2 mb-4">
             <Code2 className="w-6 h-6 text-primary" />
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-              Technical Expertise
+              System Support & DevOps Expertise
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
