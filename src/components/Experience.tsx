@@ -24,7 +24,8 @@ const Experience = () => {
         "Learning Red Hat Enterprise Linux administration in production environment",
         "Supporting Java application deployments on WildFly application server",
         "Assisting with system monitoring and log analysis using command-line tools",
-        "Shadowing senior engineers on infrastructure troubleshooting and maintenance tasks"
+        "Shadowing senior engineers on infrastructure troubleshooting and maintenance tasks",
+        "🔥 War story: Helped debug a critical memory leak in production WildFly server at 2 AM, learned the value of proper logging and monitoring"
       ],
       technologies: [
         "Red Hat Enterprise Linux", "WildFly", "Shell Scripting", 
@@ -51,7 +52,8 @@ const Experience = () => {
         "Built RESTful APIs and database schemas for core business modules",
         "Gained experience with Git workflows, JIRA project management, and Agile development",
         "Mentored junior interns and facilitated team knowledge sharing sessions",
-        "Improved application performance through database query optimization"
+        "Improved application performance through database query optimization",
+        "🔥 Debugging hero moment: Traced mysterious timeout issues to missing database indexes during Black Friday traffic spike, saved the day with emergency optimization"
       ],
       technologies: [
         "Laravel", "React.js", "MySQL", "Git", "RESTful APIs"

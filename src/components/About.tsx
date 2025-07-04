@@ -129,6 +129,12 @@ const About = () => {
                     to bridge the gap between development and operations.
                   </p>
                   <p>
+                    <strong className="text-primary">Real problem-solving experience:</strong> Debugged a critical 
+                    production API that was timing out during peak hours, traced it to unoptimized database queries, 
+                    and reduced response time by 30% through proper indexing and query restructuring. 
+                    Chose pragmatic MySQL optimization over trendy NoSQL migration to minimize business risk.
+                  </p>
+                  <p>
                     Passionate about building <strong className="text-primary">reliable, scalable systems</strong> and 
                     helping teams deliver software efficiently. Combining hands-on development experience with 
                     growing infrastructure knowledge to contribute to modern DevOps and system engineering initiatives.

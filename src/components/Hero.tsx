@@ -41,82 +41,6 @@ const Hero = () => {
       },
     },
   };
-
-  const letterVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.8,
-      rotateX: -90,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotateX: 0,
-    },
-  };
-
-  const wordVariants = {
-    hidden: {
-      opacity: 0,
-      y: 30,
-      scale: 0.9,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-    },
-  };
-
-  // Split text into individual characters with professional animation
-  const splitText = (text: string) => {
-    return text.split("").map((char, index) => (
-      <motion.span
-        key={`${theme}-${index}`}
-        variants={letterVariants}
-        className="inline-block transition-colors duration-200 hover:text-primary"
-        transition={{
-          duration: 0.8,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          delay: index * 0.015,
-        }}
-        whileHover={{
-          scale: 1.1,
-          transition: { duration: 0.2 }
-        }}
-        style={{ 
-          transformOrigin: "50% 50%",
-          transformStyle: "preserve-3d"
-        }}
-      >
-        {char === " " ? "\u00A0" : char}
-      </motion.span>
-    ));
-  };
-
-  // Split text into words with elegant animation
-  const splitWords = (text: string) => {
-    return text.split(" ").map((word, index) => (
-      <motion.span
-        key={`${theme}-word-${index}`}
-        variants={wordVariants}
-        className="inline-block mr-2 transition-colors duration-300 hover:text-foreground"
-        transition={{
-          duration: 0.6,
-          ease: "easeOut",
-          delay: index * 0.08,
-        }}
-        whileHover={{
-          scale: 1.02,
-          transition: { duration: 0.3 }
-        }}
-      >
-        {word}
-      </motion.span>
-    ));
-  };
   
   // Don't render until mounted to prevent hydration issues
   if (!mounted) {
@@ -190,35 +114,44 @@ const Hero = () => {
         {/* Main Heading with Split Text Animation */}
         <div className="space-y-4">
           <motion.h1 
-            key={`heading-${theme}`}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight relative brand-gradient"
-            variants={containerVariants}
-            initial="hidden"
-            animate={shouldAnimate ? "visible" : "hidden"}
-            style={{ perspective: "1000px" }}
+            className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight relative"
+            initial={{ opacity: 0, y: 30 }}
+            animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
           >
-            {splitText("Milan Madusanka")}
+            <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
+              Milan Madusanka
+            </span>
             {/* Enhanced gradient underline */}
             <motion.div
               className="absolute -bottom-2 left-1/2 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-full"
               initial={{ width: 0, x: "-50%" }}
               animate={shouldAnimate ? { width: "80%", x: "-50%" } : { width: 0, x: "-50%" }}
-              transition={{ duration: 1.2, delay: 2, ease: "easeInOut" }}
+              transition={{ duration: 1.2, delay: 1.5, ease: "easeInOut" }}
             />
           </motion.h1>
           
           {/* Description with Word Animation */}
           <div className="relative">
             <motion.p 
-              key={`description-${theme}`}
               className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto"
-              variants={containerVariants}
-              initial="hidden"
-              animate={shouldAnimate ? "visible" : "hidden"}
-              transition={{ delay: 1.5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
             >
-              {splitWords("Junior Developer transitioning to DevOps with hands-on Linux and automation experience.")}
+              Full-Stack Developer with Linux expertise building reliable systems that scale.
             </motion.p>
+            
+            {/* Personal Brand Tagline */}
+            <motion.p 
+              className="text-sm sm:text-base text-primary/80 font-medium mt-3 tracking-wide"
+              initial={{ opacity: 0, y: 10 }}
+              animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+            >
+              "Code. Deploy. Scale. Repeat." 🔄
+            </motion.p>
+            
             {/* Subtle shine effect */}
             <motion.div
               className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"
@@ -239,7 +172,7 @@ const Hero = () => {
             y: shouldAnimate ? 0 : 30 
           }}
           transition={{ 
-            delay: 2.5,
+            delay: 1.6,
             duration: 0.8,
             ease: [0.25, 0.46, 0.45, 0.94]
           }}

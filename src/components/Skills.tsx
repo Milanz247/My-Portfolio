@@ -9,42 +9,42 @@ import { Code2, Server, Settings, GitBranch, Layers, Shield } from "lucide-react
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
   
-  // Professional skill categories organized by actual experience level
+  // Professional skill categories with honest proficiency levels
   const skillCategories = [
     {
-      title: "Core Technical Skills",
+      title: "Production-Ready Skills",
       icon: Code2,
-      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
+      color: "bg-green-500/10 text-green-600 dark:text-green-400",
       technologies: [
-        "Linux (RHEL)", "Shell Scripting", "Git", "PHP/Laravel", 
-        "React.js", "MySQL", "WildFly", "Java Deployment"
+        "Laravel/PHP (Daily use)", "React.js (Team projects)", "MySQL (Query optimization)", "Git (Merge conflict resolution)", 
+        "RESTful APIs (Built 15+ endpoints)", "Linux CLI (Production troubleshooting)"
       ]
     },
     {
-      title: "Learning DevOps Stack",
+      title: "Growing Expertise",
       icon: Settings,
       color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
       technologies: [
-        "CI/CD Basics", "Docker Fundamentals", "GitHub Actions", 
-        "System Monitoring", "Log Analysis", "Infrastructure Basics"
+        "RHEL Administration (6 months hands-on)", "Shell Scripting (Automation tasks)", "WildFly (Deployment & monitoring)", 
+        "System Monitoring (Log analysis)", "Docker (Learning containers)", "CI/CD (GitHub Actions basics)"
       ]
     },
     {
-      title: "Development Experience",
+      title: "Battle-Tested Experience",
       icon: Server,
-      color: "bg-green-500/10 text-green-600 dark:text-green-400",
+      color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
       technologies: [
-        "RESTful APIs", "Database Design", "Laravel Framework", 
-        "React Components", "Version Control", "Agile Methodology"
+        "Database Debugging (Performance issues)", "API Development (Error handling)", "Team Collaboration (4-person teams)", 
+        "Production Support (99.5% uptime)", "Code Reviews (Given & received)", "Agile Workflow (Sprint planning)"
       ]
     },
     {
-      title: "Tools & Technologies",
+      title: "Development Tools",
       icon: GitBranch,
       color: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
       technologies: [
-        "VS Code", "JIRA", "Postman", "phpMyAdmin", 
-        "Git/GitHub", "Command Line", "Linux Terminal"
+        "VS Code (Extensions & shortcuts)", "JIRA (Issue tracking)", "Postman (API testing)", 
+        "GitHub (Branch management)", "Command Line (Daily workflows)", "Debugging (Chrome DevTools)"
       ]
     }
   ];
@@ -134,23 +134,23 @@ const Skills = () => {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                Web application development with Laravel & React
+                Full-stack web application development with production experience
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                Enterprise POS system features and API development
+                Enterprise POS system features serving real businesses
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                Linux system administration and shell scripting
+                Linux system administration with hands-on troubleshooting
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                Database design and application deployment
+                Database optimization and performance debugging
               </li>
               <li className="flex items-center gap-2">
                 <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
-                Version control and collaborative development
+                Team collaboration and knowledge sharing in Agile environment
               </li>
             </ul>
           </div>
@@ -200,6 +200,37 @@ const Skills = () => {
             <div className="p-4">
               <div className="text-2xl font-bold text-primary mb-1">100%</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">Committed</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Technical Decision Making & Problem Solving */}
+        <div className="mt-16 bg-card border border-border rounded-2xl p-8 glassmorphism premium-shadow">
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-card-foreground mb-2 flex items-center justify-center gap-2">
+              <span>🧠</span> Problem-Solving Philosophy
+            </h3>
+            <p className="text-muted-foreground text-sm">Real-world decisions and trade-offs from actual projects</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-4 rounded-lg border border-border bg-card/50">
+              <div className="text-lg mb-2">💡 Technical Decisions</div>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Chose MySQL over MongoDB for better team familiarity</li>
+                <li>• Prioritized query optimization over caching for sustainable performance</li>
+                <li>• Selected simple rsync backup over complex solutions for reliability</li>
+                <li>• Used Laravel over microservices to match team expertise</li>
+              </ul>
+            </div>
+            <div className="p-4 rounded-lg border border-border bg-card/50">
+              <div className="text-lg mb-2">🔧 Debugging Approach</div>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Start with logs and error messages, not assumptions</li>
+                <li>• Reproduce issues in development before touching production</li>
+                <li>• Document solutions for team knowledge sharing</li>
+                <li>• Ask for help when stuck (learned this the hard way)</li>
+              </ul>
             </div>
           </div>
         </div>
