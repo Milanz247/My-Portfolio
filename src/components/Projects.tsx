@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Code2, Folder, Star, GitBranch, Database, Zap, Layers, Terminal } from "lucide-react";
 import Link from "next/link";
+import { MagneticElement } from "./MagneticElement";
 
 // Types for project data
 interface Project {
@@ -253,29 +254,44 @@ const Projects = () => {
             <motion.div
               key={`featured-${index}`}
               variants={featuredCardVariants}
-              whileHover={{ 
-                scale: 1.02, 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              whileTap={{ scale: 0.98 }}
               className="group"
             >
-              <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 bg-gradient-to-br from-card via-card to-muted/20 card-hover-effect premium-shadow glassmorphism relative overflow-hidden">
-                {/* Enhanced animated background effect */}
-                <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  animate={{
-                    background: [
-                      "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
-                      "linear-gradient(225deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
-                      "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))"
-                    ]
-                  }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                />
-                
-                <CardHeader className="relative z-10">
+              <MagneticElement intensity={0.2} className="h-full">
+                <Card className="h-full border-2 hover:border-primary/50 transition-all duration-600 bg-gradient-to-br from-card via-card to-muted/20 card-hover-effect premium-shadow glassmorphism relative overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/20">
+                  {/* Premium animated background effect */}
+                  <motion.div 
+                    className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                    animate={{
+                      background: [
+                        "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
+                        "linear-gradient(225deg, rgba(99, 102, 241, 0.08), transparent, rgba(34, 197, 94, 0.08))",
+                        "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))"
+                      ]
+                    }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  
+                  {/* Subtle scan line effect */}
+                  <motion.div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-30"
+                    style={{
+                      background: "linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.1) 50%, transparent 100%)",
+                      width: "200%",
+                      height: "2px",
+                      top: "50%"
+                    }}
+                    animate={{
+                      x: ["-100%", "100%"]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: index * 0.2
+                    }}
+                  />
+                  
+                  <CardHeader className="relative z-10">
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-2">
                       {getCategoryIcon(project.category)}
@@ -342,6 +358,7 @@ const Projects = () => {
                   </div>
                 </CardFooter>
               </Card>
+              </MagneticElement>
             </motion.div>
           ))}
         </motion.div>

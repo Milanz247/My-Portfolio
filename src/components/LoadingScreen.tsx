@@ -25,12 +25,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
 
     // Typing effect for code
     let currentText = "";
-    const codeLines = [
-      "const developer = new Developer();",
-      "developer.name = 'Milan Madusanka';",
-      "developer.skills = ['React', 'Next.js', 'TypeScript'];",
-      "developer.initialize();"
-    ];
+  const codeLines = [
+    "const milan = new SystemEngineer();",
+    "milan.skills = ['React', 'Linux', 'DevOps'];",
+    "milan.philosophy = 'Code. Deploy. Scale. Repeat.';",
+    "milan.initialize().then(() => console.log('Ready!'));"
+  ];
     
     let lineIndex = 0;
     let charIndex = 0;

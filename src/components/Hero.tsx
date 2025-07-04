@@ -6,11 +6,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLoading } from "@/contexts/LoadingContext";
-import { useTheme } from "next-themes";
+import { Enhanced3DBackground } from "./Enhanced3DBackgroundFixed";
+import { MagneticElement } from "./MagneticElement";
 
 const Hero = () => {
   const { isLoading } = useLoading();
-  const { theme } = useTheme();
   const [shouldAnimate, setShouldAnimate] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -30,33 +30,18 @@ const Hero = () => {
     }
   }, [isLoading]);
 
-  // Split text animation variants - Professional Slide & Fade Effect
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.04,
-        delayChildren: 0.3,
-      },
-    },
-  };
-  
   // Don't render until mounted to prevent hydration issues
   if (!mounted) {
     return null;
   }
   
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 hero-gradient relative">
-      {/* Enhanced background pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-green-50 dark:from-indigo-950/20 dark:via-gray-900 dark:to-green-950/20"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Ccircle cx='5' cy='5' r='1'/%3E%3Ccircle cx='15' cy='15' r='1'/%3E%3Ccircle cx='25' cy='25' r='1'/%3E%3Ccircle cx='35' cy='35' r='1'/%3E%3Ccircle cx='45' cy='45' r='1'/%3E%3Ccircle cx='55' cy='55' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          opacity: 0.3
-        }}></div>
-      </div>
+    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 relative">
+      {/* Premium 3D Background */}
+      <Enhanced3DBackground />
+      
+      {/* Simplified overlay for better contrast */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80 dark:from-background/60 dark:via-background/40 dark:to-background/60"></div>
       
       <div className="text-center space-y-8 max-w-4xl mx-auto w-full relative z-10">
         {/* Enhanced Profile Avatar */}
@@ -111,23 +96,32 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Main Heading with Split Text Animation */}
-        <div className="space-y-4">
+        {/* Main Heading with Simplified, Premium Animation */}
+        <div className="space-y-6">
           <motion.h1 
             className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight relative"
             initial={{ opacity: 0, y: 30 }}
             animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ 
+              duration: 0.8, 
+              delay: 0.5,
+              ease: [0.23, 1, 0.32, 1]
+            }}
           >
             <span className="bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Milan Madusanka
             </span>
-            {/* Enhanced gradient underline */}
+            
+            {/* Single, Focused Underline Animation */}
             <motion.div
-              className="absolute -bottom-2 left-1/2 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-full"
-              initial={{ width: 0, x: "-50%" }}
-              animate={shouldAnimate ? { width: "80%", x: "-50%" } : { width: 0, x: "-50%" }}
-              transition={{ duration: 1.2, delay: 1.5, ease: "easeInOut" }}
+              className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-green-500 rounded-full"
+              initial={{ width: 0 }}
+              animate={shouldAnimate ? { width: "100%" } : { width: 0 }}
+              transition={{ 
+                duration: 1.2, 
+                delay: 1.3, 
+                ease: [0.23, 1, 0.32, 1]
+              }}
             />
           </motion.h1>
           
@@ -149,7 +143,7 @@ const Hero = () => {
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
               transition={{ delay: 1.2, duration: 0.6 }}
             >
-              "Code. Deploy. Scale. Repeat." 🔄
+              &ldquo;Code. Deploy. Scale. Repeat.&rdquo; 🔄
             </motion.p>
             
             {/* Subtle shine effect */}
@@ -163,9 +157,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Action Buttons with Professional Animation */}
+        {/* Premium Action Buttons */}
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
           animate={{ 
             opacity: shouldAnimate ? 1 : 0, 
@@ -177,53 +171,49 @@ const Hero = () => {
             ease: [0.25, 0.46, 0.45, 0.94]
           }}
         >
-          <motion.div
-            className="relative overflow-hidden rounded-lg"
-            whileHover={{ 
-              scale: 1.02,
-              y: -2,
-            }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          >
-            <Button asChild size="lg" className="w-full sm:w-auto relative z-10 cta-gradient text-white border-0">
+          <MagneticElement intensity={0.3}>
+            <Button asChild size="lg" className="w-full sm:w-auto relative z-10 cta-gradient text-white border-0 overflow-hidden group/btn">
               <Link href="#projects">
-                <span className="mr-2">🚀</span>
+                <motion.span 
+                  className="mr-2"
+                  animate={{ rotate: [0, 15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  🚀
+                </motion.span>
                 View My Projects
+                {/* Premium button shine effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "200%" }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                />
               </Link>
             </Button>
-            {/* Enhanced hover shine effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
+          </MagneticElement>
           
-          <motion.div
-            className="relative overflow-hidden rounded-lg"
-            whileHover={{ 
-              scale: 1.02,
-              y: -2,
-            }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25 }}
-          >
-            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto relative z-10 glassmorphism hover:bg-white/20 border-primary/30">
+          <MagneticElement intensity={0.3}>
+            <Button asChild variant="outline" size="lg" className="w-full sm:w-auto relative z-10 glassmorphism hover:bg-white/20 border-primary/30 group/btn overflow-hidden">
               <a href="/cv.html" target="_blank" rel="noopener noreferrer">
-                <span className="mr-2">📄</span>
+                <motion.span 
+                  className="mr-2"
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 400 }}
+                >
+                  📄
+                </motion.span>
                 Download CV
+                {/* Subtle hover effect */}
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent -skew-x-12"
+                  initial={{ x: "-100%" }}
+                  whileHover={{ x: "200%" }}
+                  transition={{ duration: 1, ease: "easeInOut" }}
+                />
               </a>
             </Button>
-            {/* Enhanced hover shine effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent"
-              initial={{ x: "-100%" }}
-              whileHover={{ x: "100%" }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-            />
-          </motion.div>
+          </MagneticElement>
         </motion.div>
       </div>
     </section>
