@@ -49,102 +49,54 @@ const Projects = () => {
     });
   }, []);
 
-  // Enhanced project data with more professional details
+  // Realistic project data matching actual experience level
   const projects: Project[] = [
     {
-      title: "Enterprise E-Commerce Platform",
-      description: "Scalable microservices-based e-commerce solution with advanced analytics and real-time inventory management.",
-      longDescription: "Full-stack enterprise e-commerce platform built with modern microservices architecture. Features include advanced user authentication, real-time inventory management, payment gateway integration, analytics dashboard, and automated deployment pipeline.",
-      technologies: ["Next.js", "TypeScript", "Node.js", "PostgreSQL", "Redis", "Docker", "AWS"],
-      githubLink: "https://github.com/Milanz247/enterprise-ecommerce",
-      liveLink: "https://enterprise-ecommerce-demo.vercel.app",
+      title: "Personal Portfolio Website",
+      description: "Modern, responsive portfolio built with Next.js, TypeScript, and Tailwind CSS featuring smooth animations and dark mode.",
+      longDescription: "This portfolio website showcases my skills and learning journey. Built with Next.js for performance, TypeScript for type safety, and includes features like smooth scrolling, theme switching, and responsive design.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
+      githubLink: "https://github.com/Milanz247/My-Portfolio",
+      liveLink: "https://milan-portfolio.vercel.app",
+      category: "Frontend",
+      year: "2025",
+      status: "completed",
+      featured: true,
+    },
+    {
+      title: "POS System Features (Internship)",
+      description: "Contributed to Laravel-based POS system features including inventory management and reporting modules during internship.",
+      longDescription: "Worked as part of a development team on a Laravel-based Point of Sale system. Contributed to features like inventory tracking, basic reporting, and API endpoints for business operations.",
+      technologies: ["Laravel", "PHP", "MySQL", "React.js", "Git"],
+      githubLink: "https://github.com/Milanz247/pos-contributions",
+      liveLink: "",
       category: "Full-Stack",
       year: "2024",
       status: "completed",
       featured: true,
     },
     {
-      title: "DevOps Monitoring Dashboard",
-      description: "Real-time system monitoring and alerting platform with custom metrics visualization and automated incident response.",
-      longDescription: "Comprehensive DevOps monitoring solution with real-time metrics collection, custom alerting rules, automated incident response, and detailed performance analytics for microservices infrastructure.",
-      technologies: ["React", "Go", "Prometheus", "Grafana", "Kubernetes", "MongoDB", "WebSocket"],
-      githubLink: "https://github.com/Milanz247/devops-monitor",
-      liveLink: "https://devops-monitor-demo.netlify.app",
-      category: "DevOps",
-      year: "2024",
+      title: "Learning Linux Lab",
+      description: "Personal lab environment for learning Red Hat Enterprise Linux administration and system operations.",
+      longDescription: "Set up a virtual lab environment to practice Linux system administration, shell scripting, and basic DevOps concepts. Currently learning RHEL administration, WildFly deployment, and monitoring tools.",
+      technologies: ["Red Hat Enterprise Linux", "Shell Scripting", "WildFly", "Virtual Machines"],
+      githubLink: "https://github.com/Milanz247/linux-lab",
+      liveLink: "",
+      category: "System Administration",
+      year: "2025",
       status: "in-progress",
       featured: true,
     },
     {
-      title: "Real-time Analytics Engine",
-      description: "Stream processing platform for real-time data analytics with interactive dashboards and automated insights.",
-      longDescription: "High-performance stream processing engine for real-time analytics with support for complex event processing, interactive data visualization, automated anomaly detection, and scalable data ingestion.",
-      technologies: ["Apache Kafka", "Spark", "Cassandra", "React", "D3.js", "Scala", "Elasticsearch"],
-      githubLink: "https://github.com/Milanz247/analytics-engine",
-      liveLink: "https://analytics-demo.example.com",
-      category: "Data Engineering",
-      year: "2023",
-      status: "completed",
-      featured: true,
-    },
-    {
-      title: "AI-Powered Code Assistant",
-      description: "Intelligent code completion and review assistant using machine learning for enhanced developer productivity.",
-      longDescription: "Advanced AI-powered development tool that provides intelligent code suggestions, automated code reviews, bug detection, and performance optimization recommendations using machine learning algorithms.",
-      technologies: ["Python", "TensorFlow", "FastAPI", "Vue.js", "OpenAI API", "Docker", "GCP"],
-      githubLink: "https://github.com/Milanz247/ai-code-assistant",
-      liveLink: "https://ai-code-assistant-demo.surge.sh",
-      category: "AI/ML",
+      title: "Simple REST API",
+      description: "Basic RESTful API built with Laravel for learning backend development and database operations.",
+      longDescription: "Educational project to understand API development, database relationships, and authentication. Includes CRUD operations, basic validation, and API documentation.",
+      technologies: ["Laravel", "PHP", "MySQL", "Postman"],
+      githubLink: "https://github.com/Milanz247/simple-api",
+      liveLink: "",
+      category: "Backend",
       year: "2024",
       status: "completed",
-      featured: false,
-    },
-    {
-      title: "Distributed Task Scheduler",
-      description: "High-performance distributed task scheduling system with fault tolerance and horizontal scaling capabilities.",
-      longDescription: "Enterprise-grade distributed task scheduler designed for high-throughput workloads with automatic failover, horizontal scaling, priority queuing, and comprehensive monitoring and logging.",
-      technologies: ["Go", "etcd", "gRPC", "PostgreSQL", "RabbitMQ", "Helm", "Prometheus"],
-      githubLink: "https://github.com/Milanz247/distributed-scheduler",
-      liveLink: "https://scheduler-demo.example.com",
-      category: "Backend",
-      year: "2023",
-      status: "maintenance",
-      featured: false,
-    },
-    {
-      title: "Cloud Infrastructure Automation",
-      description: "Infrastructure as Code solution with automated provisioning, scaling, and cost optimization for cloud resources.",
-      longDescription: "Comprehensive cloud infrastructure automation platform with Infrastructure as Code, automated resource provisioning, intelligent cost optimization, security compliance monitoring, and multi-cloud support.",
-      technologies: ["Terraform", "Ansible", "AWS CDK", "Python", "Jenkins", "Vault", "Datadog"],
-      githubLink: "https://github.com/Milanz247/cloud-automation",
-      liveLink: "https://cloud-automation-demo.com",
-      category: "Cloud",
-      year: "2023",
-      status: "maintenance",
-      featured: false,
-    },
-    {
-      title: "Blockchain Smart Contract Platform",
-      description: "Decentralized application platform with smart contract deployment and DeFi protocols.",
-      longDescription: "Modern blockchain platform for smart contract development with integrated DeFi protocols, NFT marketplace, and cross-chain compatibility.",
-      technologies: ["Solidity", "Web3.js", "React", "Node.js", "IPFS", "Hardhat", "Ethereum"],
-      githubLink: "https://github.com/Milanz247/blockchain-platform",
-      liveLink: "https://blockchain-demo.example.com",
-      category: "Blockchain",
-      year: "2023",
-      status: "completed",
-      featured: false,
-    },
-    {
-      title: "Mobile App Development Framework",
-      description: "Cross-platform mobile development framework with native performance and modern UI components.",
-      longDescription: "Comprehensive mobile development framework for cross-platform applications with native performance optimization and extensive UI component library.",
-      technologies: ["React Native", "TypeScript", "Expo", "Redux", "Firebase", "iOS", "Android"],
-      githubLink: "https://github.com/Milanz247/mobile-framework",
-      liveLink: "https://mobile-framework-demo.com",
-      category: "Mobile",
-      year: "2022",
-      status: "maintenance",
       featured: false,
     },
   ];
@@ -244,7 +196,7 @@ const Projects = () => {
               />
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Featured Projects
+              Projects & Learning
             </h2>
             <div className="relative">
               <Zap className="w-8 h-8 text-primary animate-pulse" />
@@ -261,8 +213,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Explore my most impactful projects that showcase cutting-edge technology,
-            innovative solutions, and professional software engineering practices.
+            Real projects I've built and contributed to during my development and learning journey.
           </motion.p>
         </motion.div>
 
@@ -474,6 +425,32 @@ const Projects = () => {
             </motion.div>
           </div>
         </motion.div>
+
+        {/* Learning Journey Section */}
+        <div className="mt-16 bg-card border border-border rounded-2xl p-8">
+          <div className="text-center mb-8">
+            <h3 className="text-xl font-bold text-card-foreground mb-2">Currently Learning</h3>
+            <p className="text-muted-foreground text-sm">Building expertise through hands-on practice and real-world experience</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
+              <div className="text-2xl mb-2">🐧</div>
+              <h4 className="font-semibold mb-2">Linux Administration</h4>
+              <p className="text-sm text-muted-foreground">Red Hat Enterprise Linux, shell scripting, system monitoring</p>
+            </div>
+            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
+              <div className="text-2xl mb-2">⚙️</div>
+              <h4 className="font-semibold mb-2">DevOps Fundamentals</h4>
+              <p className="text-sm text-muted-foreground">CI/CD basics, Docker containers, infrastructure automation</p>
+            </div>
+            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
+              <div className="text-2xl mb-2">☕</div>
+              <h4 className="font-semibold mb-2">Java Applications</h4>
+              <p className="text-sm text-muted-foreground">WildFly deployment, application server management</p>
+            </div>
+          </div>
+        </div>
 
         {/* Call to Action */}
         <motion.div 
