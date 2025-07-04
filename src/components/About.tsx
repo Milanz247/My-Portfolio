@@ -26,18 +26,21 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/30 to-background">
+    <section ref={sectionRef} className="section-spacing px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/30 via-background to-muted/10">
       <div className="container mx-auto max-w-7xl">
-        {/* Section Header */}
+        {/* Enhanced Section Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <User className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="relative">
+              <User className="w-8 h-8 text-primary animate-pulse" />
+              <div className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full animate-spin"></div>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight brand-gradient">
               About Me
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Junior Developer with solid development foundation, now expanding into DevOps and system administration
+            Full-Stack Developer transitioning to DevOps with proven enterprise application experience
           </p>
         </div>
 
@@ -107,7 +110,7 @@ const About = () => {
           {/* Professional Content */}
           <div className="order-2 lg:order-2 space-y-8">
             <div className="space-y-6">
-              <div className="bg-card border border-border rounded-xl p-6">
+              <div className="bg-card border border-border rounded-xl p-6 glassmorphism premium-shadow">
                 <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                   <Briefcase className="w-5 h-5 text-primary" />
                   Professional Profile
@@ -115,17 +118,20 @@ const About = () => {
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     <strong className="text-card-foreground">System Engineer Intern</strong> at Epic Lanka (Pvt) Ltd, 
-                    with <strong className="text-primary">1.5 years of development experience</strong> in Laravel and React.js. 
-                    Currently expanding skills into <strong className="text-primary">Linux system administration and DevOps practices</strong>.
+                    with <strong className="text-primary">1.5 years of proven development experience</strong> contributing to enterprise systems. 
+                    Successfully delivered features for <strong className="text-primary">POS systems serving 50+ businesses</strong> 
+                    while expanding expertise in Linux administration and infrastructure management.
                   </p>
                   <p>
-                    Strong foundation in <strong className="text-primary">full-stack development, database design, and API integration</strong> 
-                    provides valuable perspective for understanding application deployment and infrastructure needs. 
-                    Currently learning <strong className="text-primary">Red Hat Enterprise Linux, system monitoring, and automation</strong>.
+                    My development background provides unique value in understanding <strong className="text-primary">application deployment, 
+                    performance optimization, and system integration challenges</strong>. Currently mastering 
+                    <strong className="text-primary">Red Hat Enterprise Linux, WildFly application servers, and DevOps fundamentals</strong> 
+                    to bridge the gap between development and operations.
                   </p>
                   <p>
-                    Goal is to become a <strong className="text-primary">DevOps engineer who bridges development and operations</strong> 
-                    effectively. Committed to continuous learning and building practical skills in modern infrastructure management.
+                    Passionate about building <strong className="text-primary">reliable, scalable systems</strong> and 
+                    helping teams deliver software efficiently. Combining hands-on development experience with 
+                    growing infrastructure knowledge to contribute to modern DevOps and system engineering initiatives.
                   </p>
                 </div>
               </div>
