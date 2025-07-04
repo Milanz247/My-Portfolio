@@ -205,7 +205,7 @@ const Hero = () => {
               animate={shouldAnimate ? "visible" : "hidden"}
               transition={{ delay: 1.5 }}
             >
-              {splitWords("System Support Engineer Intern from Sri Lanka learning DevOps and infrastructure management.")}
+              {splitWords("Junior Developer transitioning to DevOps with hands-on Linux and automation experience.")}
             </motion.p>
             {/* Subtle shine effect */}
             <motion.div

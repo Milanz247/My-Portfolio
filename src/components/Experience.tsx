@@ -13,30 +13,28 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      position: "System Support Engineer Intern",
+      position: "System Engineer Intern",
       company: "Epic Lanka (Pvt) Ltd",
       location: "Epic Techno Village, Sri Jayawardenepura Kotte, Sri Lanka",
       duration: "Apr 28, 2025 – Present",
       type: "Internship",
       status: "Current",
-      description: "Specializing in Linux system administration, DevOps practices, and enterprise application support. Transitioning from software development to focus on infrastructure management and operational excellence.",
+      description: "Learning Linux system administration and enterprise application support. Gaining practical experience in DevOps fundamentals and infrastructure management.",
       achievements: [
-        "Mastering Red Hat Enterprise Linux (RHEL) administration and system operations",
-        "Supporting deployment and configuration of Java applications on WildFly application server",
-        "Implementing log monitoring solutions and system troubleshooting methodologies",
-        "Learning DevOps practices including CI/CD pipelines and infrastructure automation",
-        "Collaborating with senior engineers on enterprise system support and maintenance"
+        "Learning Red Hat Enterprise Linux administration in production environment",
+        "Supporting Java application deployments on WildFly application server",
+        "Assisting with system monitoring and log analysis using command-line tools",
+        "Shadowing senior engineers on infrastructure troubleshooting and maintenance tasks"
       ],
       technologies: [
-        "Red Hat Enterprise Linux", "WildFly", "Java Application Deployment", 
-        "Linux System Administration", "Log Monitoring", "Shell Scripting", 
-        "System Troubleshooting", "DevOps Practices", "CI/CD"
+        "Red Hat Enterprise Linux", "WildFly", "Shell Scripting", 
+        "System Monitoring", "Java Application Support", "Linux Commands"
       ],
       highlights: [
-        "Linux Administration",
-        "DevOps Practices",
+        "Linux Learning",
         "System Support",
-        "Infrastructure Management"
+        "DevOps Foundation",
+        "Team Collaboration"
       ]
     },
     {
@@ -47,24 +45,22 @@ const Experience = () => {
       duration: "Apr 2024 - Feb 2025",
       type: "Full-time",
       status: "Completed",
-      description: "Full-stack development role that provided foundation for transitioning to DevOps and system engineering. Built scalable enterprise solutions while gaining valuable experience in infrastructure management and deployment practices.",
+      description: "Solid foundation in full-stack development that provides valuable context for understanding application deployment and infrastructure needs. Experience with development workflows that translate well to DevOps practices.",
       achievements: [
-        "Directed project planning and execution, ensuring 100% project delivery on time",
-        "Designed and integrated RESTful APIs connecting POS systems with Dialog RCS and Telegram Bot APIs",
-        "Built enterprise intranet application using Laravel + React.js, improving workflow efficiency by 40%",
-        "Implemented CI/CD pipelines reducing deployment time from hours to minutes",
-        "Developed GoLang microservices handling 10k+ concurrent requests",
-        "Managed Linux server infrastructure with 99.9% uptime"
+        "Delivered features for POS and ERP solutions used by 50+ businesses",
+        "Built RESTful APIs and database schemas for core business modules",
+        "Gained experience with Git workflows, JIRA project management, and Agile development",
+        "Mentored junior interns and facilitated team knowledge sharing sessions",
+        "Improved application performance through database query optimization"
       ],
       technologies: [
-        "Laravel", "React.js", "GoLang", "MySQL", "PostgreSQL", "Docker", 
-        "Linux", "CI/CD", "RESTful APIs", "Microservices"
+        "Laravel", "React.js", "MySQL", "Git", "RESTful APIs"
       ],
       highlights: [
-        "Team Leadership",
+        "Full-Stack Development",
         "API Integration",
-        "System Architecture",
-        "DevOps"
+        "Team Collaboration",
+        "Problem Solving"
       ]
     },
     {
@@ -141,8 +137,8 @@ const Experience = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Transitioning from software development to system support engineering and DevOps, 
-            focusing on infrastructure management and operational excellence.
+            From software development to system operations - building a strong foundation 
+            in both development and infrastructure management.
           </p>
         </div>
 
@@ -273,26 +269,26 @@ const Experience = () => {
         {/* Career Stats */}
         <div className="mt-16 bg-card border border-border rounded-2xl p-8">
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-card-foreground mb-2">Career Highlights</h3>
-            <p className="text-muted-foreground text-sm">Professional growth and achievements overview</p>
+            <h3 className="text-xl font-bold text-card-foreground mb-2">Current Learning Focus</h3>
+            <p className="text-muted-foreground text-sm">Building expertise in modern DevOps and system administration</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">2+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Years Experience</div>
+              <div className="text-2xl font-bold text-primary mb-1">1.5+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">Years Development</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">50+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects Delivered</div>
+              <div className="text-2xl font-bold text-primary mb-1">20+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects Contributed</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">10+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Technologies</div>
+              <div className="text-2xl font-bold text-primary mb-1">Linux</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">Current Focus</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">3</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Team Members Led</div>
+              <div className="text-2xl font-bold text-primary mb-1">DevOps</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">Career Goal</div>
             </div>
           </div>
         </div>

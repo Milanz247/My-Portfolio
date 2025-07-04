@@ -37,7 +37,7 @@ const About = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            System Support Engineer focused on DevOps, infrastructure management, and enterprise solutions
+            Junior Developer with solid development foundation, now expanding into DevOps and system administration
           </p>
         </div>
 
@@ -75,7 +75,7 @@ const About = () => {
                         ⚡
                       </motion.div>
                       <p className="text-lg font-semibold mb-2">Milan Madusanka</p>
-                      <p className="text-sm text-muted-foreground">System Engineer Intern & Aspiring DevOps Professional</p>
+                      <p className="text-sm text-muted-foreground">Junior Developer → DevOps Learner</p>
                       <div className="mt-4 flex justify-center gap-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                         <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
@@ -115,21 +115,17 @@ const About = () => {
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
                     <strong className="text-card-foreground">System Engineer Intern</strong> at Epic Lanka (Pvt) Ltd, 
-                    learning <strong className="text-primary">DevOps practices, infrastructure management, and enterprise system support</strong>. 
-                    Transitioning from software development background to gain expertise in <strong className="text-primary">Linux system administration, 
-                    application deployment, and operational excellence</strong>.
+                    with <strong className="text-primary">1.5 years of development experience</strong> in Laravel and React.js. 
+                    Currently expanding skills into <strong className="text-primary">Linux system administration and DevOps practices</strong>.
                   </p>
                   <p>
-                    Currently learning <strong className="text-primary">Red Hat Enterprise Linux (RHEL)</strong>, 
-                    <strong className="text-primary">Java application deployment on WildFly</strong>, and DevOps fundamentals. 
-                    Building on previous experience with <strong className="text-primary">CI/CD pipelines, containerization, and development workflows</strong> 
-                    to understand system operations and infrastructure support.
+                    Strong foundation in <strong className="text-primary">full-stack development, database design, and API integration</strong> 
+                    provides valuable perspective for understanding application deployment and infrastructure needs. 
+                    Currently learning <strong className="text-primary">Red Hat Enterprise Linux, system monitoring, and automation</strong>.
                   </p>
                   <p>
-                    Passionate about growing skills in <strong className="text-primary">system reliability, monitoring, troubleshooting, and operational best practices</strong>. 
-                    Eager to learn from experienced engineers and develop comprehensive DevOps and system administration expertise. 
-                    Committed to building robust infrastructure solutions and ensuring optimal system performance 
-                    in enterprise environments.
+                    Goal is to become a <strong className="text-primary">DevOps engineer who bridges development and operations</strong> 
+                    effectively. Committed to continuous learning and building practical skills in modern infrastructure management.
                   </p>
                 </div>
               </div>
