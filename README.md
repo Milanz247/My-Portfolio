@@ -1,6 +1,6 @@
 # 🚀 Milan Madusanka - Portfolio Website
 
-A modern, responsive portfolio website built with Next.js 15, showcasing software engineering expertise with stunning animations and professional design.
+A modern, responsive portfolio website built with Next.js 15, showcasing my learning journey as a junior developer transitioning to DevOps, with realistic project examples and honest skill representation.
 
 ![Portfolio Preview](https://img.shields.io/badge/Status-Live-brightgreen)
 ![Next.js](https://img.shields.io/badge/Next.js-15.3.4-black)
@@ -9,15 +9,23 @@ A modern, responsive portfolio website built with Next.js 15, showcasing softwar
 
 ## 🌟 Features
 
-- **🎨 Modern Design**: Ultra-professional UI with glassmorphic elements and gradient effects
-- **🚀 Performance Optimized**: Built with Next.js 15 and Turbopack for lightning-fast performance
-- **📱 Fully Responsive**: Seamless experience across all devices and screen sizes
-- **🎭 Advanced Animations**: Smooth GSAP and Framer Motion animations
-- **🌓 Dark/Light Mode**: Dynamic theme switching with smooth transitions
-- **📧 Contact Form**: Interactive contact section with form validation
-- **⚡ Interactive Elements**: 3D backgrounds, hover effects, and micro-interactions
-- **🎯 SEO Optimized**: Meta tags, structured data, and performance optimizations
-- **♿ Accessible**: WCAG compliant with keyboard navigation support
+- **🎨 Clean Design**: Professional UI optimized for readability and ATS screening
+- **🚀 Performance Optimized**: Built with Next.js 15 for fast loading and modern development
+- **📱 Fully Responsive**: Works seamlessly across all devices
+- **🎭 Smooth Animations**: Tasteful GSAP and Framer Motion animations
+- **🌓 Dark/Light Mode**: Theme switching with accessibility in mind
+- **📧 Contact Integration**: Direct links to email, LinkedIn, and GitHub
+- **⚡ Real Projects**: Honest showcase of actual work and learning projects
+- **🎯 ATS Optimized**: Keywords and structure optimized for applicant tracking systems
+- **♿ Accessible**: WCAG compliant with proper semantic markup
+
+## 🎯 Portfolio Philosophy
+
+This portfolio is built on **honesty and credibility**, featuring:
+- **Realistic Experience**: Accurately represents 1.5+ years of development experience
+- **Genuine Projects**: Real work contributions and learning projects, not inflated claims
+- **Learning Transparency**: Clear distinction between proficient skills and areas of growth
+- **Professional Messaging**: Appropriate for junior-level positions in development and DevOps
 
 ## 🛠️ Tech Stack
 

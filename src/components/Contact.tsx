@@ -39,13 +39,16 @@ const Contact = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-card/30">
+    <section ref={sectionRef} className="section-spacing px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-card/30 via-background to-muted/20">
       <div className="container mx-auto max-w-5xl">
-        {/* Section Heading */}
+        {/* Enhanced Section Heading */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-2 mb-4">
-            <Code2 className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="relative">
+              <Code2 className="w-8 h-8 text-primary animate-pulse" />
+              <div className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full animate-ping"></div>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight brand-gradient">
               Let&apos;s Build Together
             </h2>
           </div>
@@ -118,7 +121,7 @@ const Contact = () => {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/cv.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group p-4 rounded-lg border border-border bg-card hover:border-primary/50 transition-all duration-300 hover:shadow-md"

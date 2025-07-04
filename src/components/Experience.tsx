@@ -16,7 +16,7 @@ const Experience = () => {
       position: "System Engineer Intern",
       company: "Epic Lanka (Pvt) Ltd",
       location: "Epic Techno Village, Sri Jayawardenepura Kotte, Sri Lanka",
-      duration: "Apr 28, 2025 – Present",
+      duration: "Apr 2025 – Present",
       type: "Internship",
       status: "Current",
       description: "Learning Linux system administration and enterprise application support. Gaining practical experience in DevOps fundamentals and infrastructure management.",

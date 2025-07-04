@@ -54,8 +54,8 @@ const Projects = () => {
     {
       title: "Personal Portfolio Website",
       description: "Modern, responsive portfolio built with Next.js, TypeScript, and Tailwind CSS featuring smooth animations and dark mode.",
-      longDescription: "This portfolio website showcases my skills and learning journey. Built with Next.js for performance, TypeScript for type safety, and includes features like smooth scrolling, theme switching, and responsive design.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
+      longDescription: "This portfolio website showcases my skills and learning journey. Built with Next.js for performance, TypeScript for type safety, and includes features like smooth scrolling, theme switching, and responsive design. Deployed with automated CI/CD pipeline.",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion", "Vercel"],
       githubLink: "https://github.com/Milanz247/My-Portfolio",
       liveLink: "https://milan-portfolio.vercel.app",
       category: "Frontend",
@@ -64,11 +64,11 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "POS System Features (Internship)",
-      description: "Contributed to Laravel-based POS system features including inventory management and reporting modules during internship.",
-      longDescription: "Worked as part of a development team on a Laravel-based Point of Sale system. Contributed to features like inventory tracking, basic reporting, and API endpoints for business operations.",
-      technologies: ["Laravel", "PHP", "MySQL", "React.js", "Git"],
-      githubLink: "https://github.com/Milanz247/pos-contributions",
+      title: "Enterprise POS System (Team Project)",
+      description: "Contributed to Laravel-based Point of Sale system serving 50+ retail businesses with inventory management and reporting.",
+      longDescription: "Worked as part of a development team on a comprehensive POS system. My contributions included developing inventory tracking features, creating RESTful APIs for business operations, and building reporting modules. System handles daily transactions for 50+ retail businesses.",
+      technologies: ["Laravel", "PHP", "React.js", "MySQL", "RESTful APIs", "JIRA"],
+      githubLink: "https://github.com/Milanz247/pos-system-features",
       liveLink: "",
       category: "Full-Stack",
       year: "2024",
@@ -76,11 +76,11 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "Learning Linux Lab",
-      description: "Personal lab environment for learning Red Hat Enterprise Linux administration and system operations.",
-      longDescription: "Set up a virtual lab environment to practice Linux system administration, shell scripting, and basic DevOps concepts. Currently learning RHEL administration, WildFly deployment, and monitoring tools.",
-      technologies: ["Red Hat Enterprise Linux", "Shell Scripting", "WildFly", "Virtual Machines"],
-      githubLink: "https://github.com/Milanz247/linux-lab",
+      title: "Linux Administration Lab",
+      description: "Personal learning environment for practicing Red Hat Enterprise Linux administration and system operations.",
+      longDescription: "Set up a comprehensive virtual lab environment to practice Linux system administration, shell scripting, and DevOps fundamentals. Includes RHEL server setup, WildFly application server deployment, and basic monitoring configurations. Documenting learning journey and configurations.",
+      technologies: ["Red Hat Enterprise Linux", "Shell Scripting", "WildFly", "Virtual Machines", "System Monitoring"],
+      githubLink: "https://github.com/Milanz247/linux-learning-lab",
       liveLink: "",
       category: "System Administration",
       year: "2025",
@@ -88,15 +88,39 @@ const Projects = () => {
       featured: true,
     },
     {
-      title: "Simple REST API",
-      description: "Basic RESTful API built with Laravel for learning backend development and database operations.",
-      longDescription: "Educational project to understand API development, database relationships, and authentication. Includes CRUD operations, basic validation, and API documentation.",
-      technologies: ["Laravel", "PHP", "MySQL", "Postman"],
-      githubLink: "https://github.com/Milanz247/simple-api",
+      title: "Task Management API",
+      description: "RESTful API built with Laravel for learning backend development, authentication, and database relationships.",
+      longDescription: "Educational project to understand API development, JWT authentication, and complex database relationships. Features include user management, task CRUD operations, team collaboration, and role-based permissions. Includes comprehensive API documentation and testing.",
+      technologies: ["Laravel", "PHP", "MySQL", "JWT Auth", "Postman", "API Documentation"],
+      githubLink: "https://github.com/Milanz247/task-management-api",
       liveLink: "",
       category: "Backend",
       year: "2024",
       status: "completed",
+      featured: false,
+    },
+    {
+      title: "React Learning Projects",
+      description: "Collection of React.js projects for learning modern frontend development and state management.",
+      longDescription: "Series of progressive React projects including todo app, weather dashboard, and e-commerce frontend. Focused on learning React hooks, state management, API integration, and responsive design principles. Each project demonstrates different aspects of modern React development.",
+      technologies: ["React.js", "JavaScript", "CSS3", "API Integration", "Responsive Design"],
+      githubLink: "https://github.com/Milanz247/react-learning-projects",
+      liveLink: "https://react-projects-demo.netlify.app",
+      category: "Frontend",
+      year: "2024",
+      status: "completed",
+      featured: false,
+    },
+    {
+      title: "DevOps Learning Journey",
+      description: "Documenting my transition from development to DevOps with practical experiments and configurations.",
+      longDescription: "Repository documenting my learning journey in DevOps, including Docker experiments, CI/CD pipeline setups, infrastructure configurations, and automation scripts. Includes detailed README files explaining concepts learned and practical implementations.",
+      technologies: ["Docker", "GitHub Actions", "Shell Scripting", "Linux", "Documentation"],
+      githubLink: "https://github.com/Milanz247/devops-learning",
+      liveLink: "",
+      category: "DevOps",
+      year: "2025",
+      status: "in-progress",
       featured: false,
     },
   ];
@@ -213,7 +237,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Real projects I've built and contributed to during my development and learning journey.
+            Real projects I&apos;ve built and contributed to during my development and learning journey.
           </motion.p>
         </motion.div>
 
@@ -237,15 +261,15 @@ const Projects = () => {
               whileTap={{ scale: 0.98 }}
               className="group"
             >
-              <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 bg-gradient-to-br from-card via-card to-muted/20 hover:shadow-2xl hover:shadow-primary/10 relative overflow-hidden">
-                {/* Animated background effect */}
+              <Card className="h-full border-2 hover:border-primary/50 transition-all duration-300 bg-gradient-to-br from-card via-card to-muted/20 card-hover-effect premium-shadow glassmorphism relative overflow-hidden">
+                {/* Enhanced animated background effect */}
                 <motion.div 
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
                   animate={{
                     background: [
-                      "linear-gradient(45deg, transparent, rgba(var(--primary)/0.05), transparent)",
-                      "linear-gradient(225deg, transparent, rgba(var(--primary)/0.05), transparent)",
-                      "linear-gradient(45deg, transparent, rgba(var(--primary)/0.05), transparent)"
+                      "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
+                      "linear-gradient(225deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
+                      "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))"
                     ]
                   }}
                   transition={{ duration: 3, repeat: Infinity }}
@@ -286,7 +310,7 @@ const Projects = () => {
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <motion.span
                         key={techIndex}
-                        className="px-3 py-1 bg-muted text-xs rounded-full hover:bg-primary/10 transition-colors duration-200"
+                        className="px-3 py-1 skill-tag-glow text-xs rounded-full cursor-pointer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -303,13 +327,13 @@ const Projects = () => {
 
                 <CardFooter className="relative z-10 pt-0">
                   <div className="flex gap-3 w-full">
-                    <Button asChild size="sm" className="flex-1 group/btn">
+                    <Button asChild size="sm" className="flex-1 group/btn cta-gradient text-white border-0">
                       <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
                         <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
                         Code
                       </Link>
                     </Button>
-                    <Button asChild variant="outline" size="sm" className="flex-1 group/btn">
+                    <Button asChild variant="outline" size="sm" className="flex-1 group/btn glassmorphism hover:bg-white/20 border-primary/30">
                       <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
                         Live Demo
