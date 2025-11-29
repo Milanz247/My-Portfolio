@@ -55,11 +55,11 @@ const About = () => {
               <div className="relative aspect-square w-full max-w-md mx-auto lg:mx-0">
                 <div className="relative w-full h-full bg-gradient-to-br from-card to-muted rounded-xl border border-border shadow-lg overflow-hidden">
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    <div className="text-center p-8">
-                      <div className="text-5xl mb-4">👨‍💻</div>
-                      <p className="text-lg font-semibold mb-2">Milan Madusanka</p>
-                      <p className="text-sm text-muted-foreground">Full-Stack Developer & System Engineer</p>
-                    </div>
+                    <img
+                      src="/images/aboutimg.jpg"
+                      alt="Milan Madusanka - Full-Stack Developer & System Engineer"
+                      className="w-full h-full object-cover rounded-xl"
+                    />
                   </div>
                 </div>
               </div>

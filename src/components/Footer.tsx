@@ -72,15 +72,15 @@ export function Footer() {
               {/* Contact Info - Mobile optimized */}
               <div className="space-y-2 pt-2 lg:hidden">
                 <a 
-                  href="mailto:milan.ms.developer@gmail.com"
+                  href="mailto:milanmadusankamms@gmail.com"
                   className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Mail className="w-3 h-3 flex-shrink-0" />
-                  <span className="truncate">milan.ms.developer@gmail.com</span>
+                  <span className="truncate">milanmadusankamms@gmail.com</span>
                 </a>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
-                  <span>Colombo, Sri Lanka</span>
+                  <span>Matahale, Sri Lanka - Matale, Naula</span>
                 </div>
               </div>
             </div>
@@ -131,15 +131,15 @@ export function Footer() {
                 {/* Contact Info - Desktop only */}
                 <div className="hidden lg:block space-y-2 pt-2">
                   <a 
-                    href="mailto:milan.ms.developer@gmail.com"
+                    href="mailto:milanmadusankamms@gmail.com"
                     className="flex items-center gap-2 text-xs text-muted-foreground hover:text-primary transition-colors"
                   >
                     <Mail className="w-3 h-3" />
-                    <span>milan.ms.developer@gmail.com</span>
+                    <span>milanmadusankamms@gmail.com</span>
                   </a>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <MapPin className="w-3 h-3" />
-                    <span>Colombo, Sri Lanka</span>
+                    <span>Matahale, Sri Lanka - Matale, Naula</span>
                   </div>
                 </div>
               </div>
