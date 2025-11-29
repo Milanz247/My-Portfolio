@@ -29,16 +29,36 @@ const Contact = () => {
       };
 
       // Send email via API route
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+      let response;
+      try {
+        response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
 
-      if (!response.ok) {
-        throw new Error('Failed to send email');
+        if (!response.ok) throw new Error('API route failed');
+      } catch (apiError) {
+        // Fallback: Use FormSubmit.co directly from client (for GitHub Pages)
+        console.log('API route failed, switching to FormSubmit fallback...');
+
+        response = await fetch('https://formsubmit.co/ajax/milanmadusankamms@gmail.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            _subject: `New Project Inquiry from ${data.name}`,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+
+        if (!response.ok) throw new Error('All email methods failed');
       }
 
       // Show success toast
@@ -49,7 +69,7 @@ const Contact = () => {
 
       // Reset form
       (e.target as HTMLFormElement).reset();
-    } catch {
+    } catch (error) {
       // Show error toast
       toast.error("Failed to send message", {
         description: "Please try again or contact me directly via email.",
