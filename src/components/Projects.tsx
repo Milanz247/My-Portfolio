@@ -306,7 +306,7 @@ const Projects = () => {
                 </CardFooter>
               </Card>
             </motion.div>
-          ))}}
+          ))}
         </motion.div>
 
         {/* Other Projects - Infinite Scrolling Ticker */}
