@@ -29,36 +29,16 @@ const Contact = () => {
       };
 
       // Send email via API route
-      let response;
-      try {
-        response = await fetch('/api/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
-        });
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-        if (!response.ok) throw new Error('API route failed');
-      } catch {
-        // Fallback: Use FormSubmit.co directly from client (for GitHub Pages)
-        console.log('API route failed, switching to FormSubmit fallback...');
-
-        response = await fetch('https://formsubmit.co/ajax/milanmadusankamms@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: data.name,
-            email: data.email,
-            message: data.message,
-            _subject: `New Project Inquiry from ${data.name}`,
-            _template: 'table',
-            _captcha: 'false'
-          })
-        });
-
-        if (!response.ok) throw new Error('All email methods failed');
+      if (!response.ok) {
+        throw new Error('Failed to send email');
       }
 
       // Show success toast
