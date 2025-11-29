@@ -123,27 +123,70 @@
     @apply border-border outline-ring/50;
     box-sizing: border-box;
   }
+
   html {
     scroll-behavior: smooth;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
     width: 100%;
-    scroll-padding-top: 4rem; /* Account for fixed header */
+    scroll-padding-top: 4rem;
+    /* Account for fixed header */
   }
+
   body {
     @apply bg-background text-foreground;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-    max-width: 100vw; /* Ensure body doesn't exceed viewport width */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+    max-width: 100vw;
+    /* Ensure body doesn't exceed viewport width */
     width: 100%;
   }
-  
+
   /* Prevent any container from exceeding viewport width */
   .container {
     max-width: 100vw;
   }
-  
+
   /* Smooth scroll offset for anchor links */
   section[id] {
     scroll-margin-top: 4rem;
+  }
+
+  /* Enhanced Focus Indicators for Accessibility */
+  *:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  button:focus-visible,
+  a:focus-visible {
+    outline: 3px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
+
+  /* Input focus styles */
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    ring-color: hsl(var(--primary));
+  }
+
+  /* Mobile Safe Area Insets for Notched Devices */
+  @supports (padding: max(0px)) {
+    body {
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
+    }
+
+    header {
+      padding-top: max(0px, env(safe-area-inset-top));
+    }
+
+    main {
+      padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+    }
   }
 }
 
@@ -151,8 +194,10 @@
 
 .tech-grid-background {
   /* Default (Light Mode) Colors */
-  --grid-color: rgba(0, 0, 0, 0.07);   /* Dark lines for light background */
-  --dot-color: rgba(0, 0, 0, 0.3);    /* Dark dots for light background */
+  --grid-color: rgba(0, 0, 0, 0.07);
+  /* Dark lines for light background */
+  --dot-color: rgba(0, 0, 0, 0.3);
+  /* Dark dots for light background */
   --animation-speed: 30s;
 
   position: fixed;
@@ -162,8 +207,8 @@
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  
-  background-image: 
+
+  background-image:
     linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
   background-size: 30px 30px;
@@ -185,7 +230,7 @@
   height: 2px;
   background-color: var(--dot-color);
   border-radius: 50%;
-  box-shadow: 
+  box-shadow:
     -20vw 15vh 2px 2px var(--dot-color),
     10vw -10vh 2px 2px var(--dot-color),
     40vw 30vh 2px 2px var(--dot-color),
@@ -198,7 +243,7 @@
     35vw -35vh 2px 2px var(--dot-color),
     -15vw -15vh 2px 2px var(--dot-color),
     45vw 45vh 3px 3px var(--dot-color);
-  
+
   animation: moveDots var(--animation-speed) linear infinite;
 }
 
@@ -206,6 +251,7 @@
   0% {
     transform: translate(0, 0);
   }
+
   100% {
     transform: translate(100px, 100px);
   }
@@ -221,7 +267,8 @@
 }
 
 .tech-stack-ticker .flex {
-  overflow: visible; /* Allow the flex items to be visible for animation */
+  overflow: visible;
+  /* Allow the flex items to be visible for animation */
 }
 
 /* === Education Timeline Styles === */
@@ -279,18 +326,19 @@
     left: 2rem;
     transform: none;
   }
-  
+
   .timeline-marker {
     left: 2rem;
     transform: translateX(-50%);
   }
-  
+
   .timeline-item-mobile {
     padding-left: 4rem !important;
     padding-right: 1rem !important;
     width: 100% !important;
   }
 }
+
 /* === End Education Timeline Styles === */
 
 /* === Experience Timeline Styles === */
@@ -351,18 +399,19 @@
     left: 2.5rem;
     transform: none;
   }
-  
+
   .experience-timeline-marker {
     left: 2.5rem;
     transform: translateX(-50%);
   }
-  
+
   .experience-timeline-item-mobile {
     padding-left: 4.5rem !important;
     padding-right: 1rem !important;
     width: 100% !important;
   }
 }
+
 /* === End Experience Timeline Styles === */
 
 /* === END: Bulletproof Timeline Connector Styles === */
@@ -414,11 +463,13 @@
 
 /* Hide arrows on mobile */
 @media (max-width: 768px) {
+
   .timeline-box::before,
   .timeline-box::after {
     @apply hidden;
   }
 }
+
 /* === End Enhanced Timeline Connector Styles === */
 
 /* === Clip-Path Timeline Connector Styles === */
@@ -456,6 +507,7 @@
     display: none;
   }
 }
+
 /* === End Clip-Path Timeline Connector Styles === */
 
 /* === Enhanced Timeline Visual Effects === */
@@ -465,13 +517,11 @@
   transform: translateX(-50%);
   width: 2px;
   height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    hsl(var(--border)) 20%,
-    hsl(var(--border)) 80%,
-    transparent 100%
-  );
+  background: linear-gradient(to bottom,
+      transparent 0%,
+      hsl(var(--border)) 20%,
+      hsl(var(--border)) 80%,
+      transparent 100%);
   z-index: 0;
 }
 
@@ -483,10 +533,12 @@
   0% {
     box-shadow: 0 0 0 2px hsl(var(--primary)), 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
   50% {
     box-shadow: 0 0 0 4px hsl(var(--primary) / 0.6), 0 6px 12px rgba(0, 0, 0, 0.15);
     transform: translateX(-50%) scale(1.05);
   }
+
   100% {
     box-shadow: 0 0 0 2px hsl(var(--primary)), 0 4px 8px rgba(0, 0, 0, 0.1);
   }
@@ -499,25 +551,22 @@
     transform: none;
   }
 }
+
 /* === End Enhanced Timeline Visual Effects === */
 
 /* === Tech Stack Ticker Animations === */
 .tech-stack-ticker {
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 10%,
-    black 90%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 10%,
+      black 90%,
+      transparent 100%);
 }
 
 .tech-item {
@@ -534,9 +583,12 @@
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -553,6 +605,7 @@
 .tech-item-float:nth-child(even) {
   animation-delay: -4s;
 }
+
 /* === End Tech Stack Ticker Animations === */
 
 /* Enhanced Brand & Visual Design System */
@@ -564,10 +617,10 @@
 }
 
 .hero-gradient {
-  background: linear-gradient(135deg, 
-    rgb(99 102 241 / 0.1) 0%, 
-    rgb(34 197 94 / 0.1) 50%, 
-    rgb(59 130 246 / 0.1) 100%);
+  background: linear-gradient(135deg,
+      rgb(99 102 241 / 0.1) 0%,
+      rgb(34 197 94 / 0.1) 50%,
+      rgb(59 130 246 / 0.1) 100%);
 }
 
 .glassmorphism {
@@ -582,13 +635,13 @@
 }
 
 .premium-shadow {
-  box-shadow: 
+  box-shadow:
     0 10px 25px -3px rgba(99, 102, 241, 0.1),
     0 4px 6px -2px rgba(99, 102, 241, 0.05);
 }
 
 .dark .premium-shadow {
-  box-shadow: 
+  box-shadow:
     0 10px 25px -3px rgba(99, 102, 241, 0.2),
     0 4px 6px -2px rgba(99, 102, 241, 0.1);
 }
@@ -612,7 +665,7 @@
 
 .card-hover-effect:hover {
   transform: translateY(-8px);
-  box-shadow: 
+  box-shadow:
     0 25px 50px -12px rgba(99, 102, 241, 0.15),
     0 0 0 1px rgba(99, 102, 241, 0.1);
 }
@@ -644,6 +697,7 @@
 
 /* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   .card-hover-effect,
   .skill-tag-glow,
   .cta-gradient,
@@ -651,7 +705,7 @@
     transition: none;
     animation: none;
   }
-  
+
   .card-hover-effect:hover,
   .skill-tag-glow:hover,
   .cta-gradient:hover {
@@ -660,9 +714,17 @@
 }
 
 /* Enhanced depth and layering */
-.depth-layer-1 { z-index: 10; }
-.depth-layer-2 { z-index: 20; }
-.depth-layer-3 { z-index: 30; }
+.depth-layer-1 {
+  z-index: 10;
+}
+
+.depth-layer-2 {
+  z-index: 20;
+}
+
+.depth-layer-3 {
+  z-index: 30;
+}
 
 /* Optimized animations */
 .smooth-appear {
@@ -674,6 +736,7 @@
     opacity: 0;
     transform: translateY(40px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);
@@ -707,11 +770,14 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { 
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
-  50% { 
+
+  50% {
     transform: scale(1.2);
     opacity: 0.8;
   }

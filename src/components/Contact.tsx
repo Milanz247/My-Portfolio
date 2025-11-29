@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
@@ -9,14 +9,55 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MessageCircle, Send, Github, Linkedin, Terminal, Globe, FileText, PenTool } from "lucide-react";
+import { toast } from "sonner";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted");
+    setIsSubmitting(true);
+
+    try {
+      // Get form data
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get('name') as string,
+        email: formData.get('email') as string,
+        message: formData.get('message') as string,
+      };
+
+      // Send email via API route
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email');
+      }
+
+      // Show success toast
+      toast.success("Message sent successfully!", {
+        description: "I'll get back to you within 24 hours.",
+        duration: 5000,
+      });
+
+      // Reset form
+      (e.target as HTMLFormElement).reset();
+    } catch (error) {
+      // Show error toast
+      toast.error("Failed to send message", {
+        description: "Please try again or contact me directly via email.",
+        duration: 5000,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   useEffect(() => {
@@ -56,14 +97,14 @@ const Contact = () => {
 
         {/* Professional Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-8 sm:mb-12">
-          
+
           {/* Professional Links */}
           <div className="space-y-6">
             <h3 className="text-lg sm:text-xl font-semibold mb-4 flex items-center gap-2">
               <Terminal className="w-5 h-5 text-primary" />
               Professional Profiles
             </h3>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <a
                 href="https://github.com/Milanz247"
@@ -156,7 +197,7 @@ const Contact = () => {
               <Mail className="w-5 h-5 text-primary" />
               Direct Contact
             </h3>
-            
+
             <div className="space-y-4">
               <div className="p-4 rounded-lg border border-border bg-card">
                 <div className="flex items-start gap-3">
@@ -165,7 +206,7 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-card-foreground mb-1">Email</h4>
-                    <a 
+                    <a
                       href="mailto:milanmadusankamms@gmail.com"
                       className="text-sm text-muted-foreground hover:text-primary transition-colors break-all"
                     >
@@ -185,7 +226,7 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-card-foreground mb-1">WhatsApp</h4>
-                    <a 
+                    <a
                       href="https://wa.me/94771234567"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -207,7 +248,7 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="font-medium text-card-foreground mb-1">Telegram</h4>
-                    <a 
+                    <a
                       href="https://t.me/milanms"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -308,16 +349,17 @@ const Contact = () => {
 
             {/* Submit Button */}
             <div className="flex justify-center pt-2 sm:pt-4">
-              <Button 
-                type="submit" 
-                size="lg" 
+              <Button
+                type="submit"
+                size="lg"
+                disabled={isSubmitting}
                 className="w-full sm:w-auto sm:px-8 h-10 sm:h-12 font-medium text-sm sm:text-base"
               >
                 <Send className="w-4 h-4 mr-2" />
-                Submit Project Inquiry
+                {isSubmitting ? "Sending..." : "Submit Project Inquiry"}
               </Button>
             </div>
-            
+
             <p className="text-xs text-center text-muted-foreground">
               I&apos;ll review your inquiry and respond within 24 hours with next steps.
             </p>

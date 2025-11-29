@@ -5,10 +5,25 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Badge } from "@/components/ui/badge";
 import { Code2, Server, Settings, GitBranch, Layers, Shield } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Skills = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  
+
+  // Skills with proficiency levels for progress bars
+  const skillsWithLevels = [
+    { name: "React & Next.js", level: 85, category: "Frontend" },
+    { name: "TypeScript", level: 80, category: "Frontend" },
+    { name: "Tailwind CSS", level: 90, category: "Frontend" },
+    { name: "Node.js & Express", level: 75, category: "Backend" },
+    { name: "Laravel/PHP", level: 85, category: "Backend" },
+    { name: "MySQL & PostgreSQL", level: 80, category: "Backend" },
+    { name: "Docker & Containers", level: 65, category: "DevOps" },
+    { name: "Linux/RHEL Admin", level: 70, category: "DevOps" },
+    { name: "Git & GitHub", level: 85, category: "Tools" },
+    { name: "CI/CD Pipelines", level: 60, category: "DevOps" },
+  ];
+
   // Professional skill categories with honest proficiency levels
   const skillCategories = [
     {
@@ -16,7 +31,7 @@ const Skills = () => {
       icon: Code2,
       color: "bg-green-500/10 text-green-600 dark:text-green-400",
       technologies: [
-        "Laravel/PHP (Daily use)", "React.js (Team projects)", "MySQL (Query optimization)", "Git (Merge conflict resolution)", 
+        "Laravel/PHP (Daily use)", "React.js (Team projects)", "MySQL (Query optimization)", "Git (Merge conflict resolution)",
         "RESTful APIs (Built 15+ endpoints)", "Linux CLI (Production troubleshooting)"
       ]
     },
@@ -25,7 +40,7 @@ const Skills = () => {
       icon: Settings,
       color: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
       technologies: [
-        "RHEL Administration (6 months hands-on)", "Shell Scripting (Automation tasks)", "WildFly (Deployment & monitoring)", 
+        "RHEL Administration (6 months hands-on)", "Shell Scripting (Automation tasks)", "WildFly (Deployment & monitoring)",
         "System Monitoring (Log analysis)", "Docker (Learning containers)", "CI/CD (GitHub Actions basics)"
       ]
     },
@@ -34,7 +49,7 @@ const Skills = () => {
       icon: Server,
       color: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
       technologies: [
-        "Database Debugging (Performance issues)", "API Development (Error handling)", "Team Collaboration (4-person teams)", 
+        "Database Debugging (Performance issues)", "API Development (Error handling)", "Team Collaboration (4-person teams)",
         "Production Support (99.5% uptime)", "Code Reviews (Given & received)", "Agile Workflow (Sprint planning)"
       ]
     },
@@ -43,7 +58,7 @@ const Skills = () => {
       icon: GitBranch,
       color: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
       technologies: [
-        "VS Code (Extensions & shortcuts)", "JIRA (Issue tracking)", "Postman (API testing)", 
+        "VS Code (Extensions & shortcuts)", "JIRA (Issue tracking)", "Postman (API testing)",
         "GitHub (Branch management)", "Command Line (Daily workflows)", "Debugging (Chrome DevTools)"
       ]
     }
@@ -81,9 +96,41 @@ const Skills = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Growing expertise in full-stack development and system administration, 
+            Growing expertise in full-stack development and system administration,
             with 1.5+ years of hands-on experience and continuous learning in DevOps practices.
           </p>
+        </div>
+
+        {/* Skills Progress Bars - NEW! */}
+        <div className="mb-16 bg-card border border-border rounded-2xl p-6 lg:p-8">
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+            <Layers className="w-5 h-5 text-primary" />
+            Skill Proficiency
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {skillsWithLevels.map((skill, index) => (
+              <div key={index} className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium text-foreground">{skill.name}</span>
+                  <span className="text-xs text-muted-foreground font-mono">{skill.level}%</span>
+                </div>
+                <div className="h-2.5 bg-muted rounded-full overflow-hidden">
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: `${skill.level}%` }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{
+                      duration: 1.2,
+                      delay: index * 0.1,
+                      ease: [0.23, 1, 0.32, 1]
+                    }}
+                  />
+                </div>
+                <span className="text-xs text-muted-foreground">{skill.category}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Enhanced Skills Grid */}
@@ -109,7 +156,7 @@ const Skills = () => {
                 {/* Technologies List */}
                 <div className="flex flex-wrap gap-2">
                   {category.technologies.map((tech, techIndex) => (
-                    <Badge 
+                    <Badge
                       key={techIndex}
                       variant="secondary"
                       className="text-xs px-3 py-1"
@@ -212,7 +259,7 @@ const Skills = () => {
             </h3>
             <p className="text-muted-foreground text-sm">Real-world decisions and trade-offs from actual projects</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-4 rounded-lg border border-border bg-card/50">
               <div className="text-base font-semibold mb-2">Technical Decisions</div>

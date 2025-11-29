@@ -1,12 +1,23 @@
 "use client";
 
+import dynamic from 'next/dynamic';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLoading } from "@/contexts/LoadingContext";
-import { Enhanced3DBackground } from "./Enhanced3DBackgroundFixed";
+
+// Lazy load the heavy 3D background component for performance
+const Enhanced3DBackground = dynamic(
+  () => import('./Enhanced3DBackgroundFixed').then(mod => ({ default: mod.Enhanced3DBackground })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/3 to-secondary/5" />
+    )
+  }
+);
 
 const Hero = () => {
   const { isLoading } = useLoading();
@@ -33,26 +44,26 @@ const Hero = () => {
   if (!mounted) {
     return null;
   }
-  
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 relative">
       {/* Premium 3D Background */}
       <Enhanced3DBackground />
-      
+
       {/* Simplified overlay for better contrast */}
       <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80 dark:from-background/60 dark:via-background/40 dark:to-background/60"></div>
-      
+
       <div className="text-center space-y-8 max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center">
         {/* Enhanced Profile Avatar */}
-        <motion.div 
+        <motion.div
           className="flex justify-center relative"
           initial={{ opacity: 0, scale: 0, y: -50 }}
-          animate={{ 
-            opacity: shouldAnimate ? 1 : 0, 
-            scale: shouldAnimate ? 1 : 0, 
-            y: shouldAnimate ? 0 : -50 
+          animate={{
+            opacity: shouldAnimate ? 1 : 0,
+            scale: shouldAnimate ? 1 : 0,
+            y: shouldAnimate ? 0 : -50
           }}
-          transition={{ 
+          transition={{
             duration: 1.2,
             ease: [0.25, 0.46, 0.45, 0.94],
             type: "spring",
@@ -66,8 +77,8 @@ const Hero = () => {
             transition={{ duration: 0.3 }}
           >
             <Avatar className="w-40 h-40 sm:w-48 sm:h-48 border-4 border-primary/20 shadow-xl">
-              <AvatarImage 
-                src="/images/profile" 
+              <AvatarImage
+                src="/images/profile"
                 alt="Milan Madusanka - Full-Stack Developer"
               />
               <AvatarFallback className="text-2xl font-semibold bg-gradient-to-br from-primary/20 to-primary/5">
@@ -79,12 +90,12 @@ const Hero = () => {
 
         {/* Main Heading with Simplified, Premium Animation */}
         <div className="space-y-6">
-          <motion.h1 
+          <motion.h1
             className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight relative"
             initial={{ opacity: 0, y: 30 }}
             animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ 
-              duration: 0.8, 
+            transition={{
+              duration: 0.8,
               delay: 0.5,
               ease: [0.23, 1, 0.32, 1]
             }}
@@ -92,23 +103,23 @@ const Hero = () => {
             <span className="text-foreground drop-shadow-sm">
               Milan Madusanka
             </span>
-            
+
             {/* Single, Focused Underline Animation */}
             <motion.div
               className="absolute -bottom-2 left-0 h-1 bg-primary rounded-full shadow-lg"
               initial={{ width: 0 }}
               animate={shouldAnimate ? { width: "100%" } : { width: 0 }}
-              transition={{ 
-                duration: 1.2, 
-                delay: 1.3, 
+              transition={{
+                duration: 1.2,
+                delay: 1.3,
                 ease: [0.23, 1, 0.32, 1]
               }}
             />
           </motion.h1>
-          
+
           {/* Enhanced Description with Key Skills */}
           <div className="relative space-y-4">
-            <motion.h2 
+            <motion.h2
               className="text-2xl sm:text-3xl font-semibold text-foreground/90"
               initial={{ opacity: 0, y: 20 }}
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -116,28 +127,28 @@ const Hero = () => {
             >
               Full-Stack Developer & System Engineer
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 1.0, duration: 0.6 }}
             >
-              Building scalable web applications and robust infrastructure with modern technologies. 
+              Building scalable web applications and robust infrastructure with modern technologies.
               Passionate about clean code, system reliability, and continuous learning.
             </motion.p>
           </div>
         </div>
 
         {/* Clean Action Buttons */}
-        <motion.div 
+        <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 30 }}
-          animate={{ 
-            opacity: shouldAnimate ? 1 : 0, 
-            y: shouldAnimate ? 0 : 30 
+          animate={{
+            opacity: shouldAnimate ? 1 : 0,
+            y: shouldAnimate ? 0 : 30
           }}
-          transition={{ 
+          transition={{
             delay: 1.4,
             duration: 0.8,
             ease: [0.25, 0.46, 0.45, 0.94]
@@ -148,20 +159,20 @@ const Hero = () => {
               <span className="font-semibold">View My Work</span>
             </Link>
           </Button>
-          
+
           <Button asChild variant="outline" size="lg" className="w-full sm:w-auto h-12 px-8 border-2">
             <a href="/cv.html" target="_blank" rel="noopener noreferrer">
               <span className="font-semibold">Download Resume</span>
             </a>
           </Button>
-          
+
           <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto h-12 px-6">
             <Link href="#contact">
               <span className="font-medium">Get In Touch</span>
             </Link>
           </Button>
         </motion.div>
-        
+
         {/* Simple Status */}
         <motion.div
           className="flex justify-center items-center gap-2 text-sm text-muted-foreground mt-8"
