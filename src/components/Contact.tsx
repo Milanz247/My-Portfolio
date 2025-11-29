@@ -49,7 +49,7 @@ const Contact = () => {
 
       // Reset form
       (e.target as HTMLFormElement).reset();
-    } catch (error) {
+    } catch {
       // Show error toast
       toast.error("Failed to send message", {
         description: "Please try again or contact me directly via email.",
