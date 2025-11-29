@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, Send, Github, Linkedin, Code2, Terminal, Globe, FileText, PenTool } from "lucide-react";
+import { Mail, MessageCircle, Send, Github, Linkedin, Terminal, Globe, FileText, PenTool } from "lucide-react";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,20 +41,16 @@ const Contact = () => {
   return (
     <section ref={sectionRef} className="section-spacing px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-card/30 via-background to-muted/20">
       <div className="container mx-auto max-w-5xl">
-        {/* Enhanced Section Heading */}
+        {/* Section Heading */}
         <div className="text-center mb-8 sm:mb-12">
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="relative">
-              <Code2 className="w-8 h-8 text-primary animate-pulse" />
-              <div className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full animate-ping"></div>
-            </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight brand-gradient">
-              Let&apos;s Build Together
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Mail className="w-6 h-6 text-primary" />
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+              Get In Touch
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Ready to bring your next software project to life? Let&apos;s discuss your requirements, 
-            architecture needs, and how we can create something exceptional together.
+            Ready to collaborate? Let&apos;s discuss your project requirements.
           </p>
         </div>
 
@@ -230,13 +226,12 @@ const Contact = () => {
             {/* Availability Status */}
             <div className="p-4 rounded-lg bg-green-50 dark:bg-green-950/20 border border-green-200 dark:border-green-800">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span className="text-sm font-medium text-green-700 dark:text-green-400">
                   Available for New Projects
                 </span>
               </div>
               <p className="text-xs text-green-600 dark:text-green-500">
-                Currently accepting freelance and contract opportunities. 
                 Response time: Usually within 24 hours.
               </p>
             </div>

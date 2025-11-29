@@ -95,7 +95,6 @@ const Education = () => {
               >
                 {/* Timeline Node */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10">
-                  <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
                 </div>
 
                 {/* Education Card */}
@@ -146,7 +145,6 @@ const Education = () => {
 
                 {/* Mobile Timeline Marker */}
                 <div className="md:hidden w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg mb-4 flex-shrink-0">
-                  <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
                 </div>
               </div>
             ))}

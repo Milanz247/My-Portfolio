@@ -15,7 +15,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Code2, Folder, Star, GitBranch, Database, Zap, Layers, Terminal } from "lucide-react";
 import Link from "next/link";
-import { MagneticElement } from "./MagneticElement";
 
 // Types for project data
 interface Project {
@@ -207,7 +206,7 @@ const Projects = () => {
   return (
     <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/5 via-background to-muted/10 min-h-screen">
       <div className="container mx-auto max-w-7xl">
-        {/* Section Header with Enhanced Styling */}
+        {/* Section Header */}
         <motion.div 
           className="text-center mb-16 lg:mb-20"
           initial="hidden"
@@ -215,34 +214,19 @@ const Projects = () => {
           viewport={{ once: true, margin: "-100px" }}
           variants={headerVariants}
         >
-          <div className="inline-flex items-center gap-3 mb-6">
-            <div className="relative">
-              <Star className="w-8 h-8 text-primary animate-pulse" />
-              <motion.div 
-                className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Projects & Learning
+          <div className="inline-flex items-center gap-2 mb-4">
+            <Folder className="w-6 h-6 text-primary" />
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+              Projects
             </h2>
-            <div className="relative">
-              <Zap className="w-8 h-8 text-primary animate-pulse" />
-              <motion.div 
-                className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full"
-                animate={{ rotate: -360 }}
-                transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-              />
-            </div>
           </div>
           <motion.p 
-            className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
+            className="text-lg text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Real projects I&apos;ve built and contributed to during my development and learning journey.
+            Real projects I&apos;ve built and contributed to during my development journey.
           </motion.p>
         </motion.div>
 
@@ -260,64 +244,23 @@ const Projects = () => {
               variants={featuredCardVariants}
               className="group"
             >
-              <MagneticElement intensity={0.2} className="h-full">
-                <Card className="h-full border-2 hover:border-primary/50 transition-all duration-600 bg-gradient-to-br from-card via-card to-muted/20 card-hover-effect premium-shadow glassmorphism relative overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/20">
-                  {/* Premium animated background effect */}
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-transparent to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                    animate={{
-                      background: [
-                        "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))",
-                        "linear-gradient(225deg, rgba(99, 102, 241, 0.08), transparent, rgba(34, 197, 94, 0.08))",
-                        "linear-gradient(45deg, rgba(99, 102, 241, 0.05), transparent, rgba(34, 197, 94, 0.05))"
-                      ]
-                    }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  />
+              <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-lg">
                   
-                  {/* Subtle scan line effect */}
-                  <motion.div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-30"
-                    style={{
-                      background: "linear-gradient(90deg, transparent 0%, rgba(99, 102, 241, 0.1) 50%, transparent 100%)",
-                      width: "200%",
-                      height: "2px",
-                      top: "50%"
-                    }}
-                    animate={{
-                      x: ["-100%", "100%"]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                      delay: index * 0.2
-                    }}
-                  />
-                  
-                  <CardHeader className="relative z-10">
+                  <CardHeader>
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex items-center gap-2">
                       {getCategoryIcon(project.category)}
                       <Badge variant="secondary" className="text-xs font-medium">
                         {project.category}
                       </Badge>
-                      <Badge variant="outline" className="text-xs border-green-500/50 text-green-500">
-                        <Star className="w-3 h-3 mr-1 fill-current" />
-                        Featured
-                      </Badge>
                     </div>
-                    <motion.div 
-                      className={`flex items-center gap-1 text-xs ${getStatusColor(project.status)}`}
-                      animate={{ scale: [1, 1.1, 1] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                    >
-                      <div className="w-2 h-2 rounded-full bg-current animate-pulse" />
+                    <div className={`flex items-center gap-1 text-xs ${getStatusColor(project.status)}`}>
+                      <div className="w-2 h-2 rounded-full bg-current" />
                       {getStatusText(project.status)}
-                    </motion.div>
+                    </div>
                   </div>
                   
-                  <CardTitle className="text-xl lg:text-2xl font-bold mb-3 group-hover:text-primary transition-colors duration-300">
+                  <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -325,17 +268,15 @@ const Projects = () => {
                   </p>
                 </CardHeader>
 
-                <CardContent className="relative z-10">
+                <CardContent>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
-                      <motion.span
+                      <span
                         key={techIndex}
-                        className="px-3 py-1 skill-tag-glow text-xs rounded-full cursor-pointer"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        className="px-3 py-1 bg-muted text-xs rounded-full"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                     {project.technologies.length > 4 && (
                       <span className="px-3 py-1 bg-muted/50 text-xs rounded-full text-muted-foreground">
@@ -345,26 +286,27 @@ const Projects = () => {
                   </div>
                 </CardContent>
 
-                <CardFooter className="relative z-10 pt-0">
+                <CardFooter className="pt-0">
                   <div className="flex gap-3 w-full">
-                    <Button asChild size="sm" className="flex-1 group/btn cta-gradient text-white border-0">
+                    <Button asChild size="sm" className="flex-1">
                       <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform duration-300" />
+                        <Github className="w-4 h-4 mr-2" />
                         Code
                       </Link>
                     </Button>
-                    <Button asChild variant="outline" size="sm" className="flex-1 group/btn glassmorphism hover:bg-white/20 border-primary/30">
-                      <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
-                        Live Demo
-                      </Link>
-                    </Button>
+                    {project.liveLink && (
+                      <Button asChild variant="outline" size="sm" className="flex-1">
+                        <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Demo
+                        </Link>
+                      </Button>
+                    )}
                   </div>
                 </CardFooter>
               </Card>
-              </MagneticElement>
             </motion.div>
-          ))}
+          ))}}
         </motion.div>
 
         {/* Other Projects - Infinite Scrolling Ticker */}
@@ -475,22 +417,19 @@ const Projects = () => {
         <div className="mt-16 bg-card border border-border rounded-2xl p-8">
           <div className="text-center mb-8">
             <h3 className="text-xl font-bold text-card-foreground mb-2">Currently Learning</h3>
-            <p className="text-muted-foreground text-sm">Building expertise through hands-on practice and real-world experience</p>
+            <p className="text-muted-foreground text-sm">Building expertise through hands-on practice</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <div className="text-2xl mb-2">🐧</div>
               <h4 className="font-semibold mb-2">Linux Administration</h4>
               <p className="text-sm text-muted-foreground">Red Hat Enterprise Linux, shell scripting, system monitoring</p>
             </div>
             <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <div className="text-2xl mb-2">⚙️</div>
               <h4 className="font-semibold mb-2">DevOps Fundamentals</h4>
               <p className="text-sm text-muted-foreground">CI/CD basics, Docker containers, infrastructure automation</p>
             </div>
             <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <div className="text-2xl mb-2">☕</div>
               <h4 className="font-semibold mb-2">Java Applications</h4>
               <p className="text-sm text-muted-foreground">WildFly deployment, application server management</p>
             </div>
@@ -499,51 +438,31 @@ const Projects = () => {
 
         {/* Code Samples & GitHub */}
         <motion.div
-          className="mt-32 mb-20 pt-16"
+          className="mt-20 mb-20"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 mb-6">
-              <div className="relative">
-                <Github className="w-8 h-8 text-primary animate-pulse" />
-                <motion.div 
-                  className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                />
-              </div>
-              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary via-blue-500 to-cyan-500 bg-clip-text text-transparent">
-                Code Samples & Repositories
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 mb-4">
+              <Github className="w-6 h-6 text-primary" />
+              <h3 className="text-2xl md:text-3xl font-bold">
+                Code Samples
               </h3>
-              <div className="relative">
-                <Terminal className="w-8 h-8 text-primary animate-pulse" />
-                <motion.div 
-                  className="absolute inset-0 w-8 h-8 border-2 border-primary/30 rounded-full"
-                  animate={{ rotate: -360 }}
-                  transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                />
-              </div>
             </div>
-            <motion.p 
-              className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Real code from projects - see how I solve problems and structure solutions
-            </motion.p>
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
-            <div className="p-6 rounded-lg border border-border bg-card glassmorphism card-hover-effect">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <Github className="w-5 h-5 text-primary" />
                 <h4 className="font-semibold">API Endpoints</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">Laravel controllers, middleware, and validation logic from POS system</p>
+              <p className="text-sm text-muted-foreground mb-4">Laravel controllers, middleware, and validation logic</p>
               <Button asChild size="sm" variant="outline" className="w-full">
                 <a href="https://github.com/Milanz247/pos-api-samples" target="_blank" rel="noopener noreferrer">
                   View Code
@@ -551,12 +470,12 @@ const Projects = () => {
               </Button>
             </div>
             
-            <div className="p-6 rounded-lg border border-border bg-card glassmorphism card-hover-effect">
+            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <Terminal className="w-5 h-5 text-primary" />
                 <h4 className="font-semibold">Shell Scripts</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">System administration and automation scripts from Linux lab</p>
+              <p className="text-sm text-muted-foreground mb-4">System administration and automation scripts</p>
               <Button asChild size="sm" variant="outline" className="w-full">
                 <a href="https://github.com/Milanz247/linux-scripts" target="_blank" rel="noopener noreferrer">
                   View Scripts
@@ -564,12 +483,12 @@ const Projects = () => {
               </Button>
             </div>
             
-            <div className="p-6 rounded-lg border border-border bg-card glassmorphism card-hover-effect">
+            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
               <div className="flex items-center gap-3 mb-4">
                 <Database className="w-5 h-5 text-primary" />
                 <h4 className="font-semibold">Database Optimization</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">Query optimization examples and schema design decisions</p>
+              <p className="text-sm text-muted-foreground mb-4">Query optimization examples and schema design</p>
               <Button asChild size="sm" variant="outline" className="w-full">
                 <a href="https://github.com/Milanz247/db-optimization-examples" target="_blank" rel="noopener noreferrer">
                   View Examples
@@ -588,18 +507,11 @@ const Projects = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <p className="text-muted-foreground mb-6">
-            Interested in collaborating or learning more about my work?
+            Interested in collaborating?
           </p>
-          <Button asChild size="lg" className="group">
-            <Link href="/contact">
+          <Button asChild size="lg">
+            <Link href="#contact">
               Get In Touch
-              <motion.div
-                className="ml-2"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                →
-              </motion.div>
             </Link>
           </Button>
         </motion.div>
