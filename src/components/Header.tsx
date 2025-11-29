@@ -34,22 +34,16 @@ export function Header() {
     <>
       {/* Top bar with date and time */}
       <div className="fixed top-0 left-0 right-0 z-50 w-full bg-primary/10 backdrop-blur-sm border-b border-primary/20">
-        <div className="container flex h-8 items-center justify-center">
+        <div className="w-full flex h-8 items-center justify-center">
           <DateTimeDisplay />
         </div>
       </div>
 
       {/* Main navigation bar */}
       <header className="fixed top-8 left-0 right-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 transition-all duration-300">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="w-full flex h-16 items-center justify-center px-4">
         
-        <div className="flex">
-          <Link href="/" className="flex items-center space-x-2 px-4">
-            <span className="font-bold text-lg">Milan M.S.</span>
-          </Link>
-        </div>
-
-        <nav className="hidden md:flex items-center justify-center flex-1">
+        <nav className="hidden md:flex items-center justify-center">
           <NavigationMenu>
             <NavigationMenuList>
               {navLinks.map((link) => (
@@ -65,7 +59,7 @@ export function Header() {
           </NavigationMenu>
         </nav>
 
-        <div className="flex items-center space-x-2">
+        <div className="absolute right-4 flex items-center space-x-2">
           
           {/* Theme Toggle */}
           <ModeToggle />

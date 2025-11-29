@@ -36,14 +36,14 @@ const Hero = () => {
   }
   
   return (
-    <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 relative">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 relative">
       {/* Premium 3D Background */}
       <Enhanced3DBackground />
       
       {/* Simplified overlay for better contrast */}
       <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80 dark:from-background/60 dark:via-background/40 dark:to-background/60"></div>
       
-      <div className="text-center space-y-8 max-w-4xl mx-auto w-full relative z-10">
+      <div className="text-center space-y-8 max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center">
         {/* Enhanced Profile Avatar */}
         <motion.div 
           className="flex justify-center relative"
@@ -68,7 +68,7 @@ const Hero = () => {
           >
             <Avatar className="w-32 h-32 sm:w-40 sm:h-40 border-4 border-primary/20 shadow-xl premium-shadow">
               <AvatarImage 
-                src="" 
+                src="/images/profile" 
                 alt="Profile picture"
               />
               <AvatarFallback className="text-2xl font-semibold bg-gradient-to-br from-primary/20 to-primary/5 brand-gradient">
