@@ -91,7 +91,7 @@ const Skills = () => {
           {skillCategories.map((category, index) => {
             const IconComponent = category.icon;
             return (
-              <div key={index} className="bg-card border border-border rounded-xl p-6 card-hover-effect premium-shadow glassmorphism">
+              <div key={index} className="bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-colors">
                 {/* Category Header */}
                 <div className="flex items-center gap-3 mb-6">
                   <div className={`p-3 rounded-lg ${category.color} relative overflow-hidden`}>
@@ -106,13 +106,13 @@ const Skills = () => {
                   </div>
                 </div>
 
-                {/* Technologies List with Enhanced Styling */}
+                {/* Technologies List */}
                 <div className="flex flex-wrap gap-2">
                   {category.technologies.map((tech, techIndex) => (
                     <Badge 
                       key={techIndex}
                       variant="secondary"
-                      className="text-xs px-3 py-1 skill-tag-glow cursor-pointer"
+                      className="text-xs px-3 py-1"
                     >
                       {tech}
                     </Badge>
@@ -163,19 +163,19 @@ const Skills = () => {
             </div>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                 Red Hat Enterprise Linux certification preparation
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                 Docker containerization and orchestration basics
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                 AWS cloud fundamentals and services exploration
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                 CI/CD pipeline implementation and automation
               </li>
             </ul>
@@ -205,17 +205,17 @@ const Skills = () => {
         </div>
 
         {/* Technical Decision Making & Problem Solving */}
-        <div className="mt-16 bg-card border border-border rounded-2xl p-8 glassmorphism premium-shadow">
+        <div className="mt-16 bg-card border border-border rounded-2xl p-8">
           <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-card-foreground mb-2 flex items-center justify-center gap-2">
-              <span>🧠</span> Problem-Solving Philosophy
+            <h3 className="text-xl font-bold text-card-foreground mb-2">
+              Problem-Solving Approach
             </h3>
             <p className="text-muted-foreground text-sm">Real-world decisions and trade-offs from actual projects</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-4 rounded-lg border border-border bg-card/50">
-              <div className="text-lg mb-2">💡 Technical Decisions</div>
+              <div className="text-base font-semibold mb-2">Technical Decisions</div>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Chose MySQL over MongoDB for better team familiarity</li>
                 <li>• Prioritized query optimization over caching for sustainable performance</li>
@@ -224,7 +224,7 @@ const Skills = () => {
               </ul>
             </div>
             <div className="p-4 rounded-lg border border-border bg-card/50">
-              <div className="text-lg mb-2">🔧 Debugging Approach</div>
+              <div className="text-base font-semibold mb-2">Debugging Approach</div>
               <ul className="text-sm text-muted-foreground space-y-1">
                 <li>• Start with logs and error messages, not assumptions</li>
                 <li>• Reproduce issues in development before touching production</li>

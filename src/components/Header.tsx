@@ -15,7 +15,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/ModeToggle";
-import { DateTimeDisplay } from "@/components/DateTimeDisplay";
 
 export function Header() {
 
@@ -32,15 +31,8 @@ export function Header() {
 
   return (
     <>
-      {/* Top bar with date and time */}
-      <div className="fixed top-0 left-0 right-0 z-50 w-full bg-primary/10 backdrop-blur-sm border-b border-primary/20">
-        <div className="w-full flex h-8 items-center justify-center">
-          <DateTimeDisplay />
-        </div>
-      </div>
-
       {/* Main navigation bar */}
-      <header className="fixed top-8 left-0 right-0 z-50 w-full border-b bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60 transition-all duration-300">
+      <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 transition-all duration-300">
       <div className="w-full flex h-16 items-center justify-center px-4">
         
         <nav className="hidden md:flex items-center justify-center">

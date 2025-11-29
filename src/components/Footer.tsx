@@ -168,7 +168,7 @@ export function Footer() {
                 <div className="flex items-center gap-3 sm:gap-4">
                   <span className="hidden sm:inline">Built with Next.js</span>
                   <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span>Open to work</span>
                   </div>
                 </div>

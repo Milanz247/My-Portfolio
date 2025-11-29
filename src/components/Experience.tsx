@@ -25,7 +25,7 @@ const Experience = () => {
         "Supporting Java application deployments on WildFly application server",
         "Assisting with system monitoring and log analysis using command-line tools",
         "Shadowing senior engineers on infrastructure troubleshooting and maintenance tasks",
-        "🔥 War story: Helped debug a critical memory leak in production WildFly server at 2 AM, learned the value of proper logging and monitoring"
+        "Helped debug a critical memory leak in production WildFly server, learned the value of proper logging and monitoring"
       ],
       technologies: [
         "Red Hat Enterprise Linux", "WildFly", "Shell Scripting", 
@@ -53,7 +53,7 @@ const Experience = () => {
         "Gained experience with Git workflows, JIRA project management, and Agile development",
         "Mentored junior interns and facilitated team knowledge sharing sessions",
         "Improved application performance through database query optimization",
-        "🔥 Debugging hero moment: Traced mysterious timeout issues to missing database indexes during Black Friday traffic spike, saved the day with emergency optimization"
+        "Traced mysterious timeout issues to missing database indexes during Black Friday traffic spike"
       ],
       technologies: [
         "Laravel", "React.js", "MySQL", "Git", "RESTful APIs"
@@ -159,7 +159,6 @@ const Experience = () => {
               >
                 {/* Timeline Node */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10">
-                  <div className="absolute inset-0 bg-primary rounded-full animate-ping opacity-20"></div>
                 </div>
 
                 {/* Experience Card */}
