@@ -29,6 +29,10 @@ interface Project {
   year: string;
   status: "completed" | "in-progress" | "maintenance";
   featured: boolean;
+  image?: string;
+  stars?: number;
+  commits?: number;
+  isLive?: boolean;
 }
 
 const Projects = () => {
