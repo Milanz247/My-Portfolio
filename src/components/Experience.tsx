@@ -1,13 +1,14 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, Calendar, MapPin, ExternalLink, Code, Server, Database } from "lucide-react";
+import { Briefcase, Calendar, MapPin, ExternalLink, Code, Server, Database, ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
 
   // Professional experience data with enhanced structure
   const experiences = [
@@ -28,7 +29,7 @@ const Experience = () => {
         "Helped debug a critical memory leak in production WildFly server, learned the value of proper logging and monitoring"
       ],
       technologies: [
-        "Red Hat Enterprise Linux", "WildFly", "Shell Scripting", 
+        "Red Hat Enterprise Linux", "WildFly", "Shell Scripting",
         "System Monitoring", "Java Application Support", "Linux Commands"
       ],
       highlights: [
@@ -82,7 +83,7 @@ const Experience = () => {
         "Optimized database queries resulting in 30% performance improvement"
       ],
       technologies: [
-        "Laravel", "React.js", "MySQL", "Git", "JIRA", "Agile", 
+        "Laravel", "React.js", "MySQL", "Git", "JIRA", "Agile",
         "API Development", "Database Design"
       ],
       highlights: [
@@ -93,6 +94,13 @@ const Experience = () => {
       ]
     }
   ];
+
+  const toggleExpand = (id: number) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -139,7 +147,7 @@ const Experience = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            From software development to system operations - building a strong foundation 
+            From software development to system operations - building a strong foundation
             in both development and infrastructure management.
           </p>
         </div>
@@ -148,14 +156,13 @@ const Experience = () => {
         <div className="experience-container relative">
           {/* Timeline Line */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20"></div>
-          
+
           <div className="space-y-8 lg:space-y-12">
             {experiences.map((exp, index) => (
               <div
                 key={exp.id}
-                className={`experience-card relative flex flex-col md:flex-row items-center ${
-                  index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                }`}
+                className={`experience-card relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
+                  }`}
               >
                 {/* Timeline Node */}
                 <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10">
@@ -164,16 +171,15 @@ const Experience = () => {
                 {/* Experience Card */}
                 <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                   <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 group">
-                    
+
                     {/* Header */}
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="outline" className={`text-xs ${
-                            exp.status === 'Current' 
-                              ? 'bg-green-500/10 text-green-600 border-green-200' 
-                              : 'bg-blue-500/10 text-blue-600 border-blue-200'
-                          }`}>
+                          <Badge variant="outline" className={`text-xs ${exp.status === 'Current'
+                            ? 'bg-green-500/10 text-green-600 border-green-200'
+                            : 'bg-blue-500/10 text-blue-600 border-blue-200'
+                            }`}>
                             {exp.status}
                           </Badge>
                           <Badge variant="secondary" className="text-xs">
@@ -205,58 +211,72 @@ const Experience = () => {
                       {exp.description}
                     </p>
 
-                    {/* Key Achievements */}
-                    <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                        <Code className="w-4 h-4 text-primary" />
-                        Key Achievements
-                      </h4>
-                      <ul className="space-y-2">
-                        {exp.achievements.map((achievement, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="leading-relaxed">{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    {/* Expandable Content */}
+                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedCards[exp.id] ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                      }`}>
+                      {/* Key Achievements */}
+                      <div className="mb-6">
+                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
+                          <Code className="w-4 h-4 text-primary" />
+                          Key Achievements
+                        </h4>
+                        <ul className="space-y-2">
+                          {exp.achievements.map((achievement, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                              <span className="leading-relaxed">{achievement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
-                    {/* Technologies */}
-                    <div className="mb-4">
-                      <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                        <Server className="w-4 h-4 text-primary" />
-                        Technologies Used
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.technologies.map((tech, idx) => (
-                          <Badge 
-                            key={idx} 
-                            variant="secondary" 
-                            className="text-xs px-2 py-1 bg-muted/50 hover:bg-muted transition-colors"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
+                      {/* Technologies */}
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
+                          <Server className="w-4 h-4 text-primary" />
+                          Technologies Used
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.technologies.map((tech, idx) => (
+                            <Badge
+                              key={idx}
+                              variant="secondary"
+                              className="text-xs px-2 py-1 bg-muted/50 hover:bg-muted transition-colors"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Highlights */}
+                      <div className="mb-4">
+                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
+                          <Database className="w-4 h-4 text-primary" />
+                          Core Strengths
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.highlights.map((highlight, idx) => (
+                            <Badge
+                              key={idx}
+                              className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+                            >
+                              {highlight}
+                            </Badge>
+                          ))}
+                        </div>
                       </div>
                     </div>
 
-                    {/* Highlights */}
-                    <div>
-                      <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                        <Database className="w-4 h-4 text-primary" />
-                        Core Strengths
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.highlights.map((highlight, idx) => (
-                          <Badge 
-                            key={idx} 
-                            className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
-                          >
-                            {highlight}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
+                    {/* Toggle Button */}
+                    <button
+                      onClick={() => toggleExpand(exp.id)}
+                      className="w-full mt-4 py-2 px-4 bg-muted/50 hover:bg-muted rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium text-card-foreground group"
+                    >
+                      <span>{expandedCards[exp.id] ? 'Show Less' : 'Show More'}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedCards[exp.id] ? 'rotate-180' : ''
+                        }`} />
+                    </button>
                   </div>
                 </div>
 
@@ -273,7 +293,7 @@ const Experience = () => {
             <h3 className="text-xl font-bold text-card-foreground mb-2">Current Learning Focus</h3>
             <p className="text-muted-foreground text-sm">Building expertise in modern DevOps and system administration</p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="text-2xl font-bold text-primary mb-1">1.5+</div>
