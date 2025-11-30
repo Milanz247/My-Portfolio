@@ -844,3 +844,82 @@
   @apply absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-white/5;
   @apply pointer-events-none;
 }
+
+/* === Profile Picture Glowing Animation === */
+.profile-glow-container {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  padding: 4px;
+  /* Border width */
+  overflow: hidden;
+}
+
+/* The rotating gradient border */
+.profile-glow-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(transparent 0deg,
+      transparent 270deg,
+      var(--primary) 360deg);
+  animation: rotate-border 4s linear infinite;
+  z-index: 0;
+}
+
+/* The inner background to hide the center of the gradient */
+.profile-glow-container::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  /* Match padding */
+  border-radius: 50%;
+  background: var(--background);
+  z-index: 0;
+}
+
+/* The actual avatar wrapper */
+.profile-glow-content {
+  position: relative;
+  z-index: 1;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@keyframes rotate-border {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Add a soft glow effect */
+.profile-glow-effect {
+  position: absolute;
+  inset: -10px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.3;
+  animation: pulse-glow-soft 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow-soft {
+  0% {
+    opacity: 0.5;
+    transform: scale(0.95);
+  }
+
+  100% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}

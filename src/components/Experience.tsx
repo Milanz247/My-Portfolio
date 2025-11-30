@@ -24,19 +24,24 @@ const Experience = () => {
       achievements: [
         "Learning Red Hat Enterprise Linux administration in production environment",
         "Supporting Java application deployments on WildFly application server",
-        "Assisting with system monitoring and log analysis using command-line tools",
-        "Shadowing senior engineers on infrastructure troubleshooting and maintenance tasks",
+        "Working with containerized applications using Docker and Kubernetes orchestration",
+        "Assisting with CI/CD pipelines using Jenkins and ArgoCD for automated deployments",
+        "Monitoring system performance and application health using Prometheus and Grafana",
+        "Managing Helm charts for Kubernetes application deployments",
+        "Learning infrastructure management with Rancher and container orchestration",
         "Helped debug a critical memory leak in production WildFly server, learned the value of proper logging and monitoring"
       ],
       technologies: [
-        "Red Hat Enterprise Linux", "WildFly", "Shell Scripting",
-        "System Monitoring", "Java Application Support", "Linux Commands"
+        "Red Hat Enterprise Linux", "WildFly", "Java", "Shell Scripting",
+        "Docker", "Kubernetes", "Jenkins", "ArgoCD", "Helm",
+        "Rancher", "Prometheus", "Git", "System Monitoring",
+        "Linux Commands", "MySQL", "SQLite", "Nginx"
       ],
       highlights: [
-        "Linux Learning",
-        "System Support",
-        "DevOps Foundation",
-        "Team Collaboration"
+        "Linux & RHEL Admin",
+        "DevOps & CI/CD",
+        "Container Orchestration",
+        "Infrastructure Management"
       ]
     },
     {

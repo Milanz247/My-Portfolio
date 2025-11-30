@@ -76,15 +76,20 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <Avatar className="w-40 h-40 sm:w-48 sm:h-48 border-4 border-primary/20 shadow-xl">
-              <AvatarImage
-                src="/images/profile"
-                alt="Milan Madusanka - Full-Stack Developer"
-              />
-              <AvatarFallback className="text-2xl font-semibold bg-gradient-to-br from-primary/20 to-primary/5">
-                MM
-              </AvatarFallback>
-            </Avatar>
+            <div className="profile-glow-container">
+              <div className="profile-glow-effect"></div>
+              <div className="profile-glow-content">
+                <Avatar className="w-40 h-40 sm:w-48 sm:h-48 border-4 border-transparent shadow-xl">
+                  <AvatarImage
+                    src="/images/profile"
+                    alt="Milan Madusanka - Full-Stack Developer"
+                  />
+                  <AvatarFallback className="text-2xl font-semibold bg-gradient-to-br from-primary/20 to-primary/5">
+                    MM
+                  </AvatarFallback>
+                </Avatar>
+              </div>
+            </div>
           </motion.div>
         </motion.div>
 
