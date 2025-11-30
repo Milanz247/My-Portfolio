@@ -36,9 +36,7 @@ import {
   SiMongodb,
   SiRedis,
   SiUbuntu,
-  SiDebian,
   SiCentos,
-  SiFedora,
   SiTerraform,
   SiAnsible,
   SiVuedotjs,
@@ -57,11 +55,10 @@ import {
   SiDatadog,
   SiPodman,
   SiPulumi,
-  SiFluentd,
   SiChef,
   SiPuppet
 } from "react-icons/si";
-import { Server, Coffee, Cloud, ShieldCheck, Network, Database, HardDrive, Workflow, Box } from "lucide-react";
+import { Server, Coffee, Cloud, Database, HardDrive, Workflow } from "lucide-react";
 
 interface TechItem {
   name: string;

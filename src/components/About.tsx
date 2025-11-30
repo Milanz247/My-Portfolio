@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { User, Briefcase } from "lucide-react";
+import Image from "next/image";
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -55,10 +56,11 @@ const About = () => {
               <div className="relative aspect-square w-full max-w-md mx-auto lg:mx-0">
                 <div className="relative w-full h-full bg-gradient-to-br from-card to-muted rounded-xl border border-border shadow-lg overflow-hidden">
                   <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-                    <img
+                    <Image
                       src="/images/aboutimg.jpg"
                       alt="Milan Madusanka - Full-Stack Developer & System Engineer"
-                      className="w-full h-full object-cover rounded-xl"
+                      fill
+                      className="object-cover rounded-xl"
                     />
                   </div>
                 </div>
