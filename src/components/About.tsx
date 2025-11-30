@@ -76,7 +76,7 @@ const About = () => {
                   <Briefcase className="w-5 h-5 text-primary" />
                   Professional Profile
                 </h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-6 text-[#e5e7eb] leading-[1.8]">
                   <p>
                     <strong className="text-card-foreground">System Engineer Intern</strong> at Epic Lanka (Pvt) Ltd, 
                     with <strong className="text-primary">1.5 years of proven development experience</strong> contributing to enterprise systems. 
