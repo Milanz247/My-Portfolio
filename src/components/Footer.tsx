@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Mail, MapPin, Code2, Calendar, ExternalLink } from "lucide-react";
+import { SiLaravel, SiNextdotjs, SiVuedotjs, SiGo, SiTailwindcss } from "react-icons/si";
 
 const navigationLinks = [
   { name: "About", href: "/#about" },
@@ -20,7 +21,11 @@ const professionalLinks = [
 ];
 
 const techStack = [
-  "React", "Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL"
+  { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
+  { name: "Golang", icon: SiGo, color: "#00ADD8" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
 ];
 
 export function Footer() {
@@ -57,14 +62,19 @@ export function Footer() {
                 <h4 className="text-xs font-semibold text-card-foreground uppercase tracking-wider">
                   Technologies
                 </h4>
-                <div className="flex flex-wrap gap-1.5 lg:gap-2">
+                <div className="flex flex-wrap gap-2 lg:gap-3">
                   {techStack.map((tech) => (
-                    <span 
-                      key={tech}
-                      className="px-2 py-0.5 lg:py-1 text-xs bg-primary/10 text-primary rounded font-medium"
+                    <div
+                      key={tech.name}
+                      className="group flex items-center gap-1.5 px-2 py-1.5 text-xs bg-card border border-border rounded-md hover:border-primary/50 transition-all duration-200 hover:scale-105"
+                      title={tech.name}
                     >
-                      {tech}
-                    </span>
+                      <tech.icon
+                        className="w-3 h-3"
+                        style={{ color: tech.color }}
+                      />
+                      <span className="text-card-foreground font-medium">{tech.name}</span>
+                    </div>
                   ))}
                 </div>
               </div>
