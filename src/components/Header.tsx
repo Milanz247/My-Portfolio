@@ -2,8 +2,10 @@
 
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { Menu } from "lucide-react";
+import { Home, User, Code2, Briefcase, Award, FolderOpen, Mail, FileText, X, GraduationCap, BookOpen } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   NavigationMenu,
@@ -13,19 +15,52 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetClose, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/ModeToggle";
 
+// Animated Hamburger Icon Component
+const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => (
+  <div className="w-6 h-6 flex flex-col justify-center items-center relative">
+    <motion.span
+      className="absolute w-5 h-0.5 bg-current rounded-full"
+      animate={{
+        rotate: isOpen ? 45 : 0,
+        y: isOpen ? 0 : -4,
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+    <motion.span
+      className="absolute w-5 h-0.5 bg-current rounded-full"
+      animate={{
+        opacity: isOpen ? 0 : 1,
+        scaleX: isOpen ? 0 : 1,
+      }}
+      transition={{ duration: 0.2 }}
+    />
+    <motion.span
+      className="absolute w-5 h-0.5 bg-current rounded-full"
+      animate={{
+        rotate: isOpen ? -45 : 0,
+        y: isOpen ? 0 : 4,
+      }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    />
+  </div>
+);
+
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/#about" },
-    { name: "Skills", href: "/#skills" },
-    { name: "Experience", href: "/#experience" },
-    { name: "Certifications", href: "/#certifications" },
-    { name: "Projects", href: "/#projects" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Home", href: "/", icon: Home },
+    { name: "About", href: "/#about", icon: User },
+    { name: "Skills", href: "/#skills", icon: Code2 },
+    { name: "Experience", href: "/#experience", icon: Briefcase },
+    { name: "Education", href: "/#education", icon: GraduationCap },
+    { name: "Certifications", href: "/#certifications", icon: Award },
+    { name: "Projects", href: "/#projects", icon: FolderOpen },
+    { name: "Blog", href: "/#blog", icon: BookOpen },
+    { name: "Contact", href: "/#contact", icon: Mail },
   ];
 
   return (
@@ -44,7 +79,7 @@ export function Header() {
         
         {/* Logo/Name - Left Side */}
         <Link href="/" className="font-bold text-lg tracking-tight hover:text-primary transition-colors">
-          Milan M.S.
+          Milan Madusanka
         </Link>
         
         <nav className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
@@ -69,27 +104,78 @@ export function Header() {
           <ModeToggle />
 
           <div className="md:hidden">
-            <Sheet>
+            <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                <Button variant="ghost" size="icon" className="relative">
+                  <AnimatedMenuIcon isOpen={isMenuOpen} />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
+              <SheetContent side="right" className="w-[300px] sm:w-[350px] p-0">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
-                <nav className="flex h-full flex-col items-center justify-center gap-8">
-                  {navLinks.map((link) => (
-                    <SheetClose asChild key={link.name}>
-                      <Link
-                        href={link.href}
-                        className="text-xl font-semibold text-muted-foreground transition-colors hover:text-foreground"
-                      >
-                        {link.name}
-                      </Link>
-                    </SheetClose>
-                  ))}
+                
+                {/* Mobile Menu Header */}
+                <div className="p-6 border-b bg-muted/30">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h2 className="text-lg font-bold text-foreground">Milan Madusanka</h2>
+                      <p className="text-sm text-muted-foreground">Web Developer & DevOps Engineer</p>
+                    </div>
+                    <Button 
+                      variant="ghost" 
+                      size="icon" 
+                      className="h-8 w-8"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Navigation Links */}
+                <nav className="flex flex-col p-4 gap-1">
+                  <AnimatePresence>
+                    {navLinks.map((link, index) => {
+                      const Icon = link.icon;
+                      return (
+                        <motion.div
+                          key={link.name}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.05, duration: 0.3 }}
+                        >
+                          <Link
+                            href={link.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="flex items-center gap-3 px-4 py-3 text-base font-medium text-muted-foreground rounded-lg transition-all hover:bg-muted hover:text-foreground group"
+                          >
+                            <Icon className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                            {link.name}
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
+                  </AnimatePresence>
                 </nav>
+
+                {/* CTA Section */}
+                <div className="absolute bottom-0 left-0 right-0 p-6 border-t bg-muted/30">
+                  <div className="flex flex-col gap-3">
+                    <Button asChild className="w-full" onClick={() => setIsMenuOpen(false)}>
+                      <Link href="/#contact">
+                        <Mail className="h-4 w-4 mr-2" />
+                        Hire Me
+                      </Link>
+                    </Button>
+                    <Button asChild variant="outline" className="w-full">
+                      <a href="/cv.html" target="_blank" rel="noopener noreferrer">
+                        <FileText className="h-4 w-4 mr-2" />
+                        Download CV
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
               </SheetContent>
             </Sheet>
           </div>

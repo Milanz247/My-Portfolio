@@ -194,12 +194,12 @@ const Skills = () => {
               <div className="text-xs text-muted-foreground uppercase tracking-wider">Technologies</div>
             </div>
             <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">10+</div>
+              <div className="text-2xl font-bold text-primary mb-1">5+</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects</div>
             </div>
             <div className="p-4">
-              <div className="text-2xl font-bold text-primary mb-1">100%</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Committed</div>
+              <div className="text-2xl font-bold text-primary mb-1">3+</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">Articles</div>
             </div>
           </div>
         </div>

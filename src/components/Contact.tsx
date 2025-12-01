@@ -7,7 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { MessageCircle, Send, Github, Linkedin, PenTool } from "lucide-react";
+import { MessageCircle, Send, Github, Linkedin } from "lucide-react";
+import { SiMedium } from "react-icons/si";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -63,10 +64,10 @@ const Contact = () => {
   }, []);
 
   const socialLinks = [
-    { href: "https://github.com/Milanz247", icon: Github, label: "GitHub", color: "hover:text-gray-900 dark:hover:text-white" },
-    { href: "https://www.linkedin.com/in/milanmadusanka/", icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-600" },
-    { href: "https://medium.com/@milanmadusankamms", icon: PenTool, label: "Medium", color: "hover:text-green-600" },
-    { href: "https://wa.me/94777392706", icon: MessageCircle, label: "WhatsApp", color: "hover:text-green-500" },
+    { href: "https://github.com/Milanz247", icon: Github, label: "GitHub", color: "text-[#333] dark:text-white hover:scale-110" },
+    { href: "https://www.linkedin.com/in/milanmadusanka/", icon: Linkedin, label: "LinkedIn", color: "text-[#0077B5] hover:scale-110" },
+    { href: "https://medium.com/@milanmadusankamms", icon: SiMedium, label: "Medium", color: "text-[#000] dark:text-white hover:scale-110" },
+    { href: "https://wa.me/94777392706", icon: MessageCircle, label: "WhatsApp", color: "text-[#25D366] hover:scale-110" },
   ];
 
   return (
@@ -101,7 +102,7 @@ const Contact = () => {
               <h3 className="text-sm font-medium text-muted-foreground mb-2">Availability</h3>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                <span className="text-sm text-card-foreground">Open for opportunities</span>
+                <span className="text-sm text-card-foreground">Open for DevOps & Web Dev roles</span>
               </div>
             </div>
 
@@ -115,7 +116,7 @@ const Contact = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`p-2 rounded-lg border border-border bg-card text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:scale-105 ${link.color}`}
+                    className={`p-2 rounded-lg border border-border bg-card transition-all duration-200 hover:border-primary/50 ${link.color}`}
                     aria-label={link.label}
                   >
                     <link.icon className="w-5 h-5" />

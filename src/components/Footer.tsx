@@ -8,7 +8,9 @@ const navigationLinks = [
   { name: "About", href: "/#about" },
   { name: "Skills", href: "/#skills" },
   { name: "Experience", href: "/#experience" },
+  { name: "Education", href: "/#education" },
   { name: "Projects", href: "/#projects" },
+  { name: "Blog", href: "/#blog" },
   { name: "Contact", href: "/#contact" },
 ];
 
@@ -17,7 +19,7 @@ const professionalLinks = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/milanmadusanka/", external: true },
   { name: "Medium", href: "https://medium.com/@milanmadusankamms", external: true },
   { name: "Resume", href: "/cv.html", external: true },
-  { name: "Blog", href: "/#blog" },
+  { name: "WhatsApp", href: "https://wa.me/94777392706", external: true },
 ];
 
 const techStack = [
@@ -46,11 +48,11 @@ export function Footer() {
                 <Link href="/" className="inline-flex items-center gap-2 group">
                   <Code2 className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
                   <h3 className="text-lg lg:text-xl font-bold text-card-foreground tracking-tight group-hover:text-primary transition-colors">
-                    Milan M.S.
+                    Milan Madusanka
                   </h3>
                 </Link>
                 <p className="text-xs lg:text-sm text-muted-foreground font-medium">
-                  Software Engineer
+                  Web Developer & DevOps Engineer
                 </p>
                 <p className="text-sm text-muted-foreground leading-relaxed lg:pr-4">
                   Building scalable web applications with modern technologies.

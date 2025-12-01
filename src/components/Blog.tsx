@@ -21,8 +21,7 @@ import {
   BookOpen, 
   ArrowRight, 
   Terminal,
-  Server,
-  Zap
+  Server
 } from "lucide-react";
 
 const Blog = () => {
@@ -39,7 +38,6 @@ const Blog = () => {
       date: "Dec 2024",
       category: "Language Deep Dive",
       difficulty: "Intermediate",
-      views: "2.5k",
     },
     {
       title: "NGINX Architecture: High-Performance Web Server Engineering",
@@ -50,7 +48,6 @@ const Blog = () => {
       date: "Nov 2024",
       category: "Infrastructure",
       difficulty: "Advanced",
-      views: "1.8k",
     },
     {
       title: "Enterprise Java Deployment on RHEL: Production Best Practices",
@@ -61,7 +58,6 @@ const Blog = () => {
       date: "Oct 2024",
       category: "DevOps",
       difficulty: "Intermediate",
-      views: "3.2k",
     }
   ];
 
@@ -185,7 +181,7 @@ const Blog = () => {
 
                 <CardContent>
                   {/* Meta Info */}
-                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-4">
+                  <div className="flex items-center text-xs text-muted-foreground mb-4">
                     <div className="flex items-center gap-3">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-3 h-3" />
@@ -195,10 +191,6 @@ const Blog = () => {
                         <Clock className="w-3 h-3" />
                         {post.readTime}
                       </div>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Zap className="w-3 h-3" />
-                      {post.views}
                     </div>
                   </div>
 

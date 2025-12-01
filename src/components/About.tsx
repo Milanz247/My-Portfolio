@@ -46,7 +46,7 @@ const About = () => {
             </h2>
           </div>
           <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            Full-Stack Developer transitioning to DevOps with proven enterprise application experience
+            Web Application Developer transitioning to DevOps Engineer with proven enterprise application experience
           </p>
         </div>
 
@@ -97,7 +97,7 @@ const About = () => {
 
               {/* Current Role */}
               <p className="text-sm text-muted-foreground mb-4">
-                <strong className="text-card-foreground">Currently:</strong> System Engineer Intern at Epic Lanka (Pvt) Ltd, 
+                <strong className="text-card-foreground">Currently:</strong> System Engineer Intern at Epic Lanka (Pvt) Ltd (since Jun 2024), 
                 working with RHEL, WildFly, Docker, and Kubernetes.
               </p>
 

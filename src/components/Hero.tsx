@@ -131,7 +131,7 @@ const Hero = () => {
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.8, duration: 0.6 }}
             >
-              Full-Stack Developer → DevOps Engineer
+              I Build & Deploy Scalable Applications
             </motion.h2>
 
             <motion.p
@@ -140,8 +140,7 @@ const Hero = () => {
               animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 1.0, duration: 0.6 }}
             >
-              Building scalable web applications and robust infrastructure with modern technologies.
-              Passionate about clean code, system reliability, and continuous learning.
+              Web Application Developer & DevOps Engineer helping businesses build, deploy, and scale with Laravel, Next.js, Docker, and Kubernetes. Let&apos;s turn your ideas into reality.
             </motion.p>
           </div>
         </div>
@@ -172,7 +171,7 @@ const Hero = () => {
             </a>
           </Button>
 
-          <Button asChild variant="ghost" size="lg" className="w-full sm:w-auto h-12 px-6">
+          <Button asChild variant="secondary" size="lg" className="w-full sm:w-auto h-12 px-6 border border-border">
             <Link href="#contact">
               <span className="font-medium">Get In Touch</span>
             </Link>
