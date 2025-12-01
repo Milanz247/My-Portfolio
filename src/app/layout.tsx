@@ -42,8 +42,15 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/favicon/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/favicon/web-app-manifest-192x192.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/manifest.json",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -89,8 +96,67 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://milanmadusanka.dev/#person",
+        "name": "Milan Madusanka",
+        "url": "https://milanmadusanka.dev",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://milanmadusanka.dev/og-image.png",
+          "width": 1200,
+          "height": 630
+        },
+        "sameAs": [
+          "https://github.com/Milanz247",
+          "https://twitter.com/milanmadusanka"
+        ],
+        "jobTitle": "Full-Stack Developer & DevOps Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Milan Madusanka"
+        },
+        "description": "Full-Stack Developer specializing in React, Next.js, Laravel, and DevOps with 1.5+ years experience"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://milanmadusanka.dev/#website",
+        "url": "https://milanmadusanka.dev",
+        "name": "Milan Madusanka Portfolio",
+        "description": "Portfolio of Milan Madusanka - Full-Stack Developer specializing in React, Next.js, Laravel, and DevOps",
+        "publisher": {
+          "@id": "https://milanmadusanka.dev/#person"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://milanmadusanka.dev/#organization",
+        "name": "Milan Madusanka",
+        "url": "https://milanmadusanka.dev",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://milanmadusanka.dev/favicon/web-app-manifest-512x512.png"
+        },
+        "sameAs": [
+          "https://github.com/Milanz247"
+        ]
+      }
+    ]
+  };
+
   return (
     <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+      <head>
+        <meta name="theme-color" content="#667eea" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${firaCode.variable} antialiased`}
       >
