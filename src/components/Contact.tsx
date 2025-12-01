@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MessageCircle, Send, Github, Linkedin, PenTool } from "lucide-react";
+import { MessageCircle, Send, Github, Linkedin, PenTool } from "lucide-react";
 import { toast } from "sonner";
 
 const Contact = () => {
@@ -118,7 +118,7 @@ const Contact = () => {
                     className={`p-2 rounded-lg border border-border bg-card text-muted-foreground transition-all duration-200 hover:border-primary/50 hover:scale-105 ${link.color}`}
                     aria-label={link.label}
                   >
-                    <link.icon className="w-4 h-4" />
+                    <link.icon className="w-5 h-5" />
                   </a>
                 ))}
               </div>
