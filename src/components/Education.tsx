@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 
 const Education = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   const education = [
     {
@@ -37,6 +38,7 @@ const Education = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Section fade in
     gsap.from(sectionRef.current, {
       opacity: 0,
       y: 30,
@@ -44,27 +46,37 @@ const Education = () => {
       ease: "power2.out",
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 80%",
+        start: "top 85%",
         toggleActions: "play none none reverse",
       },
     });
 
-    gsap.from(".edu-card", {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      stagger: 0.15,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".edu-grid",
-        start: "top 75%",
-        toggleActions: "play none none reverse",
-      },
-    });
+    // Cards animation - use ref instead of class selector
+    if (gridRef.current) {
+      const cards = gridRef.current.querySelectorAll('.edu-card');
+      gsap.fromTo(cards, 
+        { 
+          opacity: 0, 
+          y: 30 
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-visible">
       <div className="container mx-auto max-w-4xl">
         {/* Section Header */}
         <div className="text-center mb-10">
@@ -79,15 +91,16 @@ const Education = () => {
           </p>
         </div>
 
-        {/* Education Cards - Simple Grid */}
-        <div className="edu-grid grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Education Cards - Responsive Grid */}
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
           {education.map((edu) => (
             <div
               key={edu.id}
-              className="edu-card bg-card border border-border rounded-xl p-5 hover:border-primary/40 hover:shadow-md transition-all duration-300"
+              className="edu-card bg-card border border-border rounded-xl p-4 sm:p-5 hover:border-primary/40 hover:shadow-md transition-all duration-300"
+              style={{ opacity: 1 }} /* Ensure visibility on mobile */
             >
               {/* Header */}
-              <div className="flex items-start gap-3 mb-4">
+              <div className="flex items-start gap-3 mb-3 sm:mb-4">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <Award className="w-5 h-5 text-primary" />
                 </div>
@@ -95,23 +108,23 @@ const Education = () => {
                   <Badge variant="secondary" className="text-xs mb-2">
                     {edu.type}
                   </Badge>
-                  <h3 className="font-bold text-card-foreground text-base leading-tight mb-1">
+                  <h3 className="font-bold text-card-foreground text-sm sm:text-base leading-tight mb-1">
                     {edu.degree}
                   </h3>
-                  <p className="text-primary text-sm font-medium truncate">
+                  <p className="text-primary text-xs sm:text-sm font-medium">
                     {edu.institution}
                   </p>
                 </div>
               </div>
 
               {/* Meta */}
-              <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs text-muted-foreground mb-3 sm:mb-4">
                 <span className="flex items-center gap-1">
-                  <Calendar className="w-3.5 h-3.5" />
+                  <Calendar className="w-3.5 h-3.5 shrink-0" />
                   {edu.duration}
                 </span>
                 <span className="flex items-center gap-1">
-                  <MapPin className="w-3.5 h-3.5" />
+                  <MapPin className="w-3.5 h-3.5 shrink-0" />
                   {edu.location}
                 </span>
               </div>
