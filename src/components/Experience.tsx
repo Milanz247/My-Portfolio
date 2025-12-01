@@ -1,322 +1,206 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Briefcase, Calendar, MapPin, ExternalLink, Code, Server, Database, ChevronDown } from "lucide-react";
+import { Briefcase, Calendar, MapPin, Building2, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const Experience = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const [expandedCards, setExpandedCards] = useState<Record<number, boolean>>({});
 
-  // Professional experience data with enhanced structure
   const experiences = [
     {
       id: 1,
       position: "System Engineer Intern",
       company: "Epic Lanka (Pvt) Ltd",
-      location: "Epic Techno Village, Sri Jayawardenepura Kotte, Sri Lanka",
+      location: "Sri Jayawardenepura Kotte",
       duration: "Apr 2025 – Present",
+      durationText: "8 months",
       type: "Internship",
-      status: "Current",
-      description: "Learning Linux system administration and enterprise application support. Gaining practical experience in DevOps fundamentals and infrastructure management.",
+      status: "current",
+      description: "Gaining hands-on experience in Linux system administration and DevOps practices in an enterprise environment.",
       achievements: [
-        "Learning Red Hat Enterprise Linux administration in production environment",
-        "Supporting Java application deployments on WildFly application server",
-        "Working with containerized applications using Docker and Kubernetes orchestration",
-        "Assisting with CI/CD pipelines using Jenkins and ArgoCD for automated deployments",
-        "Monitoring system performance and application health using Prometheus and Grafana",
-        "Managing Helm charts for Kubernetes application deployments",
-        "Learning infrastructure management with Rancher and container orchestration",
-        "Helped debug a critical memory leak in production WildFly server, learned the value of proper logging and monitoring"
+        "Administering RHEL servers in production",
+        "Docker & Kubernetes container orchestration",
+        "CI/CD pipelines with Jenkins & ArgoCD",
+        "System monitoring with Prometheus & Grafana"
       ],
-      technologies: [
-        "Red Hat Enterprise Linux", "WildFly", "Java", "Shell Scripting",
-        "Docker", "Kubernetes", "Jenkins", "ArgoCD", "Helm",
-        "Rancher", "Prometheus", "Git", "System Monitoring",
-        "Linux Commands", "MySQL", "SQLite", "Nginx"
-      ],
-      highlights: [
-        "Linux & RHEL Admin",
-        "DevOps & CI/CD",
-        "Container Orchestration",
-        "Infrastructure Management"
-      ]
+      technologies: ["RHEL", "Docker", "Kubernetes", "Jenkins", "ArgoCD", "Prometheus", "Grafana"]
     },
     {
       id: 2,
-      position: "Junior Software Engineer",
-      company: "Taprobane Information Technologies (Pvt) Ltd",
-      location: "Matahale, Sri Lanka - Matale, Naula",
-      duration: "Apr 2024 - Feb 2025",
+      position: "Software Engineer",
+      company: "Taprobane IT (Pvt) Ltd",
+      location: "Matale",
+      duration: "Oct 2023 – Feb 2025",
+      durationText: "1 yr 5 mos",
       type: "Full-time",
-      status: "Completed",
-      description: "Solid foundation in full-stack development that provides valuable context for understanding application deployment and infrastructure needs. Experience with development workflows that translate well to DevOps practices.",
+      status: "completed",
+      promoted: true,
+      description: "Started as intern, promoted to Junior Engineer. Built full-stack features for enterprise POS/ERP solutions.",
       achievements: [
-        "Delivered features for POS and ERP solutions used by 50+ businesses",
-        "Built RESTful APIs and database schemas for core business modules",
-        "Gained experience with Git workflows, JIRA project management, and Agile development",
-        "Mentored junior interns and facilitated team knowledge sharing sessions",
-        "Improved application performance through database query optimization",
-        "Traced mysterious timeout issues to missing database indexes during Black Friday traffic spike"
+        "Promoted from Intern within 6 months",
+        "POS/ERP features serving 50+ businesses",
+        "30% database performance improvement",
+        "Mentored 3 interns"
       ],
-      technologies: [
-        "Laravel", "React.js", "MySQL", "Git", "RESTful APIs"
-      ],
-      highlights: [
-        "Full-Stack Development",
-        "API Integration",
-        "Team Collaboration",
-        "Problem Solving"
-      ]
-    },
-    {
-      id: 3,
-      position: "Software Engineer Intern",
-      company: "Taprobane Information Technologies (Pvt) Ltd",
-      location: "Matahale, Sri Lanka - Matale, Naula",
-      duration: "Oct 2023 - Apr 2024",
-      type: "Internship",
-      status: "Completed",
-      description: "Gained hands-on experience in enterprise software development while contributing to POS and ERP solutions.",
-      achievements: [
-        "Contributed to POS and ERP solutions serving 50+ businesses",
-        "Developed database schemas and API endpoints for core business modules",
-        "Collaborated using Git, JIRA, and Agile methodologies",
-        "Led intern team of 3 members, facilitating knowledge sharing sessions",
-        "Optimized database queries resulting in 30% performance improvement"
-      ],
-      technologies: [
-        "Laravel", "React.js", "MySQL", "Git", "JIRA", "Agile",
-        "API Development", "Database Design"
-      ],
-      highlights: [
-        "Fast Learning",
-        "Team Collaboration",
-        "Problem Solving",
-        "Mentoring"
-      ]
+      technologies: ["Laravel", "React.js", "MySQL", "REST APIs", "Git"]
     }
   ];
-
-  const toggleExpand = (id: number) => {
-    setExpandedCards(prev => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
-  };
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate section
     gsap.from(sectionRef.current, {
       opacity: 0,
-      y: 50,
-      duration: 1,
+      y: 30,
+      duration: 0.8,
       ease: "power2.out",
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top 80%",
-        end: "top 50%",
         toggleActions: "play none none reverse",
       },
     });
 
-    // Animate experience cards
-    gsap.from(".experience-card", {
+    gsap.from(".exp-card", {
       opacity: 0,
-      y: 30,
-      duration: 0.8,
+      x: -30,
+      duration: 0.6,
       stagger: 0.2,
       ease: "power2.out",
       scrollTrigger: {
-        trigger: ".experience-container",
-        start: "top 70%",
-        end: "top 30%",
+        trigger: ".exp-timeline",
+        start: "top 75%",
         toggleActions: "play none none reverse",
       },
     });
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/30 to-background">
-      <div className="container mx-auto max-w-6xl">
+    <section ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-muted/20">
+      <div className="container mx-auto max-w-4xl">
         {/* Section Header */}
-        <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 mb-4">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 mb-3">
             <Briefcase className="w-6 h-6 text-primary" />
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Professional Journey
             </h2>
           </div>
-          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg max-w-3xl mx-auto">
-            From software development to system operations - building a strong foundation
-            in both development and infrastructure management.
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
+            From software development to system operations — building expertise in both code and infrastructure.
           </p>
         </div>
 
-        {/* Experience Timeline */}
-        <div className="experience-container relative">
-          {/* Timeline Line */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-px h-full w-0.5 bg-gradient-to-b from-primary/20 via-primary/50 to-primary/20"></div>
+        {/* Left-aligned Timeline */}
+        <div className="exp-timeline relative">
+          {/* Vertical Line */}
+          <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-primary/20" />
 
-          <div className="space-y-8 lg:space-y-12">
-            {experiences.map((exp, index) => (
-              <div
-                key={exp.id}
-                className={`experience-card relative flex flex-col md:flex-row items-center ${index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                  }`}
-              >
+          <div className="space-y-8">
+            {experiences.map((exp) => (
+              <div key={exp.id} className="exp-card relative pl-12 sm:pl-16">
                 {/* Timeline Node */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-lg z-10">
+                <div className={`absolute left-2 sm:left-4 top-6 w-4 h-4 rounded-full border-4 border-background shadow-md z-10 ${
+                  exp.status === 'current' ? 'bg-green-500' : 'bg-primary'
+                }`}>
+                  {exp.status === 'current' && (
+                    <span className="absolute inset-0 rounded-full bg-green-500 animate-ping opacity-50" />
+                  )}
                 </div>
 
-                {/* Experience Card */}
-                <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                  <div className="bg-card border border-border rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-primary/50 group">
-
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-2">
-                          <Badge variant="outline" className={`text-xs ${exp.status === 'Current'
-                            ? 'bg-green-500/10 text-green-600 border-green-200'
-                            : 'bg-blue-500/10 text-blue-600 border-blue-200'
-                            }`}>
-                            {exp.status}
-                          </Badge>
-                          <Badge variant="secondary" className="text-xs">
-                            {exp.type}
-                          </Badge>
-                        </div>
-                        <h3 className="text-xl font-bold text-card-foreground mb-1 group-hover:text-primary transition-colors">
+                {/* Card */}
+                <div className="bg-card border border-border rounded-xl p-5 sm:p-6 hover:border-primary/40 hover:shadow-lg transition-all duration-300">
+                  {/* Header Row */}
+                  <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        <h3 className="text-lg sm:text-xl font-bold text-card-foreground">
                           {exp.position}
                         </h3>
-                        <div className="flex items-center gap-2 text-primary font-semibold mb-2">
-                          <ExternalLink className="w-4 h-4" />
-                          {exp.company}
-                        </div>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-4 h-4" />
-                            {exp.duration}
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <MapPin className="w-4 h-4" />
-                            {exp.location}
-                          </div>
-                        </div>
+                        {exp.promoted && (
+                          <Badge className="bg-amber-500/10 text-amber-600 border-amber-200 text-xs">
+                            <TrendingUp className="w-3 h-3 mr-1" />
+                            Promoted
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="flex items-center gap-2 text-primary font-medium text-sm">
+                        <Building2 className="w-4 h-4" />
+                        {exp.company}
                       </div>
                     </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
-                      {exp.description}
-                    </p>
-
-                    {/* Expandable Content */}
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${expandedCards[exp.id] ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
-                      }`}>
-                      {/* Key Achievements */}
-                      <div className="mb-6">
-                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                          <Code className="w-4 h-4 text-primary" />
-                          Key Achievements
-                        </h4>
-                        <ul className="space-y-2">
-                          {exp.achievements.map((achievement, idx) => (
-                            <li key={idx} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
-                              <span className="leading-relaxed">{achievement}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Technologies */}
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                          <Server className="w-4 h-4 text-primary" />
-                          Technologies Used
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {exp.technologies.map((tech, idx) => (
-                            <Badge
-                              key={idx}
-                              variant="secondary"
-                              className="text-xs px-2 py-1 bg-muted/50 hover:bg-muted transition-colors"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Highlights */}
-                      <div className="mb-4">
-                        <h4 className="text-sm font-semibold text-card-foreground mb-3 flex items-center gap-2">
-                          <Database className="w-4 h-4 text-primary" />
-                          Core Strengths
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {exp.highlights.map((highlight, idx) => (
-                            <Badge
-                              key={idx}
-                              className="text-xs bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
-                            >
-                              {highlight}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Toggle Button */}
-                    <button
-                      onClick={() => toggleExpand(exp.id)}
-                      className="w-full mt-4 py-2 px-4 bg-muted/50 hover:bg-muted rounded-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm font-medium text-card-foreground group"
+                    <Badge 
+                      variant="outline" 
+                      className={`text-xs shrink-0 ${
+                        exp.status === 'current' 
+                          ? 'bg-green-500/10 text-green-600 border-green-300' 
+                          : 'bg-muted text-muted-foreground'
+                      }`}
                     >
-                      <span>{expandedCards[exp.id] ? 'Show Less' : 'Show More'}</span>
-                      <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${expandedCards[exp.id] ? 'rotate-180' : ''
-                        }`} />
-                    </button>
+                      {exp.status === 'current' ? '● Current' : exp.type}
+                    </Badge>
+                  </div>
+
+                  {/* Meta */}
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground mb-3">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {exp.duration} · {exp.durationText}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {exp.location}
+                    </span>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
+                    {exp.description}
+                  </p>
+
+                  {/* Achievements - Compact List */}
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 mb-4">
+                    {exp.achievements.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2 text-sm text-card-foreground">
+                        <span className="text-primary mt-1.5">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Tech Stack */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {exp.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 bg-muted text-xs rounded-md text-muted-foreground"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                {/* Spacer for opposite side */}
-                <div className="hidden md:block w-5/12"></div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Career Stats */}
-        <div className="mt-16 bg-card border border-border rounded-2xl p-8">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-card-foreground mb-2">Current Learning Focus</h3>
-            <p className="text-muted-foreground text-sm">Building expertise in modern DevOps and system administration</p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">1.5+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Years Development</div>
+        {/* Career Stats - Compact */}
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
+          {[
+            { value: "2+", label: "Years" },
+            { value: "2", label: "Companies" },
+            { value: "Linux", label: "Focus" },
+            { value: "DevOps", label: "Goal" }
+          ].map((stat, idx) => (
+            <div key={idx} className="text-center p-4 bg-card border border-border rounded-lg">
+              <div className="text-xl font-bold text-primary">{stat.value}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide">{stat.label}</div>
             </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">20+</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Projects Contributed</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">Linux</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Current Focus</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-primary mb-1">DevOps</div>
-              <div className="text-xs text-muted-foreground uppercase tracking-wider">Career Goal</div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
