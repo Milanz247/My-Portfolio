@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Education from "@/components/Education";
+import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
@@ -30,6 +31,10 @@ export default function Home() {
 
       <section id="education" className="py-16">
         <Education />
+      </section>
+
+      <section id="certifications" className="py-16">
+        <Certifications />
       </section>
 
       <section id="projects" className="py-16">

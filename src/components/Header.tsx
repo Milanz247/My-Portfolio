@@ -23,9 +23,8 @@ export function Header() {
     { name: "About", href: "/#about" },
     { name: "Skills", href: "/#skills" },
     { name: "Experience", href: "/#experience" },
-    { name: "Education", href: "/#education" },
+    { name: "Certifications", href: "/#certifications" },
     { name: "Projects", href: "/#projects" },
-    { name: "Blog", href: "/#blog" },
     { name: "Contact", href: "/#contact" },
   ];
 

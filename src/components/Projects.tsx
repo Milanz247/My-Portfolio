@@ -13,26 +13,8 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Github, ExternalLink, Code2, Folder, GitBranch, Database, Zap, Layers, Terminal } from "lucide-react";
+import { Github, ExternalLink, Code2, Folder, GitBranch, Layers } from "lucide-react";
 import Link from "next/link";
-
-// Types for project data
-interface Project {
-  title: string;
-  description: string;
-  longDescription: string;
-  technologies: string[];
-  githubLink: string;
-  liveLink: string;
-  category: string;
-  year: string;
-  status: "completed" | "in-progress" | "maintenance";
-  featured: boolean;
-  image?: string;
-  stars?: number;
-  commits?: number;
-  isLive?: boolean;
-}
 
 const Projects = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -53,91 +35,44 @@ const Projects = () => {
     });
   }, []);
 
-  // Realistic project data matching actual experience level
-  const projects: Project[] = [
+  // Featured projects only - real, published work
+  const featuredProjects = [
     {
       title: "Personal Portfolio Website",
       description: "Modern, responsive portfolio built with Next.js, TypeScript, and Tailwind CSS featuring smooth animations and dark mode.",
-      longDescription: "This portfolio website showcases my skills and learning journey. Built with Next.js for performance, TypeScript for type safety, and includes features like smooth scrolling, theme switching, and responsive design. Deployed with automated CI/CD pipeline.",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion", "Vercel"],
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
       githubLink: "https://github.com/Milanz247/My-Portfolio",
-      liveLink: "https://milan-portfolio.vercel.app",
+      liveLink: "https://milanmadusanka.me",
       category: "Frontend",
       year: "2025",
-      status: "completed",
-      featured: true,
+      status: "completed" as const,
     },
     {
       title: "Enterprise POS System (Team Project)",
       description: "Contributed to Laravel-based Point of Sale system serving 50+ retail businesses with inventory management and reporting.",
-      longDescription: "Worked as part of a 4-person development team on a comprehensive POS system. My key contributions: Built real-time inventory tracking API that handles 1000+ transactions/day, implemented JWT authentication for multi-role access, and optimized database queries reducing checkout time by 25%. Made pragmatic choice to use MySQL over MongoDB for better team familiarity and data consistency needs. Learned to balance feature requests with system stability.",
-      technologies: ["Laravel", "PHP", "React.js", "MySQL", "RESTful APIs", "JIRA"],
-      githubLink: "https://github.com/Milanz247/pos-system-features",
+      technologies: ["Laravel", "PHP", "React.js", "MySQL", "RESTful APIs"],
+      githubLink: "https://github.com/Milanz247",
       liveLink: "",
       category: "Full-Stack",
       year: "2024",
-      status: "completed",
-      featured: true,
+      status: "completed" as const,
     },
     {
       title: "Linux Administration Lab",
       description: "Personal learning environment for practicing Red Hat Enterprise Linux administration and system operations.",
-      longDescription: "Built a comprehensive virtual lab with 3 RHEL servers to simulate production environment. Set up WildFly clustering, implemented log rotation strategies, and practiced disaster recovery procedures. Documented everything for future reference. Key learning: Simple solutions often beat complex ones - chose rsync over fancy backup tools for reliability. Currently exploring Docker containerization while maintaining focus on fundamentals.",
-      technologies: ["Red Hat Enterprise Linux", "Shell Scripting", "WildFly", "Virtual Machines", "System Monitoring"],
-      githubLink: "https://github.com/Milanz247/linux-learning-lab",
-      liveLink: "",
-      category: "System Administration",
-      year: "2025",
-      status: "in-progress",
-      featured: true,
-    },
-    {
-      title: "Task Management API",
-      description: "RESTful API built with Laravel for learning backend development, authentication, and database relationships.",
-      longDescription: "Educational project to understand API development, JWT authentication, and complex database relationships. Features include user management, task CRUD operations, team collaboration, and role-based permissions. Includes comprehensive API documentation and testing.",
-      technologies: ["Laravel", "PHP", "MySQL", "JWT Auth", "Postman", "API Documentation"],
-      githubLink: "https://github.com/Milanz247/task-management-api",
-      liveLink: "",
-      category: "Backend",
-      year: "2024",
-      status: "completed",
-      featured: false,
-    },
-    {
-      title: "React Learning Projects",
-      description: "Collection of React.js projects for learning modern frontend development and state management.",
-      longDescription: "Series of progressive React projects including todo app, weather dashboard, and e-commerce frontend. Focused on learning React hooks, state management, API integration, and responsive design principles. Each project demonstrates different aspects of modern React development.",
-      technologies: ["React.js", "JavaScript", "CSS3", "API Integration", "Responsive Design"],
-      githubLink: "https://github.com/Milanz247/react-learning-projects",
-      liveLink: "https://react-projects-demo.netlify.app",
-      category: "Frontend",
-      year: "2024",
-      status: "completed",
-      featured: false,
-    },
-    {
-      title: "DevOps Learning Journey",
-      description: "Documenting my transition from development to DevOps with practical experiments and configurations.",
-      longDescription: "Repository documenting my learning journey in DevOps, including Docker experiments, CI/CD pipeline setups, infrastructure configurations, and automation scripts. Includes detailed README files explaining concepts learned and practical implementations.",
-      technologies: ["Docker", "GitHub Actions", "Shell Scripting", "Linux", "Documentation"],
-      githubLink: "https://github.com/Milanz247/devops-learning",
+      technologies: ["RHEL", "Shell Scripting", "WildFly", "Docker", "System Monitoring"],
+      githubLink: "https://github.com/Milanz247",
       liveLink: "",
       category: "DevOps",
       year: "2025",
-      status: "in-progress",
-      featured: false,
+      status: "in-progress" as const,
     },
   ];
-
-  // Filter projects
-  const featuredProjects = projects.filter(project => project.featured).slice(0, 3);
-  const otherProjects = projects.filter(project => !project.featured);
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "completed": return "text-green-500";
       case "in-progress": return "text-blue-500";
-      case "maintenance": return "text-yellow-500";
       default: return "text-gray-500";
     }
   };
@@ -146,7 +81,6 @@ const Projects = () => {
     switch (status) {
       case "completed": return "Completed";
       case "in-progress": return "In Progress";
-      case "maintenance": return "Maintenance";
       default: return "Unknown";
     }
   };
@@ -155,102 +89,70 @@ const Projects = () => {
     switch (category) {
       case "Full-Stack": return <Code2 className="w-4 h-4" />;
       case "DevOps": return <GitBranch className="w-4 h-4" />;
-      case "AI/ML": return <Database className="w-4 h-4" />;
-      case "Backend": return <Folder className="w-4 h-4" />;
-      case "Data Engineering": return <Database className="w-4 h-4" />;
-      case "Cloud": return <Code2 className="w-4 h-4" />;
-      case "Blockchain": return <Layers className="w-4 h-4" />;
-      case "Mobile": return <Zap className="w-4 h-4" />;
+      case "Frontend": return <Layers className="w-4 h-4" />;
       default: return <Code2 className="w-4 h-4" />;
     }
   };
 
-  // Animation variants for featured projects
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.3,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
-  const featuredCardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 60,
-      scale: 0.8
-    },
+  const cardVariants = {
+    hidden: { opacity: 0, y: 40 },
     visible: { 
       opacity: 1, 
       y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.8,
-      },
-    },
-  };
-
-  const headerVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.8,
-      },
+      transition: { duration: 0.6 },
     },
   };
 
   return (
-    <section ref={sectionRef} className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/5 via-background to-muted/10 min-h-screen">
-      <div className="container mx-auto max-w-7xl">
+    <section ref={sectionRef} className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-muted/5 via-background to-muted/10">
+      <div className="container mx-auto max-w-6xl">
         {/* Section Header */}
         <motion.div 
-          className="text-center mb-16 lg:mb-20"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          variants={headerVariants}
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center gap-2 mb-4">
             <Folder className="w-6 h-6 text-primary" />
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold">
               Projects
             </h2>
           </div>
-          <motion.p 
-            className="text-lg text-muted-foreground max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
+          <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
             Real projects I&apos;ve built and contributed to during my development journey.
-          </motion.p>
+          </p>
         </motion.div>
 
-        {/* Featured Projects Grid - Only 3 Projects */}
+        {/* Featured Projects Grid */}
         <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10 mb-28"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-50px" }}
           variants={containerVariants}
         >
           {featuredProjects.map((project, index) => (
             <motion.div
-              key={`featured-${index}`}
-              variants={featuredCardVariants}
+              key={index}
+              variants={cardVariants}
               className="group"
             >
               <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-lg">
-                  
-                  <CardHeader>
-                  <div className="flex items-start justify-between mb-4">
+                <CardHeader>
+                  <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-2">
                       {getCategoryIcon(project.category)}
-                      <Badge variant="secondary" className="text-xs font-medium">
+                      <Badge variant="secondary" className="text-xs">
                         {project.category}
                       </Badge>
                     </div>
@@ -260,7 +162,7 @@ const Projects = () => {
                     </div>
                   </div>
                   
-                  <CardTitle className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                  <CardTitle className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                   <p className="text-muted-foreground text-sm leading-relaxed">
@@ -269,18 +171,18 @@ const Projects = () => {
                 </CardHeader>
 
                 <CardContent>
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2">
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-3 py-1 bg-muted text-xs rounded-full"
+                        className="px-2 py-1 bg-muted text-xs rounded-md"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="px-3 py-1 bg-muted/50 text-xs rounded-full text-muted-foreground">
-                        +{project.technologies.length - 4} more
+                      <span className="px-2 py-1 bg-muted/50 text-xs rounded-md text-muted-foreground">
+                        +{project.technologies.length - 4}
                       </span>
                     )}
                   </div>
@@ -298,7 +200,7 @@ const Projects = () => {
                       <Button asChild variant="outline" size="sm" className="flex-1">
                         <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" />
-                          Demo
+                          Live
                         </Link>
                       </Button>
                     )}
@@ -309,209 +211,21 @@ const Projects = () => {
           ))}
         </motion.div>
 
-        {/* Other Projects - Infinite Scrolling Ticker */}
-        <motion.div
-          className="mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">
-              More Projects
-            </h3>
-            <p className="text-muted-foreground">
-              Additional projects showcasing diverse technologies and solutions
-            </p>
-          </div>
-
-          {/* Infinite Scrolling Container */}
-          <div className="relative overflow-hidden bg-gradient-to-r from-transparent via-muted/10 to-transparent py-8 rounded-2xl">
-            {/* Gradient overlays for smooth edges */}
-            <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10" />
-            <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10" />
-            
-            <motion.div 
-              className="flex gap-6 w-max"
-              animate={{
-                x: [0, -100],
-              }}
-              transition={{
-                x: {
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  duration: 20,
-                  ease: "linear",
-                },
-              }}
-            >
-              {/* Duplicate the array for seamless loop */}
-              {[...otherProjects, ...otherProjects].map((project, index) => (
-                <motion.div
-                  key={`ticker-${index}`}
-                  className="flex-shrink-0 w-80 group cursor-pointer"
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card/50 backdrop-blur-sm hover:shadow-lg">
-                    <CardHeader className="pb-3">
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center gap-2">
-                          {getCategoryIcon(project.category)}
-                          <Badge variant="outline" className="text-xs">
-                            {project.category}
-                          </Badge>
-                        </div>
-                        <span className="text-xs text-muted-foreground">{project.year}</span>
-                      </div>
-                      <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors duration-300 line-clamp-2">
-                        {project.title}
-                      </CardTitle>
-                    </CardHeader>
-                    
-                    <CardContent className="pb-3">
-                      <p className="text-sm text-muted-foreground line-clamp-3 mb-4">
-                        {project.description}
-                      </p>
-                      
-                      <div className="flex flex-wrap gap-1 mb-3">
-                        {project.technologies.slice(0, 3).map((tech, techIndex) => (
-                          <span
-                            key={techIndex}
-                            className="px-2 py-1 bg-muted text-xs rounded-md"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="px-2 py-1 bg-muted/50 text-xs rounded-md text-muted-foreground">
-                            +{project.technologies.length - 3}
-                          </span>
-                        )}
-                      </div>
-                      
-                      <div className="flex gap-2">
-                        <Button asChild size="sm" variant="outline" className="flex-1 text-xs">
-                          <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                            <Github className="w-3 h-3 mr-1" />
-                            Code
-                          </Link>
-                        </Button>
-                        <Button asChild size="sm" variant="ghost" className="flex-1 text-xs">
-                          <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                            <ExternalLink className="w-3 h-3 mr-1" />
-                            Demo
-                          </Link>
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </motion.div>
-
-        {/* Learning Journey Section */}
-        <div className="mt-16 bg-card border border-border rounded-2xl p-8">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-bold text-card-foreground mb-2">Currently Learning</h3>
-            <p className="text-muted-foreground text-sm">Building expertise through hands-on practice</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <h4 className="font-semibold mb-2">Linux Administration</h4>
-              <p className="text-sm text-muted-foreground">Red Hat Enterprise Linux, shell scripting, system monitoring</p>
-            </div>
-            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <h4 className="font-semibold mb-2">DevOps Fundamentals</h4>
-              <p className="text-sm text-muted-foreground">CI/CD basics, Docker containers, infrastructure automation</p>
-            </div>
-            <div className="text-center p-4 rounded-lg border border-border bg-card/50">
-              <h4 className="font-semibold mb-2">Java Applications</h4>
-              <p className="text-sm text-muted-foreground">WildFly deployment, application server management</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Code Samples & GitHub */}
-        <motion.div
-          className="mt-20 mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <Github className="w-6 h-6 text-primary" />
-              <h3 className="text-2xl md:text-3xl font-bold">
-                Code Samples
-              </h3>
-            </div>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Real code from projects - see how I solve problems and structure solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
-              <div className="flex items-center gap-3 mb-4">
-                <Github className="w-5 h-5 text-primary" />
-                <h4 className="font-semibold">API Endpoints</h4>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">Laravel controllers, middleware, and validation logic</p>
-              <Button asChild size="sm" variant="outline" className="w-full">
-                <a href="https://github.com/Milanz247/pos-api-samples" target="_blank" rel="noopener noreferrer">
-                  View Code
-                </a>
-              </Button>
-            </div>
-            
-            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
-              <div className="flex items-center gap-3 mb-4">
-                <Terminal className="w-5 h-5 text-primary" />
-                <h4 className="font-semibold">Shell Scripts</h4>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">System administration and automation scripts</p>
-              <Button asChild size="sm" variant="outline" className="w-full">
-                <a href="https://github.com/Milanz247/linux-scripts" target="_blank" rel="noopener noreferrer">
-                  View Scripts
-                </a>
-              </Button>
-            </div>
-            
-            <div className="p-6 rounded-lg border border-border bg-card hover:border-primary/50 transition-colors">
-              <div className="flex items-center gap-3 mb-4">
-                <Database className="w-5 h-5 text-primary" />
-                <h4 className="font-semibold">Database Optimization</h4>
-              </div>
-              <p className="text-sm text-muted-foreground mb-4">Query optimization examples and schema design</p>
-              <Button asChild size="sm" variant="outline" className="w-full">
-                <a href="https://github.com/Milanz247/db-optimization-examples" target="_blank" rel="noopener noreferrer">
-                  View Examples
-                </a>
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-
         {/* Call to Action */}
         <motion.div 
           className="text-center"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-muted-foreground mb-6">
-            Interested in collaborating?
+          <p className="text-muted-foreground text-sm mb-4">
+            More projects on my GitHub
           </p>
-          <Button asChild size="lg">
-            <Link href="#contact">
-              Get In Touch
+          <Button asChild variant="outline">
+            <Link href="https://github.com/Milanz247" target="_blank" rel="noopener noreferrer">
+              <Github className="w-4 h-4 mr-2" />
+              View GitHub Profile
             </Link>
           </Button>
         </motion.div>
