@@ -39,7 +39,7 @@ const spaceGrotesk = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: "Milan Madusanka - Official Portfolio & Software Engineer",
+  title: "Milan's Portfolio",
   description: "Milan Madusanka is a Full-Stack Developer & DevOps Engineer specializing in React, Next.js, Laravel, and Linux systems. View the official portfolio and projects.",
   keywords: [
     "Full-Stack Developer",
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://milanmadusanka.me",
-    title: "Milan Madusanka | Full-Stack Developer & DevOps Engineer",
+    title: "Milan's Portfolio | Full-Stack Developer & DevOps Engineer",
     description: "Portfolio showcasing web development projects, system administration, and DevOps work. Specializing in React, Next.js, Laravel, and Linux systems.",
     siteName: "Milan Madusanka Portfolio",
     images: [
@@ -87,7 +87,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Milan Madusanka | Full-Stack Developer & DevOps Engineer",
+    title: "Milan's Portfolio | Full-Stack Developer & DevOps Engineer",
     description: "Portfolio showcasing web development projects and DevOps expertise",
     images: ["/og-image.png"],
     creator: "@milanmadusanka",
