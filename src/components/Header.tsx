@@ -17,6 +17,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { ModeToggle } from "@/components/ModeToggle";
+import { BackgroundToggle } from "@/components/BackgroundToggle";
 
 // Animated Hamburger Icon Component
 const AnimatedMenuIcon = ({ isOpen }: { isOpen: boolean }) => (
@@ -99,6 +100,9 @@ export function Header() {
         </nav>
 
         <div className="absolute right-4 flex items-center space-x-2">
+          
+          {/* Background Toggle */}
+          <BackgroundToggle />
           
           {/* Theme Toggle */}
           <ModeToggle />

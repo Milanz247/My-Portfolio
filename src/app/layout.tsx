@@ -4,10 +4,11 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/theme-provider";
-import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { DynamicBackground } from "@/components/DynamicBackground";
 import ClientWrapper from "@/components/ClientWrapper";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { Toaster } from "sonner";
+import { BackgroundProvider } from "@/contexts/BackgroundContext";
 
 const spaceGrotesk = localFont({
   src: [
@@ -180,14 +181,16 @@ export default function RootLayout({
         className={`${spaceGrotesk.variable} antialiased font-sans`}
       >
         <ThemeProvider>
-          <ClientWrapper>
-            <AnimatedBackground />
-            <Header />
-            <main className="pt-24 overflow-x-hidden w-full max-w-full">{children}</main>
-            <Footer />
-            <ScrollToTopButton />
-            <Toaster position="top-right" richColors closeButton />
-          </ClientWrapper>
+          <BackgroundProvider>
+            <ClientWrapper>
+              <DynamicBackground />
+              <Header />
+              <main className="pt-24 overflow-x-hidden w-full max-w-full">{children}</main>
+              <Footer />
+              <ScrollToTopButton />
+              <Toaster position="top-right" richColors closeButton />
+            </ClientWrapper>
+          </BackgroundProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,23 +1,11 @@
 "use client";
 
-import dynamic from 'next/dynamic';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useLoading } from "@/contexts/LoadingContext";
-
-// Lazy load the heavy 3D background component for performance
-const Enhanced3DBackground = dynamic(
-  () => import('./Enhanced3DBackgroundFixed').then(mod => ({ default: mod.Enhanced3DBackground })),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/3 to-secondary/5" />
-    )
-  }
-);
 
 const Hero = () => {
   const { isLoading } = useLoading();
@@ -47,11 +35,8 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden w-full pt-8 relative">
-      {/* Premium 3D Background */}
-      <Enhanced3DBackground />
-
-      {/* Simplified overlay for better contrast */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80 dark:from-background/60 dark:via-background/40 dark:to-background/60"></div>
+      {/* Simplified overlay for better contrast - Background is now in layout */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background/70 via-background/50 to-background/70 dark:from-background/50 dark:via-background/30 dark:to-background/50"></div>
 
       <div className="text-center space-y-8 max-w-4xl mx-auto w-full relative z-10 flex flex-col items-center">
         {/* Enhanced Profile Avatar */}
