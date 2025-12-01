@@ -21,8 +21,8 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
-  title: "Milan Madusanka | Full-Stack Developer & DevOps Engineer Portfolio",
-  description: "Portfolio of Milan Madusanka - Full-Stack Developer specializing in React, Next.js, Laravel, and DevOps. 1.5+ years experience building scalable web applications and managing production infrastructure.",
+  title: "Milan Madusanka - Official Portfolio & Software Engineer",
+  description: "Milan Madusanka is a Full-Stack Developer & DevOps Engineer specializing in React, Next.js, Laravel, and Linux systems. View the official portfolio and projects.",
   keywords: [
     "Full-Stack Developer",
     "React Developer",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://milanmadusanka.dev",
+    url: "https://milanmadusanka.me",
     title: "Milan Madusanka | Full-Stack Developer & DevOps Engineer",
     description: "Portfolio showcasing web development projects, system administration, and DevOps work. Specializing in React, Next.js, Laravel, and Linux systems.",
     siteName: "Milan Madusanka Portfolio",
@@ -101,12 +101,12 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://milanmadusanka.dev/#person",
+        "@id": "https://milanmadusanka.me/#person",
         "name": "Milan Madusanka",
-        "url": "https://milanmadusanka.dev",
+        "url": "https://milanmadusanka.me",
         "image": {
           "@type": "ImageObject",
-          "url": "https://milanmadusanka.dev/og-image.png",
+          "url": "https://milanmadusanka.me/og-image.png",
           "width": 1200,
           "height": 630
         },
@@ -123,26 +123,28 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://milanmadusanka.dev/#website",
-        "url": "https://milanmadusanka.dev",
+        "@id": "https://milanmadusanka.me/#website",
+        "url": "https://milanmadusanka.me",
         "name": "Milan Madusanka Portfolio",
         "description": "Portfolio of Milan Madusanka - Full-Stack Developer specializing in React, Next.js, Laravel, and DevOps",
         "publisher": {
-          "@id": "https://milanmadusanka.dev/#person"
+          "@id": "https://milanmadusanka.me/#person"
         },
         "inLanguage": "en-US"
       },
       {
         "@type": "Organization",
-        "@id": "https://milanmadusanka.dev/#organization",
+        "@id": "https://milanmadusanka.me/#organization",
         "name": "Milan Madusanka",
-        "url": "https://milanmadusanka.dev",
+        "url": "https://milanmadusanka.me",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://milanmadusanka.dev/favicon/web-app-manifest-512x512.png"
+          "url": "https://milanmadusanka.me/favicon/web-app-manifest-512x512.png"
         },
         "sameAs": [
-          "https://github.com/Milanz247"
+          "https://github.com/Milanz247",
+          "https://linkedin.com/in/milanmadusanka",
+          "https://twitter.com/milanmadusanka"
         ]
       }
     ]

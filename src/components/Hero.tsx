@@ -104,6 +104,7 @@ const Hero = () => {
               delay: 0.5,
               ease: [0.23, 1, 0.32, 1]
             }}
+            aria-label="Milan Madusanka - Official Portfolio"
           >
             <span className="text-foreground drop-shadow-sm">
               Milan Madusanka
