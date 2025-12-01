@@ -9,6 +9,7 @@ import ClientWrapper from "@/components/ClientWrapper";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { Toaster } from "sonner";
 import { BackgroundProvider } from "@/contexts/BackgroundContext";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const spaceGrotesk = localFont({
   src: [
@@ -192,6 +193,7 @@ export default function RootLayout({
             </ClientWrapper>
           </BackgroundProvider>
         </ThemeProvider>
+        <GoogleAnalytics gaId="G-EDHEHK1Q4D" />
       </body>
     </html>
   );
