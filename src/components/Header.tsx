@@ -41,9 +41,14 @@ export function Header() {
       
       {/* Main navigation bar */}
       <header className="fixed top-0 left-0 right-0 z-50 w-full border-b bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 transition-all duration-300">
-      <div className="w-full flex h-16 items-center justify-center px-4">
+      <div className="w-full flex h-16 items-center justify-between px-4 lg:px-8">
         
-        <nav className="hidden md:flex items-center justify-center">
+        {/* Logo/Name - Left Side */}
+        <Link href="/" className="font-bold text-lg tracking-tight hover:text-primary transition-colors">
+          Milan M.S.
+        </Link>
+        
+        <nav className="hidden md:flex items-center justify-center absolute left-1/2 transform -translate-x-1/2">
           <NavigationMenu>
             <NavigationMenuList>
               {navLinks.map((link) => (

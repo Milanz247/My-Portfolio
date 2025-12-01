@@ -1,7 +1,7 @@
 // src/components/layout/Footer.tsx
 
 import Link from "next/link";
-import { Mail, MapPin, Code2, Calendar, ExternalLink } from "lucide-react";
+import { Mail, MapPin, Code2, ExternalLink } from "lucide-react";
 import { SiLaravel, SiNextdotjs, SiVuedotjs, SiGo, SiTailwindcss } from "react-icons/si";
 
 const navigationLinks = [
@@ -16,13 +16,13 @@ const professionalLinks = [
   { name: "GitHub", href: "https://github.com/Milanz247", external: true },
   { name: "LinkedIn", href: "https://www.linkedin.com/in/milanmadusanka/", external: true },
   { name: "Medium", href: "https://medium.com/@milanmadusankamms", external: true },
-  { name: "Resume", href: "/resume.pdf", external: true },
+  { name: "Resume", href: "/cv.html", external: true },
   { name: "Blog", href: "/#blog" },
 ];
 
 const techStack = [
   { name: "Laravel", icon: SiLaravel, color: "#FF2D20" },
-  { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+  { name: "Next.js", icon: SiNextdotjs, color: "currentColor" },
   { name: "Vue.js", icon: SiVuedotjs, color: "#4FC08D" },
   { name: "Golang", icon: SiGo, color: "#00ADD8" },
   { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
@@ -90,7 +90,7 @@ export function Footer() {
                 </a>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
-                  <span>Matahale, Sri Lanka - Matale, Naula</span>
+                  <span>Matale, Sri Lanka</span>
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ export function Footer() {
                   </a>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground">
                     <MapPin className="w-3 h-3" />
-                    <span>Matahale, Sri Lanka - Matale, Naula</span>
+                    <span>Matale, Sri Lanka</span>
                   </div>
                 </div>
               </div>
@@ -170,18 +170,7 @@ export function Footer() {
               
               {/* Status indicators - Stacked on mobile */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-end gap-2 sm:gap-4">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  <span>Available for opportunities</span>
-                </div>
-                
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <span className="hidden sm:inline">Built with Next.js</span>
-                  <div className="flex items-center gap-1">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Open to work</span>
-                  </div>
-                </div>
+                <span className="hidden sm:inline">Built with Next.js & Tailwind CSS</span>
               </div>
             </div>
           </div>
