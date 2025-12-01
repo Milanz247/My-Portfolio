@@ -193,7 +193,7 @@ export default function RootLayout({
             </ClientWrapper>
           </BackgroundProvider>
         </ThemeProvider>
-        <GoogleAnalytics gaId="G-EDHEHK1Q4D" />
+        <GoogleAnalytics gaId="G-G8DQZWGX4N" />
       </body>
     </html>
   );
