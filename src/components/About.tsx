@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
-import { User, Briefcase } from "lucide-react";
+import { User, Briefcase, MapPin } from "lucide-react";
 import Image from "next/image";
 
 const About = () => {
@@ -101,6 +101,20 @@ const About = () => {
                     growing infrastructure knowledge to contribute to modern DevOps and system engineering initiatives.
                   </p>
                 </div>
+              </div>
+            </div>
+
+            {/* Location */}
+            <div className="bg-card border border-border rounded-xl p-6">
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-primary" />
+                Location
+              </h3>
+              <div className="text-card-foreground">
+                <p className="text-lg font-medium">Matale, Sri Lanka</p>
+                <p className="text-muted-foreground mt-2">
+                  Based in the central highlands of Sri Lanka, available for remote work worldwide.
+                </p>
               </div>
             </div>
           </div>
