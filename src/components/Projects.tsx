@@ -130,7 +130,7 @@ const Projects = () => {
 
         {/* Featured Projects Grid */}
         <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -145,7 +145,7 @@ const Projects = () => {
               <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-lg overflow-hidden">
                 {/* Project Image */}
                 {project.image && (
-                  <div className="relative w-full h-44 overflow-hidden">
+                  <div className="relative w-full h-32 sm:h-36 lg:h-44 overflow-hidden">
                     <Image
                       src={project.image}
                       alt={project.title}
@@ -154,7 +154,7 @@ const Projects = () => {
                     />
                   </div>
                 )}
-                <CardHeader className="py-3 px-4">
+                <CardHeader className="py-2 sm:py-3 px-3 sm:px-4">
                   <div className="flex items-center gap-2 mb-2">
                     {getCategoryIcon(project.category)}
                     <Badge variant="secondary" className="text-xs">
@@ -162,7 +162,7 @@ const Projects = () => {
                     </Badge>
                   </div>
                   
-                  <CardTitle className="text-base font-bold mb-1 group-hover:text-primary transition-colors">
+                  <CardTitle className="text-sm sm:text-base font-bold mb-1 group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
                   <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
@@ -170,25 +170,25 @@ const Projects = () => {
                   </p>
                 </CardHeader>
 
-                <CardContent className="py-2 px-4">
-                  <div className="flex flex-wrap gap-1.5">
+                <CardContent className="py-1 sm:py-2 px-3 sm:px-4">
+                  <div className="flex flex-wrap gap-1">
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-0.5 bg-muted text-xs rounded-md"
+                        className="px-1.5 py-0.5 bg-muted text-xs rounded-md"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="px-2 py-0.5 bg-muted/50 text-xs rounded-md text-muted-foreground">
+                      <span className="px-1.5 py-0.5 bg-muted/50 text-xs rounded-md text-muted-foreground">
                         +{project.technologies.length - 4}
                       </span>
                     )}
                   </div>
                 </CardContent>
 
-                <CardFooter className="pt-0 pb-3 px-4">
+                <CardFooter className="pt-0 pb-2 sm:pb-3 px-3 sm:px-4">
                   <div className="flex gap-2 w-full">
                     {project.githubLink && (
                       <Button asChild size="sm" className="flex-1 h-8 text-xs">

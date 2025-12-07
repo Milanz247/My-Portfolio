@@ -128,7 +128,7 @@ const Blog = () => {
 
         {/* Featured Articles Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mb-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
@@ -142,7 +142,7 @@ const Blog = () => {
             >
               <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-xl overflow-hidden">
                 {/* Hero Image */}
-                <div className="relative h-48 w-full overflow-hidden">
+                <div className="relative h-36 sm:h-40 lg:h-48 w-full overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.title}
@@ -150,7 +150,7 @@ const Blog = () => {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
-                  <div className="absolute bottom-3 left-3">
+                  <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3">
                     <Badge variant="secondary" className="text-xs backdrop-blur-sm bg-background/80 flex items-center gap-1">
                       {getCategoryIcon(post.category)}
                       {post.category}
@@ -158,22 +158,22 @@ const Blog = () => {
                   </div>
                 </div>
 
-                <CardHeader className="pt-4">
-                  <CardTitle className="text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
+                <CardHeader className="pt-3 sm:pt-4 px-3 sm:px-4">
+                  <CardTitle className="text-base sm:text-lg font-bold mb-2 group-hover:text-primary transition-colors line-clamp-2">
                     {post.title}
                   </CardTitle>
-                  <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3">
+                  <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 </CardHeader>
 
-                <CardContent>
+                <CardContent className="px-3 sm:px-4">
                   {/* Tech Tags */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {post.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2 py-1 bg-muted text-xs rounded-md"
+                        className="px-1.5 sm:px-2 py-0.5 sm:py-1 bg-muted text-xs rounded-md"
                       >
                         {tag}
                       </span>
@@ -181,7 +181,7 @@ const Blog = () => {
                   </div>
                 </CardContent>
 
-                <CardFooter className="pt-0">
+                <CardFooter className="pt-0 pb-3 sm:pb-4 px-3 sm:px-4">
                   <Button
                     asChild
                     size="sm"
