@@ -23,106 +23,106 @@ interface PopupCommand {
   maxLife: number;
 }
 
+// DevOps commands - comprehensive list
+const terminalCommands = [
+  // --- Linux service management ---
+  '$ systemctl status nginx',
+  '$ systemctl restart nginx',
+  '$ systemctl enable nginx',
+  '$ systemctl status docker',
+  '$ systemctl restart docker',
+  '$ systemctl status firewalld',
+  '$ systemctl restart NetworkManager',
+
+  // --- Linux basics ---
+  '$ df -h',
+  '$ free -m',
+  '$ top',
+  '$ htop',
+  '$ vmstat 1',
+  '$ dmesg | tail',
+  '$ journalctl -xe',
+  '$ tail -f /var/log/messages',
+  '$ tail -f /var/log/syslog',
+  '$ ip a',
+  '$ ip r',
+  '$ ip link',
+  '$ ss -tulnp',
+  '$ ps aux | grep nginx',
+
+  // --- Network troubleshooting ---
+  '$ ping google.com',
+  '$ traceroute google.com',
+  '$ curl -v http://localhost',
+  '$ wget http://localhost',
+  '$ dig example.com',
+  '$ nslookup example.com',
+  '$ tcpdump -i eth0',
+  '$ nc -zv 10.0.0.1 22',
+
+  // --- Kubernetes common ops ---
+  '$ kubectl get pods',
+  '$ kubectl get pods -A',
+  '$ kubectl get nodes',
+  '$ kubectl describe pod pod-name',
+  '$ kubectl logs pod-name',
+  '$ kubectl logs -f pod-name',
+  '$ kubectl exec -it pod-name -- bash',
+  '$ kubectl get svc',
+  '$ kubectl get deployment',
+  '$ kubectl rollout restart deployment/app',
+  '$ kubectl top pod',
+  '$ kubectl top node',
+  '$ kubectl port-forward pod 8080:80',
+  '$ kubectl get events --sort-by=time',
+
+  // --- Docker common ops ---
+  '$ docker ps',
+  '$ docker ps -a',
+  '$ docker logs container-id',
+  '$ docker logs -f container-id',
+  '$ docker exec -it container bash',
+  '$ docker run -d image-name',
+  '$ docker build -t my-image .',
+  '$ docker images',
+  '$ docker inspect container-id',
+  '$ docker system df',
+  '$ docker stats',
+
+  // --- Git / CI/CD ---
+  '$ git status',
+  '$ git pull origin main',
+  '$ git push',
+  '$ git merge branch-name',
+  '$ git log --oneline --graph',
+  '$ git checkout -b new-feature',
+
+  // --- Terraform ---
+  '$ terraform init',
+  '$ terraform plan',
+  '$ terraform apply',
+  '$ terraform destroy',
+  '$ terraform fmt',
+
+  // --- Helm / Argo ---
+  '$ helm install mychart ./chart',
+  '$ helm upgrade mychart ./chart',
+  '$ helm uninstall mychart',
+  '$ argocd app list',
+  '$ argocd app sync my-app',
+
+  // --- Ansible / AWS ---
+  '$ ansible-playbook deploy.yml',
+  '$ aws s3 sync ./dist s3://bucket',
+  '$ aws ec2 describe-instances',
+];
+
 export const TerminalRainBackground: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const commandsRef = useRef<FloatingCommand[]>([]);
   const popupsRef = useRef<PopupCommand[]>([]);
   const animationRef = useRef<number>(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // DevOps commands - comprehensive list
-  const terminalCommands = [
-    // --- Linux service management ---
-    '$ systemctl status nginx',
-    '$ systemctl restart nginx',
-    '$ systemctl enable nginx',
-    '$ systemctl status docker',
-    '$ systemctl restart docker',
-    '$ systemctl status firewalld',
-    '$ systemctl restart NetworkManager',
-
-    // --- Linux basics ---
-    '$ df -h',
-    '$ free -m',
-    '$ top',
-    '$ htop',
-    '$ vmstat 1',
-    '$ dmesg | tail',
-    '$ journalctl -xe',
-    '$ tail -f /var/log/messages',
-    '$ tail -f /var/log/syslog',
-    '$ ip a',
-    '$ ip r',
-    '$ ip link',
-    '$ ss -tulnp',
-    '$ ps aux | grep nginx',
-
-    // --- Network troubleshooting ---
-    '$ ping google.com',
-    '$ traceroute google.com',
-    '$ curl -v http://localhost',
-    '$ wget http://localhost',
-    '$ dig example.com',
-    '$ nslookup example.com',
-    '$ tcpdump -i eth0',
-    '$ nc -zv 10.0.0.1 22',
-
-    // --- Kubernetes common ops ---
-    '$ kubectl get pods',
-    '$ kubectl get pods -A',
-    '$ kubectl get nodes',
-    '$ kubectl describe pod pod-name',
-    '$ kubectl logs pod-name',
-    '$ kubectl logs -f pod-name',
-    '$ kubectl exec -it pod-name -- bash',
-    '$ kubectl get svc',
-    '$ kubectl get deployment',
-    '$ kubectl rollout restart deployment/app',
-    '$ kubectl top pod',
-    '$ kubectl top node',
-    '$ kubectl port-forward pod 8080:80',
-    '$ kubectl get events --sort-by=time',
-
-    // --- Docker common ops ---
-    '$ docker ps',
-    '$ docker ps -a',
-    '$ docker logs container-id',
-    '$ docker logs -f container-id',
-    '$ docker exec -it container bash',
-    '$ docker run -d image-name',
-    '$ docker build -t my-image .',
-    '$ docker images',
-    '$ docker inspect container-id',
-    '$ docker system df',
-    '$ docker stats',
-
-    // --- Git / CI/CD ---
-    '$ git status',
-    '$ git pull origin main',
-    '$ git push',
-    '$ git merge branch-name',
-    '$ git log --oneline --graph',
-    '$ git checkout -b new-feature',
-
-    // --- Terraform ---
-    '$ terraform init',
-    '$ terraform plan',
-    '$ terraform apply',
-    '$ terraform destroy',
-    '$ terraform fmt',
-
-    // --- Helm / Argo ---
-    '$ helm install mychart ./chart',
-    '$ helm upgrade mychart ./chart',
-    '$ helm uninstall mychart',
-    '$ argocd app list',
-    '$ argocd app sync my-app',
-
-    // --- Ansible / AWS ---
-    '$ ansible-playbook deploy.yml',
-    '$ aws s3 sync ./dist s3://bucket',
-    '$ aws ec2 describe-instances',
-  ];
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

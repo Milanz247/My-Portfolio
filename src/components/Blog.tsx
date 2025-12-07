@@ -16,8 +16,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   ExternalLink,
-  Calendar,
-  Clock,
   Code2,
   BookOpen,
   ArrowRight,
@@ -36,10 +34,7 @@ const Blog = () => {
       link: "https://medium.com/@milanmadusankamms/the-story-of-golang-a-programming-language-that-changed-the-game-bbfe9a964550",
       image: "/images/blog/golang.png",
       tags: ["Go", "Concurrency", "Performance"],
-      readTime: "8 min read",
-      date: "Dec 2024",
       category: "Language Deep Dive",
-      difficulty: "Intermediate",
     },
     {
       title: "NGINX Architecture: High-Performance Web Server Engineering",
@@ -47,10 +42,7 @@ const Blog = () => {
       link: "https://medium.com/@milanmadusankamms/introduction-to-nginx-the-silent-hero-behind-the-web-3b1756949152",
       image: "/images/blog/nginx.png",
       tags: ["NGINX", "Architecture", "Performance"],
-      readTime: "12 min read",
-      date: "Nov 2024",
       category: "Infrastructure",
-      difficulty: "Advanced",
     },
     {
       title: "Enterprise Java Deployment on RHEL: Production Best Practices",
@@ -58,22 +50,9 @@ const Blog = () => {
       link: "https://medium.com/@milanmadusankamms/how-to-install-java-on-a-red-hat-server-rhel-centos-rocky-step-by-step-guide-897c4d194c20",
       image: "/images/blog/java-rhel.png",
       tags: ["Java", "JVM", "Enterprise"],
-      readTime: "10 min read",
-      date: "Oct 2024",
       category: "DevOps",
-      difficulty: "Intermediate",
     }
   ];
-
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "Beginner": return "text-green-500";
-      case "Intermediate": return "text-blue-500";
-      case "Advanced": return "text-orange-500";
-      case "Expert": return "text-red-500";
-      default: return "text-gray-500";
-    }
-  };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -171,13 +150,11 @@ const Blog = () => {
                     className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-60" />
-                  <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
-                    <Badge variant="secondary" className="text-xs backdrop-blur-sm bg-background/80">
+                  <div className="absolute bottom-3 left-3">
+                    <Badge variant="secondary" className="text-xs backdrop-blur-sm bg-background/80 flex items-center gap-1">
+                      {getCategoryIcon(post.category)}
                       {post.category}
                     </Badge>
-                    <span className={`text-xs font-medium px-2 py-1 rounded backdrop-blur-sm bg-background/80 ${getDifficultyColor(post.difficulty)}`}>
-                      {post.difficulty}
-                    </span>
                   </div>
                 </div>
 
@@ -191,20 +168,6 @@ const Blog = () => {
                 </CardHeader>
 
                 <CardContent>
-                  {/* Meta Info */}
-                  <div className="flex items-center text-xs text-muted-foreground mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-3 h-3" />
-                        {post.date}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {post.readTime}
-                      </div>
-                    </div>
-                  </div>
-
                   {/* Tech Tags */}
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map((tag, tagIndex) => (

@@ -41,13 +41,12 @@ const Projects = () => {
     {
       title: "Thenuka Mobile - E-Commerce Store",
       description: "Full-featured e-commerce website for a mobile phone shop with product catalog, shopping cart, and online ordering system.",
-      technologies: ["E-Commerce", "Web Development", "Responsive Design", "SEO"],
+      technologies: ["Next.js", "Laravel", "Tailwind CSS", "SEO"],
       image: "/images/project/thenukamobile.png",
       githubLink: "",
       liveLink: "https://thenukamobile.lk/",
       category: "Full-Stack",
       year: "2025",
-      status: "completed" as const,
     },
     {
       title: "Personal Portfolio Website",
@@ -58,18 +57,16 @@ const Projects = () => {
       liveLink: "https://milanmadusanka.me",
       category: "Frontend",
       year: "2025",
-      status: "completed" as const,
     },
     {
       title: "Enterprise POS System (Team Project)",
       description: "Contributed to Laravel-based Point of Sale system serving 50+ retail businesses with inventory management and reporting.",
-      technologies: ["Laravel", "PHP", "React.js", "MySQL", "RESTful APIs"],
+      technologies: ["Laravel", "Bootstrap", "HTML", "MySQL"],
       image: "/images/project/teampos.png",
       githubLink: "https://github.com/Milanz247",
       liveLink: "",
       category: "Full-Stack",
       year: "2024",
-      status: "completed" as const,
     },
     {
       title: "Linux Administration Lab",
@@ -80,25 +77,8 @@ const Projects = () => {
       liveLink: "",
       category: "DevOps",
       year: "2025",
-      status: "in-progress" as const,
     },
   ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "completed": return "text-green-500";
-      case "in-progress": return "text-blue-500";
-      default: return "text-gray-500";
-    }
-  };
-
-  const getStatusText = (status: string) => {
-    switch (status) {
-      case "completed": return "Completed";
-      case "in-progress": return "In Progress";
-      default: return "Unknown";
-    }
-  };
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -175,17 +155,11 @@ const Projects = () => {
                   </div>
                 )}
                 <CardHeader className="py-3 px-4">
-                  <div className="flex items-start justify-between mb-2">
-                    <div className="flex items-center gap-2">
-                      {getCategoryIcon(project.category)}
-                      <Badge variant="secondary" className="text-xs">
-                        {project.category}
-                      </Badge>
-                    </div>
-                    <div className={`flex items-center gap-1 text-xs ${getStatusColor(project.status)}`}>
-                      <div className="w-2 h-2 rounded-full bg-current" />
-                      {getStatusText(project.status)}
-                    </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    {getCategoryIcon(project.category)}
+                    <Badge variant="secondary" className="text-xs">
+                      {project.category}
+                    </Badge>
                   </div>
                   
                   <CardTitle className="text-base font-bold mb-1 group-hover:text-primary transition-colors">
