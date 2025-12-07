@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -38,9 +39,21 @@ const Projects = () => {
   // Featured projects only - real, published work
   const featuredProjects = [
     {
+      title: "Thenuka Mobile - E-Commerce Store",
+      description: "Full-featured e-commerce website for a mobile phone shop with product catalog, shopping cart, and online ordering system.",
+      technologies: ["E-Commerce", "Web Development", "Responsive Design", "SEO"],
+      image: "/images/project/thenukamobile.png",
+      githubLink: "",
+      liveLink: "https://thenukamobile.lk/",
+      category: "Full-Stack",
+      year: "2025",
+      status: "completed" as const,
+    },
+    {
       title: "Personal Portfolio Website",
       description: "Modern, responsive portfolio built with Next.js, TypeScript, and Tailwind CSS featuring smooth animations and dark mode.",
       technologies: ["Next.js", "TypeScript", "Tailwind CSS", "GSAP", "Framer Motion"],
+      image: "/images/project/portfolio.png",
       githubLink: "https://github.com/Milanz247/My-Portfolio",
       liveLink: "https://milanmadusanka.me",
       category: "Frontend",
@@ -51,6 +64,7 @@ const Projects = () => {
       title: "Enterprise POS System (Team Project)",
       description: "Contributed to Laravel-based Point of Sale system serving 50+ retail businesses with inventory management and reporting.",
       technologies: ["Laravel", "PHP", "React.js", "MySQL", "RESTful APIs"],
+      image: "/images/project/teampos.png",
       githubLink: "https://github.com/Milanz247",
       liveLink: "",
       category: "Full-Stack",
@@ -61,6 +75,7 @@ const Projects = () => {
       title: "Linux Administration Lab",
       description: "Personal learning environment for practicing Red Hat Enterprise Linux administration and system operations.",
       technologies: ["RHEL", "Shell Scripting", "WildFly", "Docker", "System Monitoring"],
+      image: "",
       githubLink: "https://github.com/Milanz247",
       liveLink: "",
       category: "DevOps",
@@ -147,9 +162,20 @@ const Projects = () => {
               variants={cardVariants}
               className="group"
             >
-              <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-lg">
-                <CardHeader>
-                  <div className="flex items-start justify-between mb-3">
+              <Card className="h-full border hover:border-primary/50 transition-all duration-300 bg-card hover:shadow-lg overflow-hidden">
+                {/* Project Image */}
+                {project.image && (
+                  <div className="relative w-full h-44 overflow-hidden">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                )}
+                <CardHeader className="py-3 px-4">
+                  <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
                       {getCategoryIcon(project.category)}
                       <Badge variant="secondary" className="text-xs">
@@ -162,44 +188,46 @@ const Projects = () => {
                     </div>
                   </div>
                   
-                  <CardTitle className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
+                  <CardTitle className="text-base font-bold mb-1 group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                 </CardHeader>
 
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
+                <CardContent className="py-2 px-4">
+                  <div className="flex flex-wrap gap-1.5">
                     {project.technologies.slice(0, 4).map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="px-2 py-1 bg-muted text-xs rounded-md"
+                        className="px-2 py-0.5 bg-muted text-xs rounded-md"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.technologies.length > 4 && (
-                      <span className="px-2 py-1 bg-muted/50 text-xs rounded-md text-muted-foreground">
+                      <span className="px-2 py-0.5 bg-muted/50 text-xs rounded-md text-muted-foreground">
                         +{project.technologies.length - 4}
                       </span>
                     )}
                   </div>
                 </CardContent>
 
-                <CardFooter className="pt-0">
-                  <div className="flex gap-3 w-full">
-                    <Button asChild size="sm" className="flex-1">
-                      <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                        <Github className="w-4 h-4 mr-2" />
-                        Code
-                      </Link>
-                    </Button>
+                <CardFooter className="pt-0 pb-3 px-4">
+                  <div className="flex gap-2 w-full">
+                    {project.githubLink && (
+                      <Button asChild size="sm" className="flex-1 h-8 text-xs">
+                        <Link href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-3.5 h-3.5 mr-1.5" />
+                          Code
+                        </Link>
+                      </Button>
+                    )}
                     {project.liveLink && (
-                      <Button asChild variant="outline" size="sm" className="flex-1">
+                      <Button asChild variant={project.githubLink ? "outline" : "default"} size="sm" className="flex-1 h-8 text-xs">
                         <Link href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-4 h-4 mr-2" />
+                          <ExternalLink className="w-3.5 h-3.5 mr-1.5" />
                           Live
                         </Link>
                       </Button>
