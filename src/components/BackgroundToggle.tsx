@@ -8,13 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Layers, Network, Sparkles, Terminal, Box, Cpu } from 'lucide-react';
+import { Layers, Sparkles, Terminal, Cpu } from 'lucide-react';
 
 const BACKGROUND_OPTIONS: { value: BackgroundType; label: string; icon: React.ReactNode }[] = [
-  { value: 'network-flow', label: 'Network Flow', icon: <Network className="h-4 w-4" /> },
   { value: 'particle-constellation', label: 'Particles', icon: <Sparkles className="h-4 w-4" /> },
   { value: 'terminal-rain', label: 'Terminal Rain', icon: <Terminal className="h-4 w-4" /> },
-  { value: 'enhanced-3d', label: 'DevOps 3D', icon: <Box className="h-4 w-4" /> },
   { value: 'circuit-board', label: 'Circuit Board', icon: <Cpu className="h-4 w-4" /> },
 ];
 

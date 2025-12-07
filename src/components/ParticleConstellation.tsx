@@ -72,8 +72,8 @@ export const ParticleConstellation: React.FC = () => {
       
       particlesRef.current = [];
       
-      // Subtle particle count
-      const particleCount = isMobile ? 50 : 90;
+      // Increased particle count for more visual impact
+      const particleCount = isMobile ? 100 : 180;
       
       for (let i = 0; i < particleCount; i++) {
         const baseSize = 1.5 + Math.random() * 2;
