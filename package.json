@@ -21,7 +21,7 @@
     "framer-motion": "^12.20.5",
     "gsap": "^3.13.0",
     "lucide-react": "^0.525.0",
-    "next": "15.3.4",
+    "next": "15.5.7",
     "next-themes": "^0.4.6",
     "nodemailer": "^7.0.11",
     "react": "^19.0.0",
